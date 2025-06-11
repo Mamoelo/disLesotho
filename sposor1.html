@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkyAlpha HD | Digital Innovators Summit</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary-color: #4a148c; /* Deep purple */
+        --secondary-color: #7b1fa2; /* Medium purple */
+        --accent-color: #e91e63; /* Pink accent */
+        --light-color: #f8f9fa;
+        --dark-color: #212529;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 700;
+      }
+
+      .bg-primary {
+        background-color: var(--primary-color) !important;
+      }
+
+      .bg-secondary {
+        background-color: var(--secondary-color) !important;
+      }
+
+      .text-primary {
+        color: var(--primary-color) !important;
+      }
+
+      .text-secondary {
+        color: var(--secondary-color) !important;
+      }
+
+      .btn-primary {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        padding: 10px 25px;
+        font-weight: 600;
+      }
+
+      .btn-primary:hover {
+        background-color: #6a1b9a;
+        border-color: #6a1b9a;
+      }
+
+      .btn-outline-primary {
+        border-color: var(--secondary-color);
+        color: var(--secondary-color);
+        font-weight: 600;
+      }
+
+      .btn-outline-primary:hover {
+        background-color: var(--secondary-color);
+        color: white;
+      }
+
+      /* Header Styles */
+      .main-header {
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar-brand img {
+        height: 40px;
+      }
+
+      .nav-link {
+        font-weight: 600;
+        color: var(--primary-color);
+        padding: 10px 15px !important;
+      }
+
+      .nav-link:hover {
+        color: var(--secondary-color);
+      }
+
+      .dropdown-menu {
+        border: none;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 0;
+      }
+
+      .dropdown-item {
+        font-weight: 500;
+        padding: 8px 20px;
+      }
+
+      .dropdown-item:hover {
+        background-color: rgba(123, 31, 162, 0.1);
+        color: var(--secondary-color);
+      }
+      /* Custom Active State for Home */
+      .nav-link.active-home {
+        position: relative;
+        color: var(--primary-color) !important;
+      }
+
+      .nav-link.active-home .nav-link-inner {
+        position: relative;
+        display: inline-block;
+      }
+
+      .nav-link.active-home .nav-link-inner::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--secondary-color);
+        transform: scaleX(1);
+        transition: transform 0.3s ease;
+      }
+
+      /* Hover effect for other nav items */
+      .nav-link:not(.active-home):hover {
+        color: var(--secondary-color) !important;
+      }
+
+      .hero-section {
+        background: linear-gradient(135deg, var(--primary-color), #003366);
+        color: white;
+        padding: 100px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-section h1 {
+        font-weight: 700;
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+
+      .partner-header {
+        padding: 80px 0 40px;
+        background-color: #f9f9f9;
+        border-bottom: 1px solid #eee;
+      }
+
+      .partner-logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        margin-bottom: 30px;
+        height: 200px;
+      }
+
+      .partner-logo-container img {
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: contain;
+      }
+
+      .partner-details {
+        padding: 60px 0;
+      }
+
+      .partner-meta {
+        background-color: #f5f5f5;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+      }
+
+      .partner-meta-item {
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .partner-meta-item:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+
+      .partner-meta-label {
+        font-weight: 600;
+        color: var(--secondary-color);
+        margin-bottom: 5px;
+      }
+
+      .partner-description {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 30px;
+      }
+
+      .partner-impact {
+        background-color: var(--light-color);
+        padding: 60px 0;
+      }
+
+      .impact-item {
+        text-align: center;
+        padding: 30px 20px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        margin-bottom: 30px;
+        height: 100%;
+      }
+
+      .impact-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+      }
+
+      .impact-label {
+        font-size: 1rem;
+        color: var(--secondary-color);
+      }
+
+      .partner-gallery {
+        padding: 60px 0;
+      }
+
+      .gallery-item {
+        margin-bottom: 30px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .gallery-caption {
+        padding: 15px;
+        background: white;
+      }
+
+      .related-partners {
+        padding: 60px 0;
+        background-color: #f9f9f9;
+      }
+
+      .partner-card {
+        border: none;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        margin-bottom: 30px;
+        height: 100%;
+      }
+
+      .partner-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .partner-card-img {
+        height: 150px;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .partner-card-img img {
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: contain;
+      }
+
+      .main-footer {
+        background-color: var(--dark-color);
+        color: white;
+        padding: 60px 0 0;
+      }
+
+      @media (max-width: 768px) {
+        .hero-section h1 {
+          font-size: 2.2rem;
+        }
+
+        .partner-header {
+          padding: 60px 0 30px;
+        }
+
+        .partner-logo-container {
+          height: 150px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="main-header sticky-top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <img src="logo.jpeg" alt="SkyAlpha HD" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active-home" href="index.html">
+                  <span class="nav-link-inner">Home</span>
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="summitsDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Summits
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="summit2023.html"
+                      >2023 Summit</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="summit2022.html"
+                      >2022 Summit</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="summit2021.html"
+                      >2021 Summit</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="past-summits.html"
+                      >All Summits</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="live.html">Live</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="eventDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Event
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="live.html">Live</a></li>
+                  <li>
+                    <a class="dropdown-item" href="sessions.html">Sessions</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="schedule.html">Schedule</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="speakers.html">Speakers</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="universities.html">Universities</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="partnersDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Partners
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="universities.html"
+                      >Universities</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="partners.html"
+                      >Organizations</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="sponsors.html">Sponsors</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="collaborators.html"
+                      >Collaborators</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="contactDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Contact
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="contact.html">Contact Us</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="team.html">Our Team</a>
+                  </li>
+                  <li><a class="dropdown-item" href="faq.html">FAQs</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">about</a>
+              </li>
+            </ul>
+            <a href="register.html" class="btn btn-primary ms-lg-3"
+              >Register Now</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Partner Header -->
+    <section class="partner-header">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-4">
+            <div class="partner-logo-container">
+              <img
+                src="https://via.placeholder.com/300x150?text=SkyAlpha+HD"
+                alt="SkyAlpha HD"
+              />
+            </div>
+          </div>
+          <div class="col-md-8">
+            <h1>SkyAlpha HD</h1>
+            <p class="lead">Founding Partner & Digital Innovation Hub</p>
+            <div class="d-flex flex-wrap gap-3 mt-4">
+              <a
+                href="https://skyalphahd.com"
+                target="_blank"
+                class="btn btn-primary"
+              >
+                <i class="fas fa-globe me-2"></i> Visit Website
+              </a>
+              <a href="#contact" class="btn btn-outline-primary">
+                <i class="fas fa-envelope me-2"></i> Contact
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partner Details -->
+    <section class="partner-details">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <h2 class="mb-4">About SkyAlpha HD</h2>
+            <div class="partner-description">
+              <p>
+                SkyAlpha HD is a pioneering digital media and technology company
+                based in Lesotho, dedicated to fostering innovation and digital
+                transformation across Southern Africa. As the founding partner
+                of the Digital Innovators Summit, SkyAlpha HD has been
+                instrumental in shaping the event's vision and execution since
+                its inception in 2021.
+              </p>
+
+              <p>
+                With a mission to "Empower Truth in the Age of AI," SkyAlpha HD
+                combines cutting-edge technology with media expertise to create
+                platforms that educate, inform, and connect communities. The
+                company operates at the intersection of media production,
+                technology development, and digital education, making it
+                uniquely positioned to drive Lesotho's digital agenda.
+              </p>
+
+              <p>SkyAlpha HD's contributions to the summit include:</p>
+              <ul>
+                <li>
+                  Conceptualizing and establishing the Digital Innovators Summit
+                  as an annual platform
+                </li>
+                <li>
+                  Providing technical infrastructure for virtual and hybrid
+                  summit events
+                </li>
+                <li>
+                  Developing digital literacy programs for summit participants
+                </li>
+                <li>
+                  Creating multimedia content to document and promote summit
+                  outcomes
+                </li>
+              </ul>
+            </div>
+
+            <h3 class="mb-4 mt-5">Partnership Highlights</h3>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="impact-item">
+                  <div class="impact-number">3+</div>
+                  <div class="impact-label">Years of Partnership</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="impact-item">
+                  <div class="impact-number">500+</div>
+                  <div class="impact-label">Youth Engaged</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="impact-item">
+                  <div class="impact-number">15+</div>
+                  <div class="impact-label">Digital Projects</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="impact-item">
+                  <div class="impact-number">7</div>
+                  <div class="impact-label">University Collaborations</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="partner-meta">
+              <div class="partner-meta-item">
+                <div class="partner-meta-label">Partnership Type</div>
+                <div>Founding Partner & Organizer</div>
+              </div>
+              <div class="partner-meta-item">
+                <div class="partner-meta-label">Since</div>
+                <div>2021</div>
+              </div>
+              <div class="partner-meta-item">
+                <div class="partner-meta-label">Headquarters</div>
+                <div>Maseru, Lesotho</div>
+              </div>
+              <div class="partner-meta-item">
+                <div class="partner-meta-label">Key Contact</div>
+                <div>Tello Leballo, Founder</div>
+              </div>
+              <div class="partner-meta-item">
+                <div class="partner-meta-label">Website</div>
+                <div>
+                  <a href="https://skyalphahd.com" target="_blank"
+                    >skyalphahd.com</a
+                  >
+                </div>
+              </div>
+              <div class="partner-meta-item">
+                <div class="partner-meta-label">Social Media</div>
+                <div class="d-flex gap-3 mt-2">
+                  <a href="#" class="text-primary"
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                  <a href="#" class="text-primary"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                  <a href="#" class="text-primary"
+                    ><i class="fab fa-linkedin-in"></i
+                  ></a>
+                  <a href="#" class="text-primary"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mt-4">
+              <div class="card-body">
+                <h5 class="card-title">Partnership Documents</h5>
+                <ul class="list-group list-group-flush">
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center"
+                  >
+                    MOU 2023-2025
+                    <a href="#" class="badge bg-primary rounded-pill"
+                      ><i class="fas fa-download"></i
+                    ></a>
+                  </li>
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center"
+                  >
+                    Impact Report 2023
+                    <a href="#" class="badge bg-primary rounded-pill"
+                      ><i class="fas fa-download"></i
+                    ></a>
+                  </li>
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center"
+                  >
+                    Case Study: Digital Literacy Program
+                    <a href="#" class="badge bg-primary rounded-pill"
+                      ><i class="fas fa-download"></i
+                    ></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="partner-gallery bg-light">
+      <div class="container">
+        <h2 class="text-center mb-5">SkyAlpha HD in Action</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="gallery-item">
+              <img
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Summit 2023"
+              />
+              <div class="gallery-caption">
+                <h5>Summit 2023 Opening</h5>
+                <p class="small text-muted">
+                  SkyAlpha team hosting the 2023 summit kickoff
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="gallery-item">
+              <img
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Workshop"
+              />
+              <div class="gallery-caption">
+                <h5>AI Workshop</h5>
+                <p class="small text-muted">
+                  Facilitating hands-on training session
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="gallery-item">
+              <img
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Panel"
+              />
+              <div class="gallery-caption">
+                <h5>Expert Panel</h5>
+                <p class="small text-muted">
+                  Moderating discussion on digital ethics
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Partners -->
+    <section class="related-partners">
+      <div class="container">
+        <h2 class="text-center mb-5">Related Partners</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="partner-card">
+              <div class="partner-card-img">
+                <img
+                  src="https://via.placeholder.com/200x100?text=NUL"
+                  alt="National University of Lesotho"
+                />
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">National University of Lesotho</h5>
+                <p class="card-text">
+                  Academic partner providing research expertise and student
+                  participation.
+                </p>
+                <a href="nul.html" class="btn btn-sm btn-outline-primary"
+                  >View Profile</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="partner-card">
+              <div class="partner-card-img">
+                <img
+                  src="https://via.placeholder.com/200x100?text=LNIG"
+                  alt="LNIG"
+                />
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Lesotho National Insurance Group</h5>
+                <p class="card-text">
+                  Platinum sponsor supporting digital innovation initiatives.
+                </p>
+                <a href="lnig.html" class="btn btn-sm btn-outline-primary"
+                  >View Profile</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="partner-card">
+              <div class="partner-card-img">
+                <img
+                  src="https://via.placeholder.com/200x100?text=American+Corner"
+                  alt="American Corner"
+                />
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">American Corner</h5>
+                <p class="card-text">
+                  Cultural partner facilitating international knowledge
+                  exchange.
+                </p>
+                <a
+                  href="american-corner.html"
+                  class="btn btn-sm btn-outline-primary"
+                  >View Profile</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-5" id="contact">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="mb-4">Contact SkyAlpha HD</h2>
+            <p class="lead mb-5">
+              For partnership inquiries or more information about their work
+              with the Digital Innovators Summit
+            </p>
+
+            <div class="row g-4">
+              <div class="col-md-4">
+                <div class="p-3 border rounded">
+                  <i class="fas fa-envelope fa-2x mb-3 text-primary"></i>
+                  <h5>Email</h5>
+                  <p class="mb-0">dis@skyalphahd.com</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="p-3 border rounded">
+                  <i class="fas fa-phone fa-2x mb-3 text-primary"></i>
+                  <h5>Phone</h5>
+                  <p class="mb-0">+266 5899 4243</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="p-3 border rounded">
+                  <i class="fas fa-map-marker-alt fa-2x mb-3 text-primary"></i>
+                  <h5>Address</h5>
+                  <p class="mb-0">Maseru, Lesotho</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <img
+              src="https://via.placeholder.com/150x50?text=Digital+Innovators"
+              alt="Digital Innovators Summit"
+              class="footer-logo mb-3"
+            />
+            <p class="footer-about">
+              Aligned with Lesotho's National Digital Transformation Strategy,
+              the Digital Innovators Summit is a movement toward creating a
+              digitally empowered society.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://twitter.com/DIS_Lesotho2024" target="_blank"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Summits</h5>
+              <ul>
+                <li><a href="summit2023.html">2023 Summit</a></li>
+                <li><a href="summit2022.html">2022 Summit</a></li>
+                <li><a href="summit2021.html">2021 Summit</a></li>
+                <li><a href="past-summits.html">All Summits</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Event</h5>
+              <ul>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="speakers.html">Speakers</a></li>
+                <li><a href="sessions.html">Sessions</a></li>
+                <li><a href="live.html">Live Stream</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Partners</h5>
+              <ul>
+                <li><a href="universities.html">Universities</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+                <li><a href="collaborators.html">Collaborators</a></li>
+                <li><a href="partners.html">All Partners</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4">
+            <div class="footer-links">
+              <h5>Contact</h5>
+              <ul>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="row">
+            <div class="col-md-6">
+              <p class="copyright mb-3 mb-md-0">
+                © 2025 Digital Innovators Summit. All rights reserved.
+              </p>
+            </div>
+            <div class="col-md-6 text-md-end">
+              <a href="privacy.html" class="text-white-50 me-3"
+                >Privacy Policy</a
+              >
+              <a href="terms.html" class="text-white-50">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Animation for gallery items
+      document.addEventListener("DOMContentLoaded", function () {
+        const galleryItems = document.querySelectorAll(".gallery-item");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = "translateY(0)";
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        galleryItems.forEach((item) => {
+          item.style.opacity = 0;
+          item.style.transform = "translateY(20px)";
+          item.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+          observer.observe(item);
+        });
+      });
+    </script>
+    <script>
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", function (event) {
+        const navbarCollapse = document.getElementById("navbarNav");
+        const navbarToggler = document.querySelector(".navbar-toggler");
+
+        if (
+          navbarCollapse.classList.contains("show") &&
+          !event.target.closest(".navbar") &&
+          !event.target.classList.contains("navbar-toggler")
+        ) {
+          const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+            toggle: false,
+          });
+          bsCollapse.hide();
+
+          navbarToggler.setAttribute("aria-expanded", "false");
+        }
+      });
+    </script>
+  </body>
+</html>

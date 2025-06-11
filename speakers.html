@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Innovators Summit 2025 - Speakers</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary-color: #4a148c; /* Deep purple */
+        --secondary-color: #7b1fa2; /* Medium purple */
+        --accent-color: #e91e63; /* Pink accent */
+        --light-color: #f8f9fa;
+        --dark-color: #212529;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 700;
+      }
+
+      .bg-primary {
+        background-color: var(--primary-color) !important;
+      }
+
+      .bg-secondary {
+        background-color: var(--secondary-color) !important;
+      }
+
+      .text-primary {
+        color: var(--primary-color) !important;
+      }
+
+      .text-secondary {
+        color: var(--secondary-color) !important;
+      }
+
+      .btn-primary {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        padding: 10px 25px;
+        font-weight: 600;
+      }
+
+      .btn-primary:hover {
+        background-color: #6a1b9a;
+        border-color: #6a1b9a;
+      }
+
+      .btn-outline-primary {
+        border-color: var(--secondary-color);
+        color: var(--secondary-color);
+        font-weight: 600;
+      }
+
+      .btn-outline-primary:hover {
+        background-color: var(--secondary-color);
+        color: white;
+      }
+
+      /* Header Styles */
+      .main-header {
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar-brand img {
+        height: 40px;
+      }
+
+      .nav-link {
+        font-weight: 600;
+        color: var(--primary-color);
+        padding: 10px 15px !important;
+      }
+
+      .nav-link:hover {
+        color: var(--secondary-color);
+      }
+
+      .dropdown-menu {
+        border: none;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 0;
+      }
+
+      .dropdown-item {
+        font-weight: 500;
+        padding: 8px 20px;
+      }
+
+      .dropdown-item:hover {
+        background-color: rgba(123, 31, 162, 0.1);
+        color: var(--secondary-color);
+      }
+      /* Custom Active State for Home */
+      .nav-link.active-home {
+        position: relative;
+        color: var(--primary-color) !important;
+      }
+
+      .nav-link.active-home .nav-link-inner {
+        position: relative;
+        display: inline-block;
+      }
+
+      .nav-link.active-home .nav-link-inner::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--secondary-color);
+        transform: scaleX(1);
+        transition: transform 0.3s ease;
+      }
+
+      /* Hover effect for other nav items */
+      .nav-link:not(.active-home):hover {
+        color: var(--secondary-color) !important;
+      }
+
+      h1 {
+        color: var(--primary-color);
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        color: var(--secondary-color);
+        font-weight: 300;
+      }
+
+      .speakers-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 25px;
+        margin-top: 30px;
+      }
+
+      .speaker-card {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+        cursor: pointer;
+        position: relative;
+        height: 400px;
+      }
+
+      .speaker-card.expanded {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 800px;
+        height: 90vh;
+        z-index: 1000;
+        overflow-y: auto;
+      }
+
+      .speaker-image {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+
+      .speaker-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+        padding: 15px;
+        color: white;
+      }
+
+      .speaker-name {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+      }
+
+      .speaker-title {
+        font-size: 0.9rem;
+        opacity: 0.9;
+      }
+
+      .speaker-bio {
+        padding: 20px;
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .speaker-bio.expanded {
+        height: auto;
+        overflow: visible;
+      }
+
+      .speaker-topics {
+        margin-top: 15px;
+        font-size: 0.9rem;
+      }
+
+      .speaker-topics strong {
+        color: var(--secondary-color);
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: var(--accent-color);
+        color: white;
+        border: none;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 1001;
+        display: none;
+      }
+
+      .speaker-card.expanded .close-btn {
+        display: block;
+      }
+
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 999;
+        display: none;
+      }
+
+      .overlay.active {
+        display: block;
+      }
+
+      .category-title {
+        grid-column: 1 / -1;
+        text-align: center;
+        margin: 40px 0 20px;
+        color: var(--primary-color);
+        font-size: 1.8rem;
+        position: relative;
+      }
+
+      .category-title:after {
+        content: "";
+        display: block;
+        width: 100px;
+        height: 3px;
+        background: var(--secondary-color);
+        margin: 10px auto;
+      }
+
+      @media (max-width: 768px) {
+        .speakers-container {
+          grid-template-columns: 1fr;
+        }
+
+        .speaker-card.expanded {
+          width: 95%;
+          height: 85vh;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="main-header sticky-top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <img src="logo.jpeg" alt="SkyAlpha HD" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active-home" href="index.html">
+                  <span class="nav-link-inner">Home</span>
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="summitsDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Summits
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="summit2023.html"
+                      >2023 Summit</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="summit2022.html"
+                      >2022 Summit</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="summit2021.html"
+                      >2021 Summit</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="past-summits.html"
+                      >All Summits</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="live.html">Live</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="eventDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Event
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="live.html">Live</a></li>
+                  <li>
+                    <a class="dropdown-item" href="sessions.html">Sessions</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="schedule.html">Schedule</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="speakers.html">Speakers</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="universities.html">Universities</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="partnersDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Partners
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="universities.html"
+                      >Universities</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="partners.html"
+                      >Organizations</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="sponsors.html">Sponsors</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="collaborators.html"
+                      >Collaborators</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="contactDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Contact
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="contact.html">Contact Us</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="team.html">Our Team</a>
+                  </li>
+                  <li><a class="dropdown-item" href="faq.html">FAQs</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">about</a>
+              </li>
+            </ul>
+            <a href="register.html" class="btn btn-primary ms-lg-3"
+              >Register Now</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <h1>Digital Innovators Summit 2025</h1>
+      <p class="subtitle">
+        Building Digital Futures: Artificial Intelligence, Integrity and
+        Inclusion
+      </p>
+    </section>
+
+    <h2 class="category-title">Speakers</h2>
+
+    <div class="speakers-container">
+      <!-- Speaker 1 -->
+      <div class="speaker-card" onclick="expandCard(this)">
+        <button class="close-btn" onclick="closeCard(event, this.parentNode)">
+          ×
+        </button>
+        <div
+          class="speaker-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+          "
+        >
+          <div class="speaker-overlay">
+            <h3 class="speaker-name">Mathe Victoria Ntšekhe (Mx)</h3>
+            <p class="speaker-title">
+              Lecturer - NUL Faculty of Mathematics and Computer Science |
+              Intersectional African Feminist
+            </p>
+          </div>
+        </div>
+        <div class="speaker-bio">
+          <p>
+            Mathe Ntšekhe is an intersectional African feminist and a lecturer
+            at the National University of Lesotho in the department of
+            Mathematics and Computer Science.
+          </p>
+          <div class="speaker-details" style="display: none">
+            <p>
+              Mathe's research interest lies in the area of Information and
+              Communication Technologies for Development, also known as "ICT4D".
+              This field in essence deals with the questions of how ICTs (i.e.
+              digital technologies) may be used "for good" to advance human
+              development.
+            </p>
+            <p>
+              Mathe will be highly valuable to the Digital Innovators Summit due
+              to their strong academic background in digital technologies and
+              their applications, as well as ensuring that the summit's
+              discussions consider diverse and marginalized communities,
+              promoting inclusivity in the African context.
+            </p>
+          </div>
+          <div class="speaker-topics">
+            <strong>Topics:</strong> ICT4D, Digital Inclusion, African Feminism
+            in Tech
+          </div>
+        </div>
+      </div>
+
+      <!-- Speaker 2 -->
+      <div class="speaker-card" onclick="expandCard(this)">
+        <button class="close-btn" onclick="closeCard(event, this.parentNode)">
+          ×
+        </button>
+        <div
+          class="speaker-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+          "
+        >
+          <div class="speaker-overlay">
+            <h3 class="speaker-name">Lineo Segoete (Ms)</h3>
+            <p class="speaker-title">
+              Writer | Artistic Research-Practitioner | Cultural Producer
+            </p>
+          </div>
+        </div>
+        <div class="speaker-bio">
+          <p>
+            Lineo Segoete is a versatile professional writer, artistic
+            research-practitioner and cultural producer.
+          </p>
+          <div class="speaker-details" style="display: none">
+            <p>
+              With creative roots set in storytelling in its various
+              expressions, her work is grounded in critical literacies spanning
+              across history, media and arts curriculum and pedagogy. Segoete's
+              practice revolves around cultural production and the cultivation
+              of creative heritage through collaborations with other academics
+              and artists.
+            </p>
+            <p>
+              She has operated within the cultural space as co-director and
+              co-founder of Ba Re E Ne Re Literally Arts, co-convenor of The
+              Pan-African arts research collective Another Roadmap Africa
+              Cluster (ARAC), a 2016-2017 Humphrey Fellow, 2024 Museumslab
+              Fellow and as one half of ART.1.ST consultancy, which leads the
+              Lesotho chapter of Chimére Communities.
+            </p>
+            <p>
+              Her background in media and arts, as well as her expertise in
+              storytelling, critical literacies and cultural production are
+              essential to the Digital Innovators Summit, as she will contribute
+              insight into the cultural and artistic implications of
+              misinformation and malinformation.
+            </p>
+          </div>
+          <div class="speaker-topics">
+            <strong>Topics:</strong> Storytelling, Cultural Production,
+            Misinformation in Arts
+          </div>
+        </div>
+      </div>
+
+      <!-- Speaker 3 -->
+      <div class="speaker-card" onclick="expandCard(this)">
+        <button class="close-btn" onclick="closeCard(event, this.parentNode)">
+          ×
+        </button>
+        <div
+          class="speaker-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+          "
+        >
+          <div class="speaker-overlay">
+            <h3 class="speaker-name">Rethabile Tshephe (Ms)</h3>
+            <p class="speaker-title">Cyber Researcher | AI Ethics Researcher</p>
+          </div>
+        </div>
+        <div class="speaker-bio">
+          <p>
+            Rethabile Tsephe is a Researcher with extensive knowledge in cyber
+            related topics that include cyber psychology, cyber mental health
+            and cyber disorders.
+          </p>
+          <div class="speaker-details" style="display: none">
+            <p>
+              She has contributed in two international white papers, one being
+              "Cyber Psychology and Wellbeing", which can be found on
+              researchgate.com. In addition to the above mentioned. She is
+              currently an AI Ethics Researcher for the Pan-African Center for
+              AI Ethics in Nigeria, a not-for-profit organization shaping the
+              future of ethical AI in Africa and bridging Innovation and
+              integrity across Africa. In 2023, she was one of the panelists at
+              the DCN Global Africa Launch in Zambia under the theme "Threats
+              and Opportunities of New Technologies", that highlighted AI
+              technology.
+            </p>
+            <p>
+              Rethabile's insights into the psychological impacts of AI, as well
+              as her work with the Pan-African Centre for AI Ethics, will be
+              crucial in addressing mental and ethical considerations in the use
+              of AI in the context of combating misinformation and
+              malinformation, making her an invaluable contributor to the
+              Digital Innovation Summit.
+            </p>
+          </div>
+          <div class="speaker-topics">
+            <strong>Topics:</strong> Cyber Psychology, AI Ethics, Mental Health
+            in Digital Spaces
+          </div>
+        </div>
+      </div>
+
+      <!-- Speaker 4 -->
+      <div class="speaker-card" onclick="expandCard(this)">
+        <button class="close-btn" onclick="closeCard(event, this.parentNode)">
+          ×
+        </button>
+        <div
+          class="speaker-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+          "
+        >
+          <div class="speaker-overlay">
+            <h3 class="speaker-name">Tšeliso Monaheng (Mr)</h3>
+            <p class="speaker-title">
+              Writer | Photographer | Videographer | Documentarian
+            </p>
+          </div>
+        </div>
+        <div class="speaker-bio">
+          <p>
+            Tšeliso Monaheng is a multifaceted creative professional with
+            expertise in writing, photography, videography, social media
+            strategy, and audio engineering.
+          </p>
+          <div class="speaker-details" style="display: none">
+            <p>
+              He has led major music projects in Africa, including the Lesotho
+              Rap Archives in 2023 alongside Tello "Dallas T" Leballo,
+              documenting the Southern African rap scene through text, audio,
+              and visuals.
+            </p>
+            <p>
+              Holding a Degree in Computer Science from the University of Cape
+              Town, Tšeliso's writing has been featured in The Guardian and The
+              Fader, while his photography has appeared in Le Monde and the
+              Grammy's online platform. He has contributed to international
+              documentaries and co-directed films like "A Gentle Magic." Tšeliso
+              has managed social media campaigns for Concerts SA and Music in
+              Africa and recorded vocals for prominent musicians and podcasts.
+            </p>
+            <p>
+              Tšeliso's diverse background makes him an ideal contributor to the
+              Digital Innovators Summit, where his insights will be crucial in
+              discussing the pros and cons of AI. His experience in various
+              media forms, combined with his technical expertise, will help
+              analyze AI's impact on digital media, highlighting both its
+              transformative potential and ethical challenges.
+            </p>
+          </div>
+          <div class="speaker-topics">
+            <strong>Topics:</strong> Digital Media, AI in Creative Industries,
+            Multimedia Storytelling
+          </div>
+        </div>
+      </div>
+
+      <!-- Speaker 5 -->
+      <div class="speaker-card" onclick="expandCard(this)">
+        <button class="close-btn" onclick="closeCard(event, this.parentNode)">
+          ×
+        </button>
+        <div
+          class="speaker-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1546820389-44d77e1f3b31?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+          "
+        >
+          <div class="speaker-overlay">
+            <h3 class="speaker-name">Dr. Mugambi Laibuta</h3>
+            <p class="speaker-title">
+              Advocate of the High Court of Kenya | Data Protection Specialist
+            </p>
+          </div>
+        </div>
+        <div class="speaker-bio">
+          <p>
+            Dr. Mugambi Laibuta is an esteemed Advocate of the High Court of
+            Kenya and a Certified Information Privacy Manager.
+          </p>
+          <div class="speaker-details" style="display: none">
+            <p>
+              With over 14 years of experience as a licensed legal practitioner,
+              he is a trained mediator, legislative counsel, policy analyst, and
+              a specialist in privacy and data protection.
+            </p>
+            <p>
+              Dr. Laibuta recently completed his PhD at the University of the
+              Witwatersrand, where he focused on Privacy and Data Protection in
+              Kenya. His extensive expertise includes policy development,
+              governance, rule of law, constitutionalism, legislative drafting,
+              digital rights, internet and technology law, privacy, and data
+              protection. He also imparts his knowledge as a lecturer in Legal
+              Writing and Legislative Drafting at the Kenya School of Law.
+            </p>
+            <p>
+              As the Chairperson of the Data Privacy and Governance Society of
+              Kenya, Dr. Laibuta's leadership and insights into data privacy are
+              invaluable. His participation in the Digital Innovators Summit
+              will provide attendees with a profound understanding of the legal
+              and ethical implications of AI in combating misinformation. His
+              diverse expertise and practical experience in policy and
+              governance will significantly enhance the discourse on digital
+              rights and data protection, making a substantial impact on the
+              summit's goals.
+            </p>
+          </div>
+          <div class="speaker-topics">
+            <strong>Topics:</strong> Data Privacy, AI Law, Digital Rights
+          </div>
+        </div>
+      </div>
+
+      <!-- Speaker 6 -->
+      <div class="speaker-card" onclick="expandCard(this)">
+        <button class="close-btn" onclick="closeCard(event, this.parentNode)">
+          ×
+        </button>
+        <div
+          class="speaker-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1557862921-37829c790f19?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+          "
+        >
+          <div class="speaker-overlay">
+            <h3 class="speaker-name">Letsatsi Lekhooa</h3>
+            <p class="speaker-title">
+              President - Internet Society Lesotho | Technology and Climate
+              Change Researcher
+            </p>
+          </div>
+        </div>
+        <div class="speaker-bio">
+          <p>
+            Letsatsi Phinehas Lekhooa is a seasoned technology and climate
+            change researcher with a robust academic background in mathematics
+            and computer science.
+          </p>
+          <div class="speaker-details" style="display: none">
+            <p>
+              His expertise is further enriched by specialized training in
+              climate change adaptation, mitigation, and policy. Letsatsi is
+              dedicated to advancing environmentally friendly technological
+              solutions and effective climate policy development.
+            </p>
+            <p>
+              His extensive experience in stakeholder engagement, project
+              coordination, and policy analysis allows him to excel in
+              evaluating and enhancing climate change, environmental, and ICT
+              policies. He is adept at developing strategic recommendations and
+              fostering collaboration among diverse stakeholders.
+            </p>
+            <p>
+              As the President of the Internet Society Lesotho, Letsatsi Lekhooa
+              is the perfect speaker for the Digital Innovators Summit. His
+              unique blend of technological acumen and environmental advocacy
+              positions him at the forefront of contemporary digital challenges.
+              His insights into the intersection of ICT and climate policy are
+              invaluable for attendees seeking to leverage technology for
+              sustainable development.
+            </p>
+          </div>
+          <div class="speaker-topics">
+            <strong>Topics:</strong> Climate Tech, Digital Policy, Sustainable
+            Innovation
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="category-title">Moderators</h2>
+
+    <div class="speakers-container">
+      <!-- Moderator 1 -->
+      <div class="speaker-card" onclick="expandCard(this)">
+        <button class="close-btn" onclick="closeCard(event, this.parentNode)">
+          ×
+        </button>
+        <div
+          class="speaker-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+          "
+        >
+          <div class="speaker-overlay">
+            <h3 class="speaker-name">Nkopane Ntholi (Mr)</h3>
+            <p class="speaker-title">
+              Radio Personality | Voiceover Artist | Social Media Influencer
+            </p>
+          </div>
+        </div>
+        <div class="speaker-bio">
+          <p>
+            Nkopane Ntholi is a distinguished voiceover artist and radio
+            personality, known for his dynamic presence on Sky Alpha HD.
+          </p>
+          <div class="speaker-details" style="display: none">
+            <p>
+              With a background in Public Administration and Political Science,
+              Nkopane is also a passionate youth rights activist.
+            </p>
+            <p>
+              His diverse expertise and engaging communication skills make him
+              an ideal moderator for the AI summit, where he will bring
+              insightful perspectives and vibrant discussions to the forefront.
+            </p>
+          </div>
+          <div class="speaker-topics">
+            <strong>Topics:</strong> Media Engagement, Youth Advocacy
+          </div>
+        </div>
+      </div>
+
+      <!-- Moderator 2 -->
+      <div class="speaker-card" onclick="expandCard(this)">
+        <button class="close-btn" onclick="closeCard(event, this.parentNode)">
+          ×
+        </button>
+        <div
+          class="speaker-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+          "
+        >
+          <div class="speaker-overlay">
+            <h3 class="speaker-name">Refiloe "Uncle Fif" Thoahlane (Mr)</h3>
+            <p class="speaker-title">
+              Content Creator | Performing Artist | Mental Health Activist
+            </p>
+          </div>
+        </div>
+        <div class="speaker-bio">
+          <p>
+            Refiloe Thoahlane is a multitalented creative professional, with
+            experience in music, radio, content creation, and now teaching.
+          </p>
+          <div class="speaker-details" style="display: none">
+            <p>
+              With a strong social media presence, he uses his platform to
+              tackle important societal issues such as mental health awareness.
+            </p>
+            <p>
+              His experience as a radio personality, as well as his engaging
+              presence, make him the ideal man to moderate the discussions that
+              will be the focus of the Digital Innovators Summit.
+            </p>
+          </div>
+          <div class="speaker-topics">
+            <strong>Topics:</strong> Mental Health in Digital Spaces, Content
+            Creation
+          </div>
+        </div>
+      </div>
+
+      <!-- Moderator 3 -->
+      <div class="speaker-card" onclick="expandCard(this)">
+        <button class="close-btn" onclick="closeCard(event, this.parentNode)">
+          ×
+        </button>
+        <div
+          class="speaker-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+          "
+        >
+          <div class="speaker-overlay">
+            <h3 class="speaker-name">Tsietsi Matjele (Mr)</h3>
+            <p class="speaker-title">
+              Lecturer - Limkokwing University of Creative Technology
+            </p>
+          </div>
+        </div>
+        <div class="speaker-bio">
+          <p>
+            Mr. Tsietsi Matjele is a distinguished lecturer in the Faculty of
+            Information Communication and Technology at Limkokwing University.
+          </p>
+          <div class="speaker-details" style="display: none">
+            <p>
+              With over four years of experience in academic teaching. He holds
+              a professional qualification in Computer Science, specializing in
+              soft-computing. His expertise encompasses data mining, artificial
+              intelligence, machine learning, web development, and
+              cybersecurity.
+            </p>
+            <p>
+              Mr. Matjele's diverse experience spans data analysis, network and
+              computer support, digital design, and video production. He has
+              served as an adjudicator at the UNDP STEAM conference and as a
+              panelist at the Sebabatso Youth Empowerment Initiative. Beyond his
+              academic and professional roles, he is an entrepreneur and the
+              founder of Newles Technologies, an IT consultancy that provides
+              bespoke IT solutions.
+            </p>
+            <p>
+              With a solid background in computer science, Mr. Matjele has honed
+              his skills in developing intelligent algorithms and building
+              predictive models. He has a keen interest in the ethical
+              implications of AI and is an advocate for responsible AI
+              applications.
+            </p>
+            <p>
+              Mr. Matjele's comprehensive understanding of AI and its ethical
+              dimensions, coupled with his practical experience in technology
+              and entrepreneurship, make him exceptionally well-suited to speak
+              at the Digital Innovators Summit. His insights into AI, machine
+              learning, and ethical considerations in technology will provide
+              invaluable perspectives to the summit's focus on enhancing digital
+              media skills and combating misinformation.
+            </p>
+          </div>
+          <div class="speaker-topics">
+            <strong>Topics:</strong> AI Ethics, Machine Learning, Cybersecurity
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="category-title">Spotlight Speakers</h2>
+
+    <div class="speakers-container">
+      <!-- Spotlight 1 -->
+      <div class="speaker-card" onclick="expandCard(this)">
+        <button class="close-btn" onclick="closeCard(event, this.parentNode)">
+          ×
+        </button>
+        <div
+          class="speaker-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+          "
+        >
+          <div class="speaker-overlay">
+            <h3 class="speaker-name">Professor Mosotho George</h3>
+            <p class="speaker-title">
+              Senior Academic - National University of Lesotho
+            </p>
+          </div>
+        </div>
+        <div class="speaker-bio">
+          <p>
+            Professor Mosotho George, a distinguished scholar and senior
+            academic at the National University of Lesotho, brings a formidable
+            blend of intellect, vision, and commitment to advancing digital
+            innovation across Southern Africa.
+          </p>
+          <div class="speaker-details" style="display: none">
+            <p>
+              With an academic career grounded in chemical sciences and emerging
+              technologies—including computational techniques in studying
+              complex analytical data—Professor George has played a leading role
+              in building research ecosystems that respond to Africa's
+              socio-economic challenges. His leadership has nurtured home-grown
+              academic excellence and fostered regional collaborations aimed at
+              leveraging artificial intelligence (AI) for sustainable
+              development. Renowned for integrating research, policy, and
+              community engagement, he serves as a vital link between academia
+              and national innovation systems. His presence at the Digital
+              Innovators Summit highlights the critical role of higher education
+              in shaping Africa's future in the Fourth Industrial Revolution.
+            </p>
+            <p>
+              At #DIS2025, Professor George will speak on "AI Talent and the
+              Role of Higher Education," a theme deeply aligned with his
+              scholarly and institutional mission. He will share insights on how
+              universities can drive digital fluency, build research capacity,
+              and cultivate entrepreneurial thinking among young Africans. As
+              the continent navigates rapid technological shifts and the demand
+              for inclusive growth, his perspective will spark dialogue on
+              curriculum reform, innovation ecosystems, and multi-sectoral
+              collaboration. In an era where AI is redefining every aspect of
+              life, Professor George's voice is both timely and
+              transformative—championing a digital future that is intellectually
+              grounded, locally relevant, and globally competitive.
+            </p>
+          </div>
+          <div class="speaker-topics">
+            <strong>Topics:</strong> AI in Higher Education, Research
+            Ecosystems, Digital Innovation
+          </div>
+        </div>
+      </div>
+
+      <!-- Spotlight 2 -->
+      <div class="speaker-card" onclick="expandCard(this)">
+        <button class="close-btn" onclick="closeCard(event, this.parentNode)">
+          ×
+        </button>
+        <div
+          class="speaker-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+          "
+        >
+          <div class="speaker-overlay">
+            <h3 class="speaker-name">Mr Kanono Ramashamole</h3>
+            <p class="speaker-title">
+              Principal Secretary - Ministry of Information, Communications,
+              Science, Technology and Innovation
+            </p>
+          </div>
+        </div>
+        <div class="speaker-bio">
+          <p>
+            Mr Kanono Ramashamole stands at the helm of Lesotho's digital
+            transformation agenda with a resolute focus on inclusivity and
+            modernisation.
+          </p>
+          <div class="speaker-details" style="display: none">
+            <p>
+              Under his stewardship, MICSTI has launched the ambitious "50-in-5"
+              campaign, aligning Lesotho with global efforts to establish
+              Digital Public Infrastructure within five years. This includes the
+              expansion of e-services, digital identity systems, and payment
+              gateways, all designed to ensure equitable access to essential
+              services and economic participation.
+            </p>
+            <p>
+              At the 2025 Digital Innovators Summit, Mr Ramashamole will delve
+              into the theme "Policy Foundations for AI-Driven Development,"
+              offering insights into how Lesotho is crafting regulatory
+              ecosystems and data infrastructure to responsibly harness
+              artificial intelligence. His leadership exemplifies a commitment
+              to ethical governance and technological advancement, positioning
+              Lesotho as a proactive player in Africa's digital future. His
+              participation promises to shed light on the strategic frameworks
+              necessary for fostering innovation while upholding democratic
+              values and inclusivity.
+            </p>
+          </div>
+          <div class="speaker-topics">
+            <strong>Topics:</strong> Digital Governance, AI Policy, Public
+            Infrastructure
+          </div>
+        </div>
+      </div>
+
+      <!-- Spotlight 3 -->
+      <div class="speaker-card" onclick="expandCard(this)">
+        <button class="close-btn" onclick="closeCard(event, this.parentNode)">
+          ×
+        </button>
+        <div
+          class="speaker-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1542178246-b8da0a6d73c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+          "
+        >
+          <div class="speaker-overlay">
+            <h3 class="speaker-name">H.E. Harry MacDonald</h3>
+            <p class="speaker-title">
+              British High Commissioner to the Kingdom of Lesotho
+            </p>
+          </div>
+        </div>
+        <div class="speaker-bio">
+          <p>
+            His Excellency Harry MacDonald brings a wealth of diplomatic
+            experience to his role, having previously served in diverse postings
+            including Indonesia, Austria, Afghanistan, and the Democratic
+            Republic of Congo.
+          </p>
+          <div class="speaker-details" style="display: none">
+            <p>
+              Recognising the transformative potential of artificial
+              intelligence (AI), High Commissioner MacDonald has actively
+              engaged in initiatives that promote digital literacy and
+              capacity-building among Basotho youth. Through programmes like the
+              Chevening Scholarship, he has encouraged graduates to acquire
+              advanced skills in the United Kingdom and return to contribute
+              meaningfully to Lesotho's socio-economic growth.
+            </p>
+            <p>
+              At the 2025 Digital Innovators Summit, High Commissioner MacDonald
+              will address the theme "Ethical AI and Global Partnerships,"
+              reflecting his dedication to ensuring that technological
+              advancements align with democratic values and human rights. He
+              advocates for international cooperation that supports Lesotho's
+              aspirations to harness AI responsibly, particularly in sectors
+              like renewable energy, where the UK has pledged to assist in
+              developing clean energy solutions. His emphasis on respect and
+              mutual understanding underscores the UK's approach to diplomacy,
+              aiming to empower local communities while fostering global
+              partnerships. Through his leadership, the British High Commission
+              in Maseru continues to play a pivotal role in supporting Lesotho's
+              journey towards a digitally inclusive and ethically grounded
+              future.
+            </p>
+          </div>
+          <div class="speaker-topics">
+            <strong>Topics:</strong> Ethical AI, Global Partnerships, Digital
+            Diplomacy
+          </div>
+        </div>
+      </div>
+
+      <!-- Spotlight 4 -->
+      <div class="speaker-card" onclick="expandCard(this)">
+        <button class="close-btn" onclick="closeCard(event, this.parentNode)">
+          ×
+        </button>
+        <div
+          class="speaker-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+          "
+        >
+          <div class="speaker-overlay">
+            <h3 class="speaker-name">H.E. Ntšiuoa Sekete</h3>
+            <p class="speaker-title">
+              Lesotho's Ambassador to Ethiopia and Permanent Representative to
+              the African Union
+            </p>
+          </div>
+        </div>
+        <div class="speaker-bio">
+          <p>
+            Her Excellency Ntšiuoa Sekete brings a distinguished record of
+            diplomatic service and strategic policy leadership.
+          </p>
+          <div class="speaker-details" style="display: none">
+            <p>
+              With over two decades of experience in continental governance and
+              development communication—spanning roles at the Pan-African
+              Parliament and the African Capacity Building Foundation—she has
+              consistently championed ethical governance, gender equality, and
+              institutional reform. Her recent efforts in securing Lesotho's
+              ratification of key African Union instruments, including the
+              Charter on Public Service and the Convention on Cybersecurity and
+              Personal Data Protection, affirm her commitment to aligning
+              national priorities with Africa's broader digital and governance
+              frameworks.
+            </p>
+            <p>
+              In the context of this year's theme, "Building Digital Futures:
+              Artificial Intelligence, Integrity and Inclusion," Ambassador
+              Sekete's contribution offers a crucial lens into multilateral
+              diplomacy's role in shaping Africa's digital transformation.
+              Drawing on her expertise in development management and media
+              practice, she advocates for policy coherence, youth inclusion, and
+              ethical AI adoption across the continent. Her participation
+              underscores the necessity of harmonised regional cooperation in
+              ensuring that AI technologies advance inclusive growth, democratic
+              values, and sustainable innovation—making her voice indispensable
+              in the continent's digital discourse.
+            </p>
+          </div>
+          <div class="speaker-topics">
+            <strong>Topics:</strong> Digital Governance, African Union Policy,
+            Ethical AI
+          </div>
+        </div>
+      </div>
+
+      <!-- Spotlight 5 -->
+      <div class="speaker-card" onclick="expandCard(this)">
+        <button class="close-btn" onclick="closeCard(event, this.parentNode)">
+          ×
+        </button>
+        <div
+          class="speaker-image"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+          "
+        >
+          <div class="speaker-overlay">
+            <h3 class="speaker-name">Hon. Mohlomi Moleko</h3>
+            <p class="speaker-title">Lesotho's Minister of Natural Resources</p>
+          </div>
+        </div>
+        <div class="speaker-bio">
+          <p>
+            Hon. Mohlomi Moleko brings a visionary approach to #DIS2025,
+            grounded in sustainability, digital transformation, and inclusive
+            growth.
+          </p>
+          <div class="speaker-details" style="display: none">
+            <p>
+              His leadership in initiatives like the Lesotho Highlands Water
+              Project, smart mining, and wetland conservation reflects a
+              commitment to aligning natural resource management with innovation
+              and accountability. By promoting technological adoption in sectors
+              like mining and water, and advocating for youth employment and
+              environmental stewardship, Moleko is shaping a progressive model
+              for resource governance.
+            </p>
+            <p>
+              At the Digital Innovators Summit, his contribution under the theme
+              "Building Digital Futures: Artificial Intelligence, Integrity and
+              Inclusion" is especially significant. His focus on applying AI to
+              optimize resource management, support artisanal miners, and tackle
+              corruption aligns with the summit's goals of ethical and inclusive
+              digital progress.
+            </p>
+          </div>
+          <div class="speaker-topics">
+            <strong>Topics:</strong> AI in Resource Management, Sustainable
+            Tech, Digital Governance
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Footer - Updated with proper links -->
+    <footer class="main-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <a
+              href="https://www.skyalphahd.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="images/logos/skyalpha.png"
+                alt="SkyAlpha HD"
+                class="footer-logo"
+              />
+            </a>
+            <p class="footer-about">
+              Aligned with Lesotho's National Digital Transformation Strategy,
+              the Digital Innovators Summit is a movement toward creating a
+              digitally empowered society.
+            </p>
+            <div class="social-links">
+              <a
+                href="https://www.facebook.com/DigitalInnovatorsSummitLesotho"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="https://twitter.com/DIS_Lesotho2025"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a
+                href="https://www.instagram.com/digitalinnovatorslesotho"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/company/digital-innovators-summit-lesotho"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a
+                href="https://www.youtube.com/c/DigitalInnovatorsSummitLesotho"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Summits</h5>
+              <ul>
+                <li><a href="summit2023.html">2023 Summit</a></li>
+                <li><a href="summit2022.html">2022 Summit</a></li>
+                <li><a href="summit2021.html">2021 Summit</a></li>
+                <li><a href="past-summits.html">All Summits</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Event</h5>
+              <ul>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="speakers.html">Speakers</a></li>
+                <li><a href="sessions.html">Sessions</a></li>
+                <li><a href="live.html">Live Stream</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Partners</h5>
+              <ul>
+                <li><a href="universities.html">Universities</a></li>
+                <li><a href="partners.html">Organizations</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+                <li><a href="collaborators.html">Collaborators</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4">
+            <div class="footer-links">
+              <h5>Contact</h5>
+              <ul>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="copyright mb-3 mb-md-0">
+                  © 2025 Digital Innovators Summit. All rights reserved.
+                </p>
+              </div>
+              <div class="col-md-6 text-md-end">
+                <a href="privacy.html" class="text-white-50 me-3"
+                  >Privacy Policy</a
+                >
+                <a href="terms.html" class="text-white-50">Terms of Service</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function expandCard(card) {
+        // If already expanded, do nothing
+        if (card.classList.contains("expanded")) return;
+
+        // Create overlay
+        const overlay = document.getElementById("overlay");
+        overlay.classList.add("active");
+
+        // Expand card
+        card.classList.add("expanded");
+
+        // Show hidden details
+        const details = card.querySelector(".speaker-details");
+        if (details) details.style.display = "block";
+
+        // Expand bio section
+        const bio = card.querySelector(".speaker-bio");
+        bio.classList.add("expanded");
+
+        // Prevent scrolling on body
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeCard(event, card) {
+        // Stop event propagation to prevent triggering expandCard
+        event.stopPropagation();
+
+        // Remove overlay
+        const overlay = document.getElementById("overlay");
+        overlay.classList.remove("active");
+
+        // Collapse card
+        card.classList.remove("expanded");
+
+        // Hide details again
+        const details = card.querySelector(".speaker-details");
+        if (details) details.style.display = "none";
+
+        // Collapse bio section
+        const bio = card.querySelector(".speaker-bio");
+        bio.classList.remove("expanded");
+
+        // Re-enable scrolling on body
+        document.body.style.overflow = "";
+      }
+
+      // Close card when clicking on overlay
+      document.getElementById("overlay").addEventListener("click", function () {
+        const expandedCard = document.querySelector(".speaker-card.expanded");
+        if (expandedCard) {
+          const closeBtn = expandedCard.querySelector(".close-btn");
+          closeBtn.click();
+        }
+      });
+    </script>
+    <script>
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", function (event) {
+        const navbarCollapse = document.getElementById("navbarNav");
+        const navbarToggler = document.querySelector(".navbar-toggler");
+
+        if (
+          navbarCollapse.classList.contains("show") &&
+          !event.target.closest(".navbar") &&
+          !event.target.classList.contains("navbar-toggler")
+        ) {
+          const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+            toggle: false,
+          });
+          bsCollapse.hide();
+
+          navbarToggler.setAttribute("aria-expanded", "false");
+        }
+      });
+    </script>
+  </body>
+</html>

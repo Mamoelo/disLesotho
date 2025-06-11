@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Summit Sessions | Digital Innovators Summit</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary-color: #4a148c; /* Deep purple */
+        --secondary-color: #7b1fa2; /* Medium purple */
+        --accent-color: #e91e63; /* Pink accent */
+        --light-color: #f8f9fa;
+        --dark-color: #212529;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 700;
+      }
+
+      .bg-primary {
+        background-color: var(--primary-color) !important;
+      }
+
+      .bg-secondary {
+        background-color: var(--secondary-color) !important;
+      }
+
+      .text-primary {
+        color: var(--primary-color) !important;
+      }
+
+      .text-secondary {
+        color: var(--secondary-color) !important;
+      }
+
+      .btn-primary {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        padding: 10px 25px;
+        font-weight: 600;
+      }
+
+      .btn-primary:hover {
+        background-color: #6a1b9a;
+        border-color: #6a1b9a;
+      }
+
+      .btn-outline-primary {
+        border-color: var(--secondary-color);
+        color: var(--secondary-color);
+        font-weight: 600;
+      }
+
+      .btn-outline-primary:hover {
+        background-color: var(--secondary-color);
+        color: white;
+      }
+
+      /* Header Styles */
+      .main-header {
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar-brand img {
+        height: 40px;
+      }
+
+      .nav-link {
+        font-weight: 600;
+        color: var(--primary-color);
+        padding: 10px 15px !important;
+      }
+
+      .nav-link:hover {
+        color: var(--secondary-color);
+      }
+
+      .dropdown-menu {
+        border: none;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 0;
+      }
+
+      .dropdown-item {
+        font-weight: 500;
+        padding: 8px 20px;
+      }
+
+      .dropdown-item:hover {
+        background-color: rgba(123, 31, 162, 0.1);
+        color: var(--secondary-color);
+      }
+      /* Custom Active State for Home */
+      .nav-link.active-home {
+        position: relative;
+        color: var(--primary-color) !important;
+      }
+
+      .nav-link.active-home .nav-link-inner {
+        position: relative;
+        display: inline-block;
+      }
+
+      .nav-link.active-home .nav-link-inner::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--secondary-color);
+        transform: scaleX(1);
+        transition: transform 0.3s ease;
+      }
+
+      /* Hover effect for other nav items */
+      .nav-link:not(.active-home):hover {
+        color: var(--secondary-color) !important;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background: linear-gradient(
+            rgba(74, 20, 140, 0.8),
+            rgba(74, 20, 140, 0.8)
+          ),
+          url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 100px 0;
+        position: relative;
+      }
+
+      .hero-section h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+      }
+
+      .hero-section .lead {
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin-bottom: 30px;
+      }
+
+      .hero-badge {
+        display: inline-block;
+        background-color: var(--accent-color);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 4px;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+
+      /* Live Stream Section */
+      .live-section {
+        background-color: white;
+        padding: 60px 0;
+      }
+
+      .live-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: var(--accent-color);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 4px;
+        font-weight: 600;
+        z-index: 10;
+      }
+
+      .video-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        background-color: #000;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .video-container iframe,
+      .video-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .countdown-timer {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 30px;
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      .countdown-item {
+        display: inline-block;
+        margin: 0 10px;
+      }
+
+      .countdown-number {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: white;
+        line-height: 1;
+      }
+
+      .countdown-label {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.8);
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+
+      /* Featured Sessions */
+      .sessions-section {
+        padding: 80px 0;
+        background-color: #f8f9fa;
+      }
+
+      .session-card {
+        border: none;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        margin-bottom: 30px;
+        height: 100%;
+      }
+
+      .session-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .session-card .card-img-top {
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .session-card .card-body {
+        padding: 25px;
+      }
+
+      .session-card .card-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+      }
+
+      .session-card .university {
+        font-size: 0.9rem;
+        color: var(--secondary-color);
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .session-card .date-time {
+        font-size: 0.9rem;
+        color: #6c757d;
+        margin-bottom: 15px;
+      }
+
+      .session-card .badge {
+        font-weight: 500;
+        padding: 5px 10px;
+        border-radius: 4px;
+      }
+
+      /* Universities Section */
+      .universities-section {
+        padding: 80px 0;
+        background-color: white;
+      }
+
+      .university-logo {
+        height: 80px;
+        width: auto;
+        margin: 0 auto 20px;
+        display: block;
+        filter: grayscale(100%);
+        opacity: 0.7;
+        transition: all 0.3s ease;
+      }
+
+      .university-logo:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+      }
+
+      /* Past Summits */
+      .past-summits-section {
+        padding: 80px 0;
+        background-color: #f8f9fa;
+      }
+
+      .summit-card {
+        border: none;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        margin-bottom: 30px;
+      }
+
+      .summit-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .summit-card .card-img-top {
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .summit-card .card-body {
+        padding: 25px;
+      }
+
+      .summit-card .card-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .summit-card .card-text {
+        color: #6c757d;
+        margin-bottom: 15px;
+      }
+
+      /* Testimonials */
+      .testimonials-section {
+        padding: 80px 0;
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .testimonial-card {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 30px;
+        height: 100%;
+      }
+
+      .testimonial-card .quote {
+        font-size: 1.1rem;
+        font-style: italic;
+        margin-bottom: 20px;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+      }
+
+      .testimonial-author img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 15px;
+        object-fit: cover;
+      }
+
+      .author-name {
+        font-weight: 700;
+        margin-bottom: 0;
+      }
+
+      .author-title {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        margin-bottom: 0;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        padding: 80px 0;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: white;
+        text-align: center;
+      }
+
+      .cta-section h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+      }
+
+      .cta-section p {
+        font-size: 1.25rem;
+        margin-bottom: 30px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Footer */
+      .main-footer {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 60px 0 0;
+      }
+
+      .footer-logo {
+        height: 40px;
+        margin-bottom: 20px;
+      }
+
+      .footer-about {
+        opacity: 0.7;
+        margin-bottom: 20px;
+      }
+
+      .footer-links h5 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: white;
+      }
+
+      .footer-links ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--secondary-color);
+        padding-left: 5px;
+      }
+
+      .social-links a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        margin-right: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-3px);
+      }
+
+      .footer-bottom {
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: 20px 0;
+        margin-top: 40px;
+      }
+
+      .copyright {
+        opacity: 0.7;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Adjustments */
+      @media (max-width: 992px) {
+        .hero-section h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero-section .lead {
+          font-size: 1.25rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-section {
+          padding: 80px 0;
+        }
+
+        .hero-section h1 {
+          font-size: 2rem;
+        }
+
+        .countdown-item {
+          margin: 0 5px;
+        }
+
+        .countdown-number {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero-section {
+          padding: 60px 0;
+        }
+
+        .countdown-item {
+          margin: 0 3px;
+        }
+
+        .countdown-number {
+          font-size: 1.5rem;
+        }
+
+        .countdown-label {
+          font-size: 0.7rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="main-header sticky-top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <img src="logo.jpeg" alt="SkyAlpha HD" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active-home" href="index.html">
+                  <span class="nav-link-inner">Home</span>
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="summitsDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Summits
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="summit2023.html"
+                      >2023 Summit</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="summit2022.html"
+                      >2022 Summit</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="summit2021.html"
+                      >2021 Summit</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="past-summits.html"
+                      >All Summits</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="live.html">Live</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="eventDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Event
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="live.html">Live</a></li>
+                  <li>
+                    <a class="dropdown-item" href="sessions.html">Sessions</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="schedule.html">Schedule</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="speakers.html">Speakers</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="universities.html">Universities</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="partnersDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Partners
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="universities.html"
+                      >Universities</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="partners.html"
+                      >Organizations</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="sponsors.html">Sponsors</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="collaborators.html"
+                      >Collaborators</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="contactDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Contact
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="contact.html">Contact Us</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="team.html">Our Team</a>
+                  </li>
+                  <li><a class="dropdown-item" href="faq.html">FAQs</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">about</a>
+              </li>
+            </ul>
+            <a href="register.html" class="btn btn-primary ms-lg-3"
+              >Register Now</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Sessions Hero -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-8">
+            <span class="hero-badge">June 10-12, 2025</span>
+            <h1>Summit Sessions</h1>
+            <p class="lead">
+              Explore the diverse learning opportunities at the Digital
+              Innovators Summit 2025
+            </p>
+            <div class="d-flex flex-wrap gap-3">
+              <a href="register.html" class="btn btn-light btn-lg"
+                >Register Now</a
+              >
+              <a href="schedule.html" class="btn btn-outline-light btn-lg"
+                >View Schedule</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sessions Content -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 text-center">
+            <h2 class="mb-3">Featured Sessions</h2>
+            <p class="lead text-muted">
+              Key discussions and workshops shaping Lesotho's digital future
+            </p>
+          </div>
+        </div>
+
+        <!-- Session Tabs -->
+        <ul
+          class="nav nav-tabs justify-content-center mb-5"
+          id="sessionTabs"
+          role="tablist"
+        >
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="day1-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#day1"
+              type="button"
+            >
+              Day 1
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="day2-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#day2"
+              type="button"
+            >
+              Day 2
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="day3-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#day3"
+              type="button"
+            >
+              Day 3
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="workshops-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#workshops"
+              type="button"
+            >
+              Workshops
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="sessionTabsContent">
+          <!-- Day 1 Sessions -->
+          <div class="tab-pane fade show active" id="day1" role="tabpanel">
+            <div class="row">
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card session-card h-100">
+                  <img
+                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    class="card-img-top"
+                    alt="AI Session"
+                  />
+                  <div class="card-body">
+                    <span class="badge bg-primary mb-2">Keynote</span>
+                    <h5 class="card-title">The State of AI in Africa</h5>
+                    <p class="speaker">Prof. Mosotho George, NUL</p>
+                    <p class="text-muted">09:00 - 10:30 AM</p>
+                    <p class="card-text">
+                      Exploring the current landscape of artificial intelligence
+                      across the continent and opportunities for growth in
+                      Lesotho's context.
+                    </p>
+                    <a
+                      href="session-ai-africa.html"
+                      class="btn btn-outline-primary"
+                      >Session Details</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card session-card h-100">
+                  <img
+                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    class="card-img-top"
+                    alt="Policy Session"
+                  />
+                  <div class="card-body">
+                    <span class="badge bg-secondary mb-2">Panel</span>
+                    <h5 class="card-title">AI Talent and Higher Education</h5>
+                    <p class="speaker">Moderated by Tsietsi Matjele</p>
+                    <p class="text-muted">11:00 - 12:30 PM</p>
+                    <p class="card-text">
+                      How universities can prepare students for the AI-driven
+                      workforce through curriculum reform and innovation
+                      ecosystems.
+                    </p>
+                    <a
+                      href="session-ai-education.html"
+                      class="btn btn-outline-primary"
+                      >Session Details</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card session-card h-100">
+                  <img
+                    src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    class="card-img-top"
+                    alt="Policy Session"
+                  />
+                  <div class="card-body">
+                    <span class="badge bg-info mb-2">Policy</span>
+                    <h5 class="card-title">Policy Foundations for AI</h5>
+                    <p class="speaker">Mr Kanono Ramashamole, MICSTI</p>
+                    <p class="text-muted">14:00 - 15:30 PM</p>
+                    <p class="card-text">
+                      Building the regulatory framework to support ethical AI
+                      development in Lesotho, aligning with global standards.
+                    </p>
+                    <a
+                      href="session-policy-foundations.html"
+                      class="btn btn-outline-primary"
+                      >Session Details</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day 2 Sessions -->
+          <div class="tab-pane fade" id="day2" role="tabpanel">
+            <div class="row">
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card session-card h-100">
+                  <img
+                    src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    class="card-img-top"
+                    alt="Ethics Session"
+                  />
+                  <div class="card-body">
+                    <span class="badge bg-danger mb-2">Keynote</span>
+                    <h5 class="card-title">
+                      Ethical AI and Global Partnerships
+                    </h5>
+                    <p class="speaker">H.E. Harry MacDonald</p>
+                    <p class="text-muted">09:00 - 10:30 AM</p>
+                    <p class="card-text">
+                      International perspectives on responsible AI development
+                      and how global collaboration can support ethical
+                      technology adoption.
+                    </p>
+                    <a
+                      href="session-ethical-ai.html"
+                      class="btn btn-outline-primary"
+                      >Session Details</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card session-card h-100">
+                  <img
+                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    class="card-img-top"
+                    alt="Creative Session"
+                  />
+                  <div class="card-body">
+                    <span class="badge bg-warning mb-2">Panel</span>
+                    <h5 class="card-title">AI in Creative Industries</h5>
+                    <p class="speaker">
+                      Featuring Lineo Segoete & Tšeliso Monaheng
+                    </p>
+                    <p class="text-muted">11:00 - 12:30 PM</p>
+                    <p class="card-text">
+                      Exploring the intersection of AI and artistic expression
+                      in music, writing, and cultural production.
+                    </p>
+                    <a
+                      href="session-ai-creative.html"
+                      class="btn btn-outline-primary"
+                      >Session Details</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card session-card h-100">
+                  <img
+                    src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    class="card-img-top"
+                    alt="Social Good Session"
+                  />
+                  <div class="card-body">
+                    <span class="badge bg-success mb-2">Workshop</span>
+                    <h5 class="card-title">AI for Social Good</h5>
+                    <p class="speaker">Mathe Ntšekhe, NUL</p>
+                    <p class="text-muted">14:00 - 15:30 PM</p>
+                    <p class="card-text">
+                      Practical applications of AI to address social challenges,
+                      with focus on inclusive design for marginalized
+                      communities.
+                    </p>
+                    <a
+                      href="session-ai-social-good.html"
+                      class="btn btn-outline-primary"
+                      >Session Details</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day 3 Sessions -->
+          <div class="tab-pane fade" id="day3" role="tabpanel">
+            <div class="row">
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card session-card h-100">
+                  <img
+                    src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    class="card-img-top"
+                    alt="Infrastructure Session"
+                  />
+                  <div class="card-body">
+                    <span class="badge bg-primary mb-2">Keynote</span>
+                    <h5 class="card-title">Digital Infrastructure for AI</h5>
+                    <p class="speaker">Letsatsi Lekhooa, Internet Society</p>
+                    <p class="text-muted">09:00 - 10:30 AM</p>
+                    <p class="card-text">
+                      Building the technical foundations for AI adoption in
+                      Lesotho's unique context.
+                    </p>
+                    <a
+                      href="session-digital-infrastructure.html"
+                      class="btn btn-outline-primary"
+                      >Session Details</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card session-card h-100">
+                  <img
+                    src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    class="card-img-top"
+                    alt="Resources Session"
+                  />
+                  <div class="card-body">
+                    <span class="badge bg-info mb-2">Panel</span>
+                    <h5 class="card-title">
+                      AI in Natural Resource Management
+                    </h5>
+                    <p class="speaker">Hon. Mohlomi Moleko</p>
+                    <p class="text-muted">11:00 - 12:30 PM</p>
+                    <p class="card-text">
+                      Applications of AI in sustainable resource utilization and
+                      environmental protection.
+                    </p>
+                    <a
+                      href="session-ai-resources.html"
+                      class="btn btn-outline-primary"
+                      >Session Details</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card session-card h-100">
+                  <img
+                    src="https://images.unsplash.com/photo-1542190891-2093d38760f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    class="card-img-top"
+                    alt="Closing Session"
+                  />
+                  <div class="card-body">
+                    <span class="badge bg-dark mb-2">Plenary</span>
+                    <h5 class="card-title">Closing: The Road Ahead</h5>
+                    <p class="speaker">H.E. Ntšiuoa Sekete and panel</p>
+                    <p class="text-muted">16:00 - 17:30 PM</p>
+                    <p class="card-text">
+                      Charting the course for AI adoption in Lesotho with
+                      insights from all summit participants.
+                    </p>
+                    <a
+                      href="session-closing.html"
+                      class="btn btn-outline-primary"
+                      >Session Details</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Workshops -->
+          <div class="tab-pane fade" id="workshops" role="tabpanel">
+            <div class="row">
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card session-card h-100">
+                  <img
+                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    class="card-img-top"
+                    alt="Workshop"
+                  />
+                  <div class="card-body">
+                    <span class="badge bg-success mb-2">Hands-on</span>
+                    <h5 class="card-title">Introduction to AI Tools</h5>
+                    <p class="speaker">'Nyalleng Moorosi, DAIR Institute</p>
+                    <p class="text-muted">Day 1, 16:00 - 17:30 PM</p>
+                    <p class="card-text">
+                      Beginner-friendly workshop introducing practical AI
+                      applications and tools that can be immediately applied.
+                    </p>
+                    <a
+                      href="workshop-ai-tools.html"
+                      class="btn btn-outline-primary"
+                      >Workshop Details</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card session-card h-100">
+                  <img
+                    src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    class="card-img-top"
+                    alt="Workshop"
+                  />
+                  <div class="card-body">
+                    <span class="badge bg-success mb-2">Interactive</span>
+                    <h5 class="card-title">Building AI Solutions</h5>
+                    <p class="speaker">Rethabile Tshephe</p>
+                    <p class="text-muted">Day 3, 14:00 - 15:30 PM</p>
+                    <p class="card-text">
+                      Hands-on session developing simple AI applications with
+                      ethical considerations.
+                    </p>
+                    <a
+                      href="workshop-building-ai.html"
+                      class="btn btn-outline-primary"
+                      >Workshop Details</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card session-card h-100">
+                  <img
+                    src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    class="card-img-top"
+                    alt="Workshop"
+                  />
+                  <div class="card-body">
+                    <span class="badge bg-success mb-2">Technical</span>
+                    <h5 class="card-title">Data Privacy in the AI Era</h5>
+                    <p class="speaker">Dr. Mugambi Laibuta</p>
+                    <p class="text-muted">Day 2, 16:00 - 17:30 PM</p>
+                    <p class="card-text">
+                      Practical approaches to data protection and privacy in AI
+                      applications.
+                    </p>
+                    <a
+                      href="workshop-data-privacy.html"
+                      class="btn btn-outline-primary"
+                      >Workshop Details</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-4">
+          <a href="schedule.html" class="btn btn-primary">View Full Schedule</a>
+          <a href="speakers.html" class="btn btn-outline-primary ms-3"
+            >Meet Our Speakers</a
+          >
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-md-6 mb-4">
+            <div class="card bg-light h-100">
+              <div class="card-body">
+                <h4>
+                  <i class="fas fa-calendar-check me-2"></i> Session Formats
+                </h4>
+                <p>
+                  Our summit features diverse session formats to maximize
+                  learning:
+                </p>
+                <ul>
+                  <li>
+                    <strong>Keynotes:</strong> Visionary talks from leading
+                    experts (45-60 mins)
+                  </li>
+                  <li>
+                    <strong>Panels:</strong> Diverse perspectives on critical
+                    topics (60-90 mins)
+                  </li>
+                  <li>
+                    <strong>Workshops:</strong> Hands-on, interactive learning
+                    (90-120 mins)
+                  </li>
+                  <li>
+                    <strong>Roundtables:</strong> Intimate discussions with
+                    experts (60 mins)
+                  </li>
+                  <li>
+                    <strong>Networking:</strong> Structured opportunities to
+                    connect
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-4">
+            <div class="card bg-light h-100">
+              <div class="card-body">
+                <h4>
+                  <i class="fas fa-certificate me-2"></i> Learning Outcomes
+                </h4>
+                <p>Participants will gain practical knowledge in:</p>
+                <ul>
+                  <li>Fundamentals of AI and emerging technologies</li>
+                  <li>Policy frameworks for digital transformation</li>
+                  <li>Ethical considerations in technology adoption</li>
+                  <li>Practical applications of AI tools</li>
+                  <li>Strategies for digital inclusion</li>
+                </ul>
+                <p class="mt-2">
+                  Certificates of participation available for attendees.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to Join These Sessions?</h2>
+        <p>
+          Register now for the Digital Innovators Summit 2025 and secure your
+          spot at these transformative discussions.
+        </p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a href="register.html" class="btn btn-light btn-lg">Register Now</a>
+          <a href="contact.html" class="btn btn-outline-light btn-lg"
+            >Contact Us</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer - Updated with proper links -->
+    <footer class="main-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <a
+              href="https://www.skyalphahd.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="images/logos/skyalpha.png"
+                alt="SkyAlpha HD"
+                class="footer-logo"
+              />
+            </a>
+            <p class="footer-about">
+              Aligned with Lesotho's National Digital Transformation Strategy,
+              the Digital Innovators Summit is a movement toward creating a
+              digitally empowered society.
+            </p>
+            <div class="social-links">
+              <a
+                href="https://www.facebook.com/DigitalInnovatorsSummitLesotho"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="https://twitter.com/DIS_Lesotho2025"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a
+                href="https://www.instagram.com/digitalinnovatorslesotho"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/company/digital-innovators-summit-lesotho"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a
+                href="https://www.youtube.com/c/DigitalInnovatorsSummitLesotho"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Summits</h5>
+              <ul>
+                <li><a href="summit2023.html">2023 Summit</a></li>
+                <li><a href="summit2022.html">2022 Summit</a></li>
+                <li><a href="summit2021.html">2021 Summit</a></li>
+                <li><a href="past-summits.html">All Summits</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Event</h5>
+              <ul>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="speakers.html">Speakers</a></li>
+                <li><a href="sessions.html">Sessions</a></li>
+                <li><a href="live.html">Live Stream</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Partners</h5>
+              <ul>
+                <li><a href="universities.html">Universities</a></li>
+                <li><a href="partners.html">Organizations</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+                <li><a href="collaborators.html">Collaborators</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4">
+            <div class="footer-links">
+              <h5>Contact</h5>
+              <ul>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="copyright mb-3 mb-md-0">
+                  © 2025 Digital Innovators Summit. All rights reserved.
+                </p>
+              </div>
+              <div class="col-md-6 text-md-end">
+                <a href="privacy.html" class="text-white-50 me-3"
+                  >Privacy Policy</a
+                >
+                <a href="terms.html" class="text-white-50">Terms of Service</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Initialize tooltips
+      document.addEventListener("DOMContentLoaded", function () {
+        const tooltipTriggerList = [].slice.call(
+          document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        );
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+
+        // Set active nav item
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          if (link.href === window.location.href) {
+            link.classList.add("active");
+          }
+        });
+      });
+    </script>
+    <script>
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", function (event) {
+        const navbarCollapse = document.getElementById("navbarNav");
+        const navbarToggler = document.querySelector(".navbar-toggler");
+
+        if (
+          navbarCollapse.classList.contains("show") &&
+          !event.target.closest(".navbar") &&
+          !event.target.classList.contains("navbar-toggler")
+        ) {
+          const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+            toggle: false,
+          });
+          bsCollapse.hide();
+
+          navbarToggler.setAttribute("aria-expanded", "false");
+        }
+      });
+    </script>
+  </body>
+</html>

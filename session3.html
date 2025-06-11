@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Session 2 - Botho University | Digital Innovators Summit</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --gradient-start: #7b1fa2;
+        --gradient-end: #4a148c;
+        --light-color: #f8f9fa;
+        --dark-color: #212529;
+        --transition-speed: 0.3s;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: var(--light-color);
+        overflow-x: hidden;
+      }
+
+      .gradient-bg {
+        background: linear-gradient(
+          135deg,
+          var(--gradient-start),
+          var(--gradient-end)
+        );
+        background-size: 200% 200%;
+        animation: gradient 10s ease infinite;
+      }
+
+      @keyframes gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .gradient-text {
+        background: linear-gradient(
+          135deg,
+          var(--gradient-start),
+          var(--gradient-end)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        display: inline-block;
+      }
+
+      .btn-gradient {
+        background: linear-gradient(
+          135deg,
+          var(--gradient-start),
+          var(--gradient-end)
+        );
+        border: none;
+        color: white;
+        transition: all var(--transition-speed) ease;
+        background-size: 200% 200%;
+      }
+
+      .btn-gradient:hover {
+        background: linear-gradient(
+          135deg,
+          var(--gradient-end),
+          var(--gradient-start)
+        );
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        transform: translateY(-2px);
+        color: white;
+        background-position: right center;
+      }
+
+      .card-hover {
+        transition: all var(--transition-speed) ease;
+        border: none;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .card-hover:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .speaker-img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all var(--transition-speed) ease;
+      }
+
+      .speaker-img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .section-header {
+        position: relative;
+        padding-bottom: 15px;
+        margin-bottom: 30px;
+      }
+
+      .section-header:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(
+          135deg,
+          var(--gradient-start),
+          var(--gradient-end)
+        );
+      }
+
+      .icon-lg {
+        font-size: 2.5rem;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 992px) {
+        .display-3 {
+          font-size: 2.5rem;
+        }
+
+        .speaker-img {
+          width: 120px;
+          height: 120px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .display-3 {
+          font-size: 2rem;
+        }
+
+        .hero-content {
+          order: 2;
+          text-align: center;
+          margin-top: 2rem;
+        }
+
+        .hero-image {
+          order: 1;
+        }
+
+        .btn-lg {
+          padding: 0.5rem 1rem;
+          font-size: 1rem;
+        }
+
+        .section-header:after {
+          width: 70px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .display-3 {
+          font-size: 1.8rem;
+        }
+
+        .lead {
+          font-size: 1rem;
+        }
+
+        .speaker-img {
+          width: 100px;
+          height: 100px;
+        }
+
+        .card-body {
+          padding: 1.5rem;
+        }
+      }
+
+      /* Animation classes */
+      .fade-in {
+        animation: fadeIn 1s ease-in;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .delay-1 {
+        animation-delay: 0.2s;
+      }
+
+      .delay-2 {
+        animation-delay: 0.4s;
+      }
+
+      .delay-3 {
+        animation-delay: 0.6s;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark gradient-bg sticky-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">
+          <i class="fas fa-brain me-2"></i>Digital Innovators
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="session1.html">Session 1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="session2.html">Session 2</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="session3.html">Session 3</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="session4.html">Session 4</a>
+            </li>
+          </ul>
+          <a href="register.html" class="btn btn-light ms-lg-3">Register Now</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-5">
+      <div class="container py-5">
+        <div class="row align-items-center">
+          <div class="col-lg-6 hero-content fade-in">
+            <h1 class="display-3 fw-bold mb-4">Session 3:</h1>
+            <p class="lead mb-4">
+              August 10-12, 2022 at Limkokwing University Of Creative Technology
+            </p>
+            <p>
+              Expanded to include policy makers and industry partners, with a
+              focus on practical applications of digital tools in various
+              sectors.
+            </p>
+            <div class="d-flex flex-wrap gap-3 mt-4">
+              <a href="#register" class="btn btn-light btn-lg px-4"
+                >Register Now</a
+              >
+              <a href="#schedule" class="btn btn-outline-light btn-lg px-4"
+                >View Schedule</a
+              >
+            </div>
+          </div>
+          <div class="col-lg-6 hero-image fade-in delay-1">
+            <img
+              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              class="img-fluid rounded shadow-lg"
+              alt="Session 2"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Session -->
+    <section class="py-5 bg-white">
+      <div class="container py-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="gradient-text fw-bold mb-4 section-header">
+              Advancing Digital Solutions
+            </h2>
+            <p class="lead">
+              Building on our first summit, this session focused on real-world
+              applications and brought together a wider range of stakeholders.
+            </p>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-md-4 mb-4 fade-in">
+            <div class="card card-hover h-100">
+              <div class="card-body text-center p-4">
+                <div class="icon-lg gradient-text mb-3">
+                  <i class="fas fa-briefcase"></i>
+                </div>
+                <h4>Industry Applications</h4>
+                <p>
+                  Case studies of digital transformation in healthcare,
+                  agriculture, and finance sectors.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4 fade-in delay-1">
+            <div class="card card-hover h-100">
+              <div class="card-body text-center p-4">
+                <div class="icon-lg gradient-text mb-3">
+                  <i class="fas fa-users-cog"></i>
+                </div>
+                <h4>Policy Makers</h4>
+                <p>
+                  Engaging government officials in discussions about digital
+                  policy frameworks.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4 fade-in delay-2">
+            <div class="card card-hover h-100">
+              <div class="card-body text-center p-4">
+                <div class="icon-lg gradient-text mb-3">
+                  <i class="fas fa-laptop-code"></i>
+                </div>
+                <h4>Advanced Workshops</h4>
+                <p>
+                  Hands-on sessions with more complex tools and technologies.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Speakers Section -->
+    <section class="py-5 bg-light">
+      <div class="container py-5">
+        <div class="text-center mb-5">
+          <h2 class="gradient-text fw-bold section-header">
+            Featured Speakers
+          </h2>
+          <p class="lead">Learn from industry leaders and academic experts</p>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-4 fade-in">
+            <div class="card card-hover h-100">
+              <div class="card-body text-center p-4">
+                <img
+                  src="https://randomuser.me/api/portraits/women/43.jpg"
+                  class="speaker-img mb-3"
+                  alt="Speaker"
+                  loading="lazy"
+                />
+                <h4>Dr. Sarah Johnson</h4>
+                <p class="text-muted">Digital Education Specialist</p>
+                <p class="small">"Transforming education through technology"</p>
+                <div class="social-links mt-3">
+                  <a href="#" class="text-primary me-2"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                  <a href="#" class="text-primary"
+                    ><i class="fab fa-linkedin"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-4 fade-in delay-1">
+            <div class="card card-hover h-100">
+              <div class="card-body text-center p-4">
+                <img
+                  src="https://randomuser.me/api/portraits/men/32.jpg"
+                  class="speaker-img mb-3"
+                  alt="Speaker"
+                  loading="lazy"
+                />
+                <h4>Prof. David Molefi</h4>
+                <p class="text-muted">AI Researcher</p>
+                <p class="small">"Demystifying artificial intelligence"</p>
+                <div class="social-links mt-3">
+                  <a href="#" class="text-primary me-2"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                  <a href="#" class="text-primary"
+                    ><i class="fab fa-linkedin"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-4 fade-in delay-2">
+            <div class="card card-hover h-100">
+              <div class="card-body text-center p-4">
+                <img
+                  src="https://randomuser.me/api/portraits/women/65.jpg"
+                  class="speaker-img mb-3"
+                  alt="Speaker"
+                  loading="lazy"
+                />
+                <h4>Ms. Lerato Khumalo</h4>
+                <p class="text-muted">EdTech Entrepreneur</p>
+                <p class="small">
+                  "Building digital solutions for African challenges"
+                </p>
+                <div class="social-links mt-3">
+                  <a href="#" class="text-primary me-2"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                  <a href="#" class="text-primary"
+                    ><i class="fab fa-linkedin"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-4 fade-in delay-3">
+            <div class="card card-hover h-100">
+              <div class="card-body text-center p-4">
+                <img
+                  src="https://randomuser.me/api/portraits/men/75.jpg"
+                  class="speaker-img mb-3"
+                  alt="Speaker"
+                  loading="lazy"
+                />
+                <h4>Mr. James Peterson</h4>
+                <p class="text-muted">Tech Policy Expert</p>
+                <p class="small">
+                  "Creating frameworks for digital transformation"
+                </p>
+                <div class="social-links mt-3">
+                  <a href="#" class="text-primary me-2"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                  <a href="#" class="text-primary"
+                    ><i class="fab fa-linkedin"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer - Updated with proper links -->
+    <footer class="main-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <a
+              href="https://www.skyalphahd.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="images/logos/skyalpha.png"
+                alt="SkyAlpha HD"
+                class="footer-logo"
+              />
+            </a>
+            <p class="footer-about">
+              Aligned with Lesotho's National Digital Transformation Strategy,
+              the Digital Innovators Summit is a movement toward creating a
+              digitally empowered society.
+            </p>
+            <div class="social-links">
+              <a
+                href="https://www.facebook.com/DigitalInnovatorsSummitLesotho"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="https://twitter.com/DIS_Lesotho2025"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a
+                href="https://www.instagram.com/digitalinnovatorslesotho"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/company/digital-innovators-summit-lesotho"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a
+                href="https://www.youtube.com/c/DigitalInnovatorsSummitLesotho"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Summits</h5>
+              <ul>
+                <li><a href="summit2023.html">2023 Summit</a></li>
+                <li><a href="summit2022.html">2022 Summit</a></li>
+                <li><a href="summit2021.html">2021 Summit</a></li>
+                <li><a href="past-summits.html">All Summits</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Event</h5>
+              <ul>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="speakers.html">Speakers</a></li>
+                <li><a href="sessions.html">Sessions</a></li>
+                <li><a href="live.html">Live Stream</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Partners</h5>
+              <ul>
+                <li><a href="universities.html">Universities</a></li>
+                <li><a href="partners.html">Organizations</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+                <li><a href="collaborators.html">Collaborators</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4">
+            <div class="footer-links">
+              <h5>Contact</h5>
+              <ul>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="copyright mb-3 mb-md-0">
+                  © 2025 Digital Innovators Summit. All rights reserved.
+                </p>
+              </div>
+              <div class="col-md-6 text-md-end">
+                <a href="privacy.html" class="text-white-50 me-3"
+                  >Privacy Policy</a
+                >
+                <a href="terms.html" class="text-white-50">Terms of Service</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Simple intersection observer for animations
+      document.addEventListener("DOMContentLoaded", function () {
+        const animateElements = document.querySelectorAll(".fade-in");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = "translateY(0)";
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        animateElements.forEach((element) => {
+          element.style.opacity = 0;
+          element.style.transform = "translateY(20px)";
+          element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+          observer.observe(element);
+        });
+      });
+    </script>
+    <script>
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", function (event) {
+        const navbarCollapse = document.getElementById("navbarNav");
+        const navbarToggler = document.querySelector(".navbar-toggler");
+
+        if (
+          navbarCollapse.classList.contains("show") &&
+          !event.target.closest(".navbar") &&
+          !event.target.classList.contains("navbar-toggler")
+        ) {
+          const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+            toggle: false,
+          });
+          bsCollapse.hide();
+
+          navbarToggler.setAttribute("aria-expanded", "false");
+        }
+      });
+    </script>
+  </body>
+</html>

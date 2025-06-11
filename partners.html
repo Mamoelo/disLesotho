@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Supporting Organizations | Digital Innovators Summit</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary-color: #4a148c; /* Deep purple */
+        --secondary-color: #7b1fa2; /* Medium purple */
+        --accent-color: #e91e63; /* Pink accent */
+        --light-color: #f8f9fa;
+        --dark-color: #212529;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 700;
+      }
+
+      .bg-primary {
+        background-color: var(--primary-color) !important;
+      }
+
+      .bg-secondary {
+        background-color: var(--secondary-color) !important;
+      }
+
+      .text-primary {
+        color: var(--primary-color) !important;
+      }
+
+      .text-secondary {
+        color: var(--secondary-color) !important;
+      }
+
+      .btn-primary {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        padding: 10px 25px;
+        font-weight: 600;
+      }
+
+      .btn-primary:hover {
+        background-color: #6a1b9a;
+        border-color: #6a1b9a;
+      }
+
+      .btn-outline-primary {
+        border-color: var(--secondary-color);
+        color: var(--secondary-color);
+        font-weight: 600;
+      }
+
+      .btn-outline-primary:hover {
+        background-color: var(--secondary-color);
+        color: white;
+      }
+
+      /* Header Styles */
+      .main-header {
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar-brand img {
+        height: 40px;
+      }
+
+      .nav-link {
+        font-weight: 600;
+        color: var(--primary-color);
+        padding: 10px 15px !important;
+      }
+
+      .nav-link:hover {
+        color: var(--secondary-color);
+      }
+
+      .dropdown-menu {
+        border: none;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 0;
+      }
+
+      .dropdown-item {
+        font-weight: 500;
+        padding: 8px 20px;
+      }
+
+      .dropdown-item:hover {
+        background-color: rgba(123, 31, 162, 0.1);
+        color: var(--secondary-color);
+      }
+      /* Custom Active State for Home */
+      .nav-link.active-home {
+        position: relative;
+        color: var(--primary-color) !important;
+      }
+
+      .nav-link.active-home .nav-link-inner {
+        position: relative;
+        display: inline-block;
+      }
+
+      .nav-link.active-home .nav-link-inner::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--secondary-color);
+        transform: scaleX(1);
+        transition: transform 0.3s ease;
+      }
+
+      /* Hover effect for other nav items */
+      .nav-link:not(.active-home):hover {
+        color: var(--secondary-color) !important;
+      }
+
+      /* Organization Cards */
+      .org-card {
+        border: none;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        margin-bottom: 30px;
+        height: 100%;
+      }
+
+      .org-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .org-img {
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .org-logo {
+        height: 80px;
+        object-fit: contain;
+        margin-bottom: 20px;
+      }
+
+      .org-card .card-body {
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .org-card .card-text {
+        flex-grow: 1;
+      }
+
+      /* Impact Section */
+      .impact-section {
+        background-color: var(--light-color);
+        padding: 80px 0;
+      }
+
+      .impact-item {
+        text-align: center;
+        padding: 30px;
+      }
+
+      .impact-number {
+        font-size: 3rem;
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+      }
+
+      /* Partnership Types */
+      .partnership-types {
+        padding: 80px 0;
+      }
+
+      .type-card {
+        border: none;
+        border-radius: 10px;
+        padding: 30px;
+        text-align: center;
+        height: 100%;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .type-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .type-icon {
+        font-size: 3rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+      }
+
+      /* Testimonials */
+      .testimonial-card {
+        background: white;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        height: 100%;
+      }
+
+      .testimonial-card .quote {
+        font-style: italic;
+        margin-bottom: 20px;
+        position: relative;
+        padding-left: 20px;
+      }
+
+      .testimonial-card .quote:before {
+        content: '"';
+        font-size: 3rem;
+        color: var(--primary-color);
+        opacity: 0.2;
+        position: absolute;
+        left: -10px;
+        top: -20px;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+      }
+
+      .testimonial-author img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 15px;
+      }
+
+      .author-name {
+        font-weight: bold;
+        margin-bottom: 0;
+      }
+
+      .author-title {
+        font-size: 0.9rem;
+        color: var(--secondary-color);
+        margin-bottom: 0;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background: linear-gradient(135deg, var(--primary-color), #003366);
+        color: white;
+        padding: 80px 0;
+        text-align: center;
+      }
+
+      .cta-section h2 {
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .cta-section p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Footer */
+      .main-footer {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 60px 0 0;
+      }
+
+      .footer-logo {
+        height: 70px;
+        margin-bottom: 20px;
+        background-color: aliceblue;
+        border-radius: 20%;
+      }
+
+      .footer-about {
+        opacity: 0.7;
+        margin-bottom: 20px;
+      }
+
+      .footer-links h5 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: white;
+      }
+
+      .footer-links ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--secondary-color);
+        padding-left: 5px;
+      }
+
+      .social-links a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        margin-right: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-3px);
+      }
+
+      .footer-bottom {
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: 20px 0;
+        margin-top: 40px;
+      }
+      .footer-bottom {
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: 20px 0;
+        margin-top: 40px;
+      }
+
+      /* Default mobile padding (small screens) */
+      .footer-bottom .container {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      /* Tablet (medium screens) */
+      @media (min-width: 768px) {
+        .footer-bottom .container {
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+      }
+
+      /* Desktop (large screens) - BIGGER PADDING AS REQUESTED */
+      @media (min-width: 992px) {
+        .footer-bottom .container {
+          padding-left: 100px; /* Increased from 60px to 100px */
+          padding-right: 100px; /* Increased from 60px to 100px */
+        }
+      }
+
+      .copyright {
+        opacity: 0.7;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Adjustments */
+      @media (max-width: 992px) {
+        .hero-section h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero-section .lead {
+          font-size: 1.25rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-section {
+          padding: 80px 0;
+        }
+
+        .hero-section h1 {
+          font-size: 2rem;
+        }
+
+        .countdown-item {
+          margin: 0 5px;
+        }
+
+        .countdown-number {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero-section {
+          padding: 60px 0;
+        }
+
+        .countdown-item {
+          margin: 0 3px;
+        }
+
+        .countdown-number {
+          font-size: 1.5rem;
+        }
+
+        .countdown-label {
+          font-size: 0.7rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <!-- Header -->
+    <header class="main-header sticky-top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <img src="logo.jpeg" alt="SkyAlpha HD" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active-home" href="index.html">
+                  <span class="nav-link-inner">Home</span>
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="summitsDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Summits
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="summit2023.html"
+                      >2023 Summit</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="summit2022.html"
+                      >2022 Summit</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="summit2021.html"
+                      >2021 Summit</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="past-summits.html"
+                      >All Summits</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="live.html">Live</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="eventDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Event
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="live.html">Live</a></li>
+                  <li>
+                    <a class="dropdown-item" href="sessions.html">Sessions</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="schedule.html">Schedule</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="speakers.html">Speakers</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="universities.html">Universities</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="partnersDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Partners
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="universities.html"
+                      >Universities</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="partners.html"
+                      >Organizations</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="sponsors.html">Sponsors</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="collaborators.html"
+                      >Collaborators</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="contactDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Contact
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="contact.html">Contact Us</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="team.html">Our Team</a>
+                  </li>
+                  <li><a class="dropdown-item" href="faq.html">FAQs</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">about</a>
+              </li>
+            </ul>
+            <a href="register.html" class="btn btn-primary ms-lg-3"
+              >Register Now</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <h1>Supporting Organizations</h1>
+        <p class="lead">
+          Meet the institutions and associations driving digital transformation
+          in Lesotho
+        </p>
+      </div>
+    </section>
+
+    <!-- Tech Organizations -->
+    <section class="py-5">
+      <div class="container">
+        <div class="section-header">
+          <h2>Technology & Innovation Organizations</h2>
+          <p class="lead">
+            Groups advancing digital skills and technological progress
+          </p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 col-lg-4">
+            <div class="card org-card">
+              <img
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                class="card-img-top org-img"
+                alt="Internet Society"
+              />
+              <div class="card-body">
+                <img
+                  src="https://via.placeholder.com/150x80?text=ISOC"
+                  alt="Internet Society Lesotho"
+                  class="org-logo"
+                />
+                <h5 class="card-title">Internet Society Lesotho</h5>
+                <p class="card-text">
+                  Promoting open development, evolution, and use of the Internet
+                  through policy frameworks and capacity building programs.
+                </p>
+                <a
+                  href="https://www.internetsociety.org"
+                  target="_blank"
+                  class="btn btn-outline-primary"
+                  >Visit Website</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="card org-card">
+              <img
+                src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                class="card-img-top org-img"
+                alt="Lesotho ICT Chamber"
+              />
+              <div class="card-body">
+                <img
+                  src="https://via.placeholder.com/150x80?text=ICT+Chamber"
+                  alt="Lesotho ICT Chamber"
+                  class="org-logo"
+                />
+                <h5 class="card-title">Lesotho ICT Chamber</h5>
+                <p class="card-text">
+                  Representing ICT businesses in Lesotho and advocating for
+                  policies that foster industry growth and digital innovation.
+                </p>
+                <a href="#" target="_blank" class="btn btn-outline-primary"
+                  >Visit Website</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="card org-card">
+              <img
+                src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                class="card-img-top org-img"
+                alt="AI Lesotho"
+              />
+              <div class="card-body">
+                <img
+                  src="https://via.placeholder.com/150x80?text=AI+Lesotho"
+                  alt="AI Lesotho"
+                  class="org-logo"
+                />
+                <h5 class="card-title">AI Lesotho</h5>
+                <p class="card-text">
+                  A community of AI enthusiasts and professionals promoting
+                  artificial intelligence research and applications in Lesotho.
+                </p>
+                <a href="#" target="_blank" class="btn btn-outline-primary"
+                  >Visit Website</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Youth & Education Organizations -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <div class="section-header">
+          <h2>Youth & Education Organizations</h2>
+          <p class="lead">Empowering the next generation of digital leaders</p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 col-lg-4">
+            <div class="card org-card">
+              <img
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                class="card-img-top org-img"
+                alt="Lesotho Youth Tech"
+              />
+              <div class="card-body">
+                <img
+                  src="https://via.placeholder.com/150x80?text=Youth+Tech"
+                  alt="Lesotho Youth Tech"
+                  class="org-logo"
+                />
+                <h5 class="card-title">Lesotho Youth Tech</h5>
+                <p class="card-text">
+                  Providing digital skills training and mentorship programs for
+                  young Basotho to prepare them for the tech-driven economy.
+                </p>
+                <a href="#" target="_blank" class="btn btn-outline-primary"
+                  >Visit Website</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="card org-card">
+              <img
+                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                class="card-img-top org-img"
+                alt="Girls Who Code Lesotho"
+              />
+              <div class="card-body">
+                <img
+                  src="https://via.placeholder.com/150x80?text=Girls+Code"
+                  alt="Girls Who Code Lesotho"
+                  class="org-logo"
+                />
+                <h5 class="card-title">Girls Who Code Lesotho</h5>
+                <p class="card-text">
+                  Closing the gender gap in technology by inspiring and
+                  educating young women with computing skills and career
+                  opportunities.
+                </p>
+                <a href="#" target="_blank" class="btn btn-outline-primary"
+                  >Visit Website</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="card org-card">
+              <img
+                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                class="card-img-top org-img"
+                alt="Digital Basotho"
+              />
+              <div class="card-body">
+                <img
+                  src="https://via.placeholder.com/150x80?text=Digital+Basotho"
+                  alt="Digital Basotho"
+                  class="org-logo"
+                />
+                <h5 class="card-title">Digital Basotho</h5>
+                <p class="card-text">
+                  A student-led initiative promoting digital literacy and
+                  innovation across high schools and universities in Lesotho.
+                </p>
+                <a href="#" target="_blank" class="btn btn-outline-primary"
+                  >Visit Website</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact-section py-5">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Collective Impact</h2>
+          <p class="lead">
+            Through collaboration with these organizations, we've achieved
+          </p>
+        </div>
+
+        <div class="row text-center">
+          <div class="col-md-3 mb-4">
+            <div class="impact-item">
+              <div class="impact-number">500+</div>
+              <h5>Youth Trained</h5>
+              <p>In digital skills and emerging technologies</p>
+            </div>
+          </div>
+
+          <div class="col-md-3 mb-4">
+            <div class="impact-item">
+              <div class="impact-number">30+</div>
+              <h5>Community Events</h5>
+              <p>Hosted across Lesotho's districts</p>
+            </div>
+          </div>
+
+          <div class="col-md-3 mb-4">
+            <div class="impact-item">
+              <div class="impact-number">15+</div>
+              <h5>Policy Contributions</h5>
+              <p>To national digital transformation strategies</p>
+            </div>
+          </div>
+
+          <div class="col-md-3 mb-4">
+            <div class="impact-item">
+              <div class="impact-number">10+</div>
+              <h5>Innovation Hubs</h5>
+              <p>Supported with resources and training</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partnership Types -->
+    <section class="partnership-types py-5">
+      <div class="container">
+        <div class="section-header">
+          <h2>Ways Organizations Can Engage</h2>
+          <p class="lead">
+            Multiple pathways to collaborate with the Digital Innovators Summit
+          </p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="type-card">
+              <div class="type-icon">
+                <i class="fas fa-handshake"></i>
+              </div>
+              <h4>Knowledge Partners</h4>
+              <p>
+                Contribute expertise through workshops, research, or thought
+                leadership to shape summit content and digital policy
+                discussions.
+              </p>
+              <a href="contact.html" class="btn btn-outline-primary"
+                >Learn More</a
+              >
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-4">
+            <div class="type-card">
+              <div class="type-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <h4>Community Partners</h4>
+              <p>
+                Help extend the summit's reach through grassroots engagement,
+                local events, and participant recruitment in your networks.
+              </p>
+              <a href="contact.html" class="btn btn-outline-primary"
+                >Learn More</a
+              >
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-4">
+            <div class="type-card">
+              <div class="type-icon">
+                <i class="fas fa-lightbulb"></i>
+              </div>
+              <h4>Innovation Partners</h4>
+              <p>
+                Showcase cutting-edge solutions, sponsor hackathons, or provide
+                technology platforms that enhance the summit experience.
+              </p>
+              <a href="contact.html" class="btn btn-outline-primary"
+                >Learn More</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-5">
+      <div class="container">
+        <div class="section-header">
+          <h2>What Organizations Say</h2>
+          <p class="lead">
+            Hear from our partner organizations about the value of collaboration
+          </p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="testimonial-card">
+              <div class="quote">
+                "Partnering with the Digital Innovators Summit has allowed us to
+                amplify our impact and reach more young people with digital
+                skills training than we could have alone."
+              </div>
+              <div class="testimonial-author">
+                <img
+                  src="https://randomuser.me/api/portraits/women/44.jpg"
+                  alt="Ms. Mamello Ntobo"
+                />
+                <div>
+                  <p class="author-name">Ms. Mamello Ntobo</p>
+                  <p class="author-title">Director, Lesotho Youth Tech</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-4">
+            <div class="testimonial-card">
+              <div class="quote">
+                "The summit provides an invaluable platform for cross-sector
+                collaboration. As a tech association, we've gained visibility
+                and forged partnerships that advance our mission."
+              </div>
+              <div class="testimonial-author">
+                <img
+                  src="https://randomuser.me/api/portraits/men/32.jpg"
+                  alt="Mr. Thabo Mokoena"
+                />
+                <div>
+                  <p class="author-name">Mr. Thabo Mokoena</p>
+                  <p class="author-title">Chairperson, Lesotho ICT Chamber</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-4">
+            <div class="testimonial-card">
+              <div class="quote">
+                "Our participation has helped shape national conversations about
+                AI ethics and digital inclusion, ensuring diverse perspectives
+                are represented in policy discussions."
+              </div>
+              <div class="testimonial-author">
+                <img
+                  src="https://randomuser.me/api/portraits/women/28.jpg"
+                  alt="Dr. 'Masekila Makara"
+                />
+                <div>
+                  <p class="author-name">Dr. 'Masekila Makara</p>
+                  <p class="author-title">Lead Researcher, AI Lesotho</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Join Our Network of Organizations</h2>
+        <p>
+          Become part of Lesotho's digital transformation movement and
+          collaborate with like-minded institutions driving innovation.
+        </p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a href="contact.html" class="btn btn-light btn-lg">Contact Us</a>
+          <a href="partnerships.html" class="btn btn-outline-light btn-lg"
+            >Partnership Options</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <img
+              src="https://via.placeholder.com/150x50?text=SkyAlpha+HD"
+              alt="SkyAlpha HD"
+              class="footer-logo"
+            />
+            <p class="footer-about">
+              Aligned with Lesotho's National Digital Transformation Strategy,
+              the Digital Innovators Summit is a movement toward creating a
+              digitally empowered society.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://twitter.com/DIS_Lesotho2024" target="_blank"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Summits</h5>
+              <ul>
+                <li><a href="summit2023.html">2023 Summit</a></li>
+                <li><a href="summit2022.html">2022 Summit</a></li>
+                <li><a href="summit2021.html">2021 Summit</a></li>
+                <li><a href="past-summits.html">All Summits</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Event</h5>
+              <ul>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="speakers.html">Speakers</a></li>
+                <li><a href="sessions.html">Sessions</a></li>
+                <li><a href="live.html">Live Stream</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Partners</h5>
+              <ul>
+                <li><a href="universities.html">Universities</a></li>
+                <li><a href="organizations.html">Organizations</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+                <li><a href="collaborators.html">Collaborators</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4">
+            <div class="footer-links">
+              <h5>Contact</h5>
+              <ul>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="row">
+            <div class="col-md-6">
+              <p class="copyright mb-3 mb-md-0">
+                © 2025 Digital Innovators Summit. All rights reserved.
+              </p>
+            </div>
+            <div class="col-md-6 text-md-end">
+              <a href="privacy.html" class="text-white-50 me-3"
+                >Privacy Policy</a
+              >
+              <a href="terms.html" class="text-white-50">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Simple animation for organization cards
+      document.addEventListener("DOMContentLoaded", function () {
+        const orgCards = document.querySelectorAll(".org-card");
+
+        orgCards.forEach((card, index) => {
+          // Add slight delay to each card's animation
+          card.style.transitionDelay = `${index * 0.1}s`;
+        });
+      });
+    </script>
+    <script>
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", function (event) {
+        const navbarCollapse = document.getElementById("navbarNav");
+        const navbarToggler = document.querySelector(".navbar-toggler");
+
+        if (
+          navbarCollapse.classList.contains("show") &&
+          !event.target.closest(".navbar") &&
+          !event.target.classList.contains("navbar-toggler")
+        ) {
+          const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+            toggle: false,
+          });
+          bsCollapse.hide();
+
+          navbarToggler.setAttribute("aria-expanded", "false");
+        }
+      });
+    </script>
+  </body>
+</html>
