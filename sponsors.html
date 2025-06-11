@@ -249,16 +249,30 @@
         margin: 50px 0;
       }
 
+      /* Footer */
       .main-footer {
-        background-color: var(--dark-color);
+        background-color: var(--primary-color);
         color: white;
         padding: 60px 0 0;
       }
 
-      .footer-links h5 {
-        color: white;
+      .footer-logo {
+        height: 70px;
         margin-bottom: 20px;
-        font-weight: 600;
+        background-color: aliceblue;
+        border-radius: 20%;
+      }
+
+      .footer-about {
+        opacity: 0.7;
+        margin-bottom: 20px;
+      }
+
+      .footer-links h5 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: white;
       }
 
       .footer-links ul {
@@ -273,11 +287,12 @@
       .footer-links a {
         color: rgba(255, 255, 255, 0.7);
         text-decoration: none;
-        transition: color 0.3s;
+        transition: all 0.3s ease;
       }
 
       .footer-links a:hover {
-        color: white;
+        color: var(--secondary-color);
+        padding-left: 5px;
       }
 
       .social-links a {
@@ -290,27 +305,96 @@
         text-align: center;
         line-height: 40px;
         margin-right: 10px;
-        transition: all 0.3s;
+        transition: all 0.3s ease;
       }
 
       .social-links a:hover {
-        background-color: var(--accent-color);
+        background-color: var(--secondary-color);
         transform: translateY(-3px);
       }
 
       .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: 20px 0;
+        margin-top: 40px;
+      }
+      .footer-bottom {
+        background-color: rgba(0, 0, 0, 0.2);
         padding: 20px 0;
         margin-top: 40px;
       }
 
-      @media (max-width: 768px) {
+      /* Default mobile padding (small screens) */
+      .footer-bottom .container {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      /* Tablet (medium screens) */
+      @media (min-width: 768px) {
+        .footer-bottom .container {
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+      }
+
+      /* Desktop (large screens) - BIGGER PADDING AS REQUESTED */
+      @media (min-width: 992px) {
+        .footer-bottom .container {
+          padding-left: 100px; /* Increased from 60px to 100px */
+          padding-right: 100px; /* Increased from 60px to 100px */
+        }
+      }
+
+      .copyright {
+        opacity: 0.7;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Adjustments */
+      @media (max-width: 992px) {
         .hero-section h1 {
-          font-size: 2.2rem;
+          font-size: 2.5rem;
         }
 
-        .partner-grid {
-          grid-template-columns: 1fr;
+        .hero-section .lead {
+          font-size: 1.25rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-section {
+          padding: 80px 0;
+        }
+
+        .hero-section h1 {
+          font-size: 2rem;
+        }
+
+        .countdown-item {
+          margin: 0 5px;
+        }
+
+        .countdown-number {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero-section {
+          padding: 60px 0;
+        }
+
+        .countdown-item {
+          margin: 0 3px;
+        }
+
+        .countdown-number {
+          font-size: 1.5rem;
+        }
+
+        .countdown-label {
+          font-size: 0.7rem;
         }
       }
     </style>
@@ -337,7 +421,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link active-home" href="index.html">
+                <a class="nav-link" href="index.html">
                   <span class="nav-link-inner">Home</span>
                 </a>
               </li>
@@ -353,18 +437,8 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="summit2023.html"
-                      >2023 Summit</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="summit2022.html"
-                      >2022 Summit</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="summit2021.html"
-                      >2021 Summit</a
+                    <a class="dropdown-item" href="2024Summit.html"
+                      >2024 Summit</a
                     >
                   </li>
                   <li><hr class="dropdown-divider" /></li>
@@ -457,6 +531,11 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="about.html">about</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active-home" href="sponsors.html">
+                  <span class="nav-link-inner">Sponsor</span>
+                </a>
               </li>
             </ul>
             <a href="register.html" class="btn btn-primary ms-lg-3"

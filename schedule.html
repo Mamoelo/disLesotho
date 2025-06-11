@@ -414,23 +414,26 @@
 
       /* Footer */
       .main-footer {
-        background-color: var(--dark-color);
+        background-color: var(--primary-color);
         color: white;
         padding: 60px 0 0;
       }
 
       .footer-logo {
+        height: 70px;
         margin-bottom: 20px;
-        max-height: 50px;
+        background-color: aliceblue;
+        border-radius: 20%;
       }
 
       .footer-about {
-        opacity: 0.8;
+        opacity: 0.7;
         margin-bottom: 20px;
       }
 
       .footer-links h5 {
-        font-weight: 600;
+        font-size: 1.1rem;
+        font-weight: 700;
         margin-bottom: 20px;
         color: white;
       }
@@ -447,16 +450,12 @@
       .footer-links a {
         color: rgba(255, 255, 255, 0.7);
         text-decoration: none;
-        transition: color 0.3s ease;
+        transition: all 0.3s ease;
       }
 
       .footer-links a:hover {
-        color: white;
-        text-decoration: underline;
-      }
-
-      .social-links {
-        margin-top: 20px;
+        color: var(--secondary-color);
+        padding-left: 5px;
       }
 
       .social-links a {
@@ -469,80 +468,97 @@
         text-align: center;
         line-height: 40px;
         margin-right: 10px;
-        transition: background-color 0.3s ease;
+        transition: all 0.3s ease;
       }
 
       .social-links a:hover {
-        background-color: var(--primary-color);
-        color: white;
+        background-color: var(--secondary-color);
+        transform: translateY(-3px);
       }
 
       .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: 20px 0;
+        margin-top: 40px;
+      }
+      .footer-bottom {
+        background-color: rgba(0, 0, 0, 0.2);
         padding: 20px 0;
         margin-top: 40px;
       }
 
+      /* Default mobile padding (small screens) */
+      .footer-bottom .container {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      /* Tablet (medium screens) */
+      @media (min-width: 768px) {
+        .footer-bottom .container {
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+      }
+
+      /* Desktop (large screens) - BIGGER PADDING AS REQUESTED */
+      @media (min-width: 992px) {
+        .footer-bottom .container {
+          padding-left: 100px; /* Increased from 60px to 100px */
+          padding-right: 100px; /* Increased from 60px to 100px */
+        }
+      }
+
       .copyright {
         opacity: 0.7;
-      }
-
-      /* Utility Classes */
-      .bg-primary-light {
-        background-color: rgba(0, 86, 179, 0.1);
-      }
-
-      .text-accent {
-        color: var(--accent-color);
+        font-size: 0.9rem;
       }
 
       /* Responsive Adjustments */
-      @media (max-width: 768px) {
-        .hero-section {
-          padding: 60px 0;
-          text-align: center;
-        }
-
+      @media (max-width: 992px) {
         .hero-section h1 {
-          font-size: 2.2rem;
+          font-size: 2.5rem;
         }
 
         .hero-section .lead {
-          font-size: 1.2rem;
-        }
-
-        .section-header {
-          margin-bottom: 30px;
-        }
-
-        .speaker-img {
-          width: 120px;
-          height: 120px;
-          margin: -60px auto 15px;
-        }
-
-        .speaker-card .card-body {
-          padding-top: 60px;
+          font-size: 1.25rem;
         }
       }
 
-      /* Tab Styles for Speakers Page */
-      .nav-tabs .nav-link {
-        color: var(--secondary-color);
-        font-weight: 500;
-        border: none;
-        padding: 10px 20px;
+      @media (max-width: 768px) {
+        .hero-section {
+          padding: 80px 0;
+        }
+
+        .hero-section h1 {
+          font-size: 2rem;
+        }
+
+        .countdown-item {
+          margin: 0 5px;
+        }
+
+        .countdown-number {
+          font-size: 2rem;
+        }
       }
 
-      .nav-tabs .nav-link.active {
-        color: var(--primary-color);
-        background-color: transparent;
-        border-bottom: 3px solid var(--primary-color);
-      }
+      @media (max-width: 576px) {
+        .hero-section {
+          padding: 60px 0;
+        }
 
-      .nav-tabs .nav-link:hover {
-        color: var(--primary-color);
-        border-color: transparent;
+        .countdown-item {
+          margin: 0 3px;
+        }
+
+        .countdown-number {
+          font-size: 1.5rem;
+        }
+
+        .countdown-label {
+          font-size: 0.7rem;
+        }
       }
 
       /* Speaker Details Page */
@@ -706,7 +722,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link active-home" href="index.html">
+                <a class="nav-link" href="index.html">
                   <span class="nav-link-inner">Home</span>
                 </a>
               </li>
@@ -722,18 +738,8 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="summit2023.html"
-                      >2023 Summit</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="summit2022.html"
-                      >2022 Summit</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="summit2021.html"
-                      >2021 Summit</a
+                    <a class="dropdown-item" href="2024Summit.html"
+                      >2024 Summit</a
                     >
                   </li>
                   <li><hr class="dropdown-divider" /></li>
@@ -826,6 +832,11 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="about.html">about</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active-home" href="schedule.html">
+                  <span class="nav-link-inner">Schedule</span>
+                </a>
               </li>
             </ul>
             <a href="register.html" class="btn btn-primary ms-lg-3"
