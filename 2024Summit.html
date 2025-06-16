@@ -6,9 +6,10 @@
     <title>Past Summits | Digital Innovators Summit</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
-        /* [Same CSS as index.html] */
-         :root {
+        :root {
             --primary-color: #4a148c; /* Deep purple */
             --secondary-color: #7b1fa2; /* Medium purple */
             --accent-color: #e91e63; /* Pink accent */
@@ -17,126 +18,145 @@
             --transition-speed: 0.3s;
         }
 
-        /* Add this to your style section */
-.gallery-item {
-    height: 200px; /* Fixed height for all gallery items */
-    overflow: hidden; /* Hide any overflow */
-    display: flex;
-    align-items: center; /* Center the image vertically */
-    justify-content: center; /* Center the image horizontally */
-    background-color: #f8f9fa; /* Background color for any empty space */
-    border-radius: 0.25rem; /* Match the rounded corners */
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensure the image covers the entire space while maintaining aspect ratio */
-    transition: transform 0.3s ease; /* Smooth transition for hover effect */
-}
-
-.gallery-item:hover img {
-    transform: scale(1.05); /* Slight zoom on hover */
-}
- /* Footer */
-        .main-footer {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 60px 0 0;
-        }
-        
-        .footer-logo {
-            height: 40px;
-            margin-bottom: 20px;
-        }
-        
-        .footer-about {
-            opacity: 0.7;
-            margin-bottom: 20px;
-        }
-        
-        .footer-links h5 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: white;
-        }
-        
-        .footer-links ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: var(--secondary-color);
-            padding-left: 5px;
-        }
-        
-        .social-links a {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255,255,255,0.1);
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            margin-right: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-3px);
-        }
-        
-        .footer-bottom {
-            background-color: rgba(0,0,0,0.2);
-            padding: 20px 0;
-            margin-top: 40px;
-        }
-        
-        .copyright {
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background:  whitesmoke;
-     
+            font-family: 'Roboto', sans-serif;
+            background: whitesmoke;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
+
+        /* Header Styles */
+        .main-header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .main-header.scrolled {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .navbar-brand img {
+            height: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: var(--primary-color);
+            padding: 10px 15px !important;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            border: none;
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(123, 31, 162, 0.3);
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            box-shadow: 0 6px 20px rgba(123, 31, 162, 0.4);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        /* Stats Cards */
+        .stats-card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+            background: white;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .stats-card .card-body {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .stats-card .display-4 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .stats-card:hover .display-4 {
+            color: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        /* Timeline Styles */
         .timeline {
             position: relative;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 40px 0;
         }
+
         .timeline::after {
             content: '';
             position: absolute;
             width: 6px;
-            background: linear-gradient(135deg, #4f46e5, #9333ea);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             top: 0;
             bottom: 0;
             left: 50%;
             margin-left: -3px;
+            z-index: 1;
         }
+
         .timeline-container {
             padding: 10px 40px;
             position: relative;
             background-color: inherit;
             width: 50%;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
         }
+
+        .timeline-container.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .timeline-container::after {
             content: '';
             position: absolute;
@@ -144,17 +164,27 @@
             height: 25px;
             right: -17px;
             background-color: white;
-            border: 4px solid #0d6efd;
+            border: 4px solid var(--secondary-color);
             top: 15px;
             border-radius: 50%;
-            z-index: 1;
+            z-index: 2;
+            transition: all 0.3s ease;
         }
+
+        .timeline-container:hover::after {
+            background-color: var(--accent-color);
+            border-color: white;
+            transform: scale(1.2);
+        }
+
         .left {
             left: 0;
         }
+
         .right {
             left: 50%;
         }
+
         .left::before {
             content: " ";
             height: 0;
@@ -167,6 +197,7 @@
             border-width: 10px 0 10px 10px;
             border-color: transparent transparent transparent white;
         }
+
         .right::before {
             content: " ";
             height: 0;
@@ -179,81 +210,575 @@
             border-width: 10px 10px 10px 0;
             border-color: transparent white transparent transparent;
         }
+
         .right::after {
             left: -16px;
         }
+
         .timeline-content {
-            padding: 20px 30px;
+            padding: 25px 30px;
             background-color: white;
             position: relative;
-            border-radius: 6px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
         }
-        .btn-primary {
-    background: linear-gradient(135deg, #A020F0, #FF69B4); /* Purple to Pink gradient */
-    border: none;
-    color: white;
-    transition: all 0.3s ease;
-}
 
-.btn-primary:hover,
-.btn-primary:focus {
-    background: linear-gradient(135deg, #FF69B4, #A020F0); /* Inverted gradient on hover */
-    box-shadow: 0 0 10px rgba(160, 32, 240, 0.6);
-    color: white;
-}
+        .timeline-container:hover .timeline-content {
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
 
-        @media screen and (max-width: 600px) {
+        .timeline-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .timeline-content .text-muted {
+            color: #6c757d;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Impact Cards */
+        .impact-card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 30px;
+            height: 100%;
+            background: white;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .impact-card .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+
+        .impact-card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+
+        .impact-card .card-body {
+            padding: 25px;
+        }
+
+        .impact-card .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .impact-card:hover .card-title {
+            color: var(--secondary-color);
+        }
+
+        /* Gallery Styles */
+        .gallery-item {
+            height: 200px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(74, 20, 140, 0.3);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* CTA Section */
+      /* CTA Section Styles */
+    .cta-section {
+        background: linear-gradient(135deg, #4a148c, #7b1fa2);
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cta-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,100 L100,100 L100,0 Q50,20 0,0 Z"></path></svg>');
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        background-position: top;
+        z-index: 0;
+    }
+
+    .cta-section .container {
+        position: relative;
+        z-index: 1;
+    }
+
+    .cta-section h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .cta-section .lead {
+        font-size: 1.25rem;
+        opacity: 0.9;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cta-section .btn-primary {
+        background: white;
+        color: var(--primary-color);
+        font-weight: 600;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .cta-section .btn-primary:hover {
+        background: rgba(255,255,255,0.9);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .cta-section .btn-outline-light {
+        border: 2px solid white;
+        color: white;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .cta-section .btn-outline-light:hover {
+        background: rgba(255,255,255,0.1);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+/* Footer */
+.main-footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 80px 0 0;
+            position: relative;
+        }
+        
+        .main-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(0,0,0,0.1)" d="M0,0 L100,0 L100,100 Q50,80 0,100 Z"></path></svg>');
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            background-position: bottom;
+            z-index: 0;
+        }
+        
+        .footer-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-logo {
+            height: 80px;
+            margin-bottom: 20px;
+            background-color: aliceblue;
+            border-radius: 12px;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-logo:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .footer-about {
+            opacity: 0.7;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links h5 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-links h5::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links li:hover {
+            transform: translateX(5px);
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 45px;
+            margin-right: 10px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .footer-bottom {
+            background-color: rgba(0,0,0,0.2);
+            padding: 25px 0;
+            margin-top: 60px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .copyright {
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+
+        /* Section Titles */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Adjustments */
+    @media (max-width: 992px) {
+        .cta-section h2 {
+            font-size: 2.2rem;
+        }
+        
+        .cta-section .lead {
+            font-size: 1.1rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .cta-section h2 {
+            font-size: 1.8rem;
+        }
+        
+        .cta-section .btn {
+            width: 100%;
+            max-width: 250px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .cta-section h2 {
+            font-size: 1.5rem;
+        }
+        
+        .cta-section .lead {
+            font-size: 1rem;
+        }
+        
+        .cta-section .btn {
+            padding: 0.75rem 1.5rem;
+        }
+    }
+       
+
+        @media (max-width: 992px) {
             .timeline::after {
                 left: 31px;
             }
+            
             .timeline-container {
                 width: 100%;
                 padding-left: 70px;
                 padding-right: 25px;
             }
+            
             .timeline-container::before {
                 left: 60px;
                 border: medium solid white;
                 border-width: 10px 10px 10px 0;
                 border-color: transparent white transparent transparent;
             }
+            
             .left::after, .right::after {
                 left: 15px;
             }
+            
             .right {
                 left: 0%;
             }
+            
+            .section-title::after {
+                bottom: -8px;
+                height: 3px;
+            }
+        }
+
+            
+            .footer-logo {
+                height: 40px;
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+            }
+            
+            .footer-about {
+                text-align: center;
+            }
+            
+            .footer-links {
+                margin-bottom: 30px;
+                text-align: center;
+            }
+            
+            .footer-links h5::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-links {
+                justify-content: center;
+                margin-bottom: 30px;
+            }
+    
+
+        @media (max-width: 576px) {
+            .cta-section {
+                padding: 70px 0;
+            }
+            
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-section p {
+                font-size: 1rem;
+            }
+            
+            .section-title::after {
+                width: 60px;
+                height: 2px;
+                bottom: -6px;
+            }
+            
+            .stats-card .display-4 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
         }
     </style>
 </head>
 <body>
-    <!-- Header - Same as index.html -->
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Header -->
     <header class="main-header sticky-top">
         <nav class="navbar navbar-expand-lg navbar-light bg-white">
             <div class="container">
                 <a class="navbar-brand" href="index.html">
-                    <img src="" alt="SkyAlpha HD">
+                    <img src="logo.jpeg" alt="SkyAlpha HD">
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Live</a>
+                            <a class="nav-link active-home" href="index.html">
+                                <span class="nav-link-inner">Home</span>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="summitsDropdown" role="button" data-bs-toggle="dropdown">
+                                Summits
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="2024Summit.html">2024 Summit</a></li>
+                                <li><a class="dropdown-item" href="past-summits.html">All Summits</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#container">Sessions</a>
+                            <a class="nav-link" href="live.html">Live</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="eventDropdown" role="button" data-bs-toggle="dropdown">
+                                Event
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="live.html">Live</a></li>
+                                <li><a class="dropdown-item" href="sessions.html">Sessions</a></li>
+                                <li><a class="dropdown-item" href="schedule.html">Schedule</a></li>
+                                <li><a class="dropdown-item" href="speakers.html">Speakers</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="universities.html">Universities</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="partnersDropdown" role="button" data-bs-toggle="dropdown">
+                                Partners
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="universities.html">Universities</a></li>
+                                <li><a class="dropdown-item" href="partners.html">Organizations</a></li>
+                                <li><a class="dropdown-item" href="sponsors.html">Sponsors</a></li>
+                                <li><a class="dropdown-item" href="collaborators.html">Collaborators</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="contactDropdown" role="button" data-bs-toggle="dropdown">
+                                Contact
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="contact.html">Contact Us</a></li>
+                                <li><a class="dropdown-item" href="team.html">Our Team</a></li>
+                                <li><a class="dropdown-item" href="faq.html">FAQs</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="about.html">about</a>
                         </li>
                     </ul>
                     <a href="register.html" class="btn btn-primary ms-lg-3">Register Now</a>
@@ -268,15 +793,15 @@
         <div class="container">
             <div class="row mb-5">
                 <div class="col-12 text-center">
-                    <h2 class="mb-3">Our Journey</h2>
+                    <h2 class="mb-3 section-title">Our Journey</h2>
                     <p class="lead text-muted">Milestones from 2021 Digital Innovators Summit</p>
                 </div>
             </div>
             
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body text-center">
+                    <div class="card stats-card">
+                        <div class="card-body">
                             <div class="display-4 text-primary mb-3">
                                 <i class="fas fa-users"></i>
                             </div>
@@ -287,8 +812,8 @@
                 </div>
                 
                 <div class="col-md-4 mb-4">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body text-center">
+                    <div class="card stats-card">
+                        <div class="card-body">
                             <div class="display-4 text-primary mb-3">
                                 <i class="fas fa-university"></i>
                             </div>
@@ -299,8 +824,8 @@
                 </div>
                 
                 <div class="col-md-4 mb-4">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body text-center">
+                    <div class="card stats-card">
+                        <div class="card-body">
                             <div class="display-4 text-primary mb-3">
                                 <i class="fas fa-lightbulb"></i>
                             </div>
@@ -318,7 +843,7 @@
         <div class="container">
             <div class="row mb-5">
                 <div class="col-12 text-center">
-                    <h2 class="mb-3">Summit Timeline</h2>
+                    <h2 class="mb-3 section-title">Summit Timeline</h2>
                     <p class="lead text-muted">Our evolution through the year 2021</p>
                 </div>
             </div>
@@ -368,14 +893,14 @@
         <div class="container">
             <div class="row mb-5">
                 <div class="col-12 text-center">
-                    <h2 class="mb-3">Impact Stories</h2>
+                    <h2 class="mb-3 section-title">Impact Stories</h2>
                     <p class="lead text-muted">How our summit have made a difference</p>
                 </div>
             </div>
             
             <div class="row">
                 <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card border-0 shadow-sm h-100">
+                    <div class="card impact-card">
                         <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Impact Story">
                         <div class="card-body">
                             <h5 class="card-title">Digital Tools in Education</h5>
@@ -385,7 +910,7 @@
                 </div>
                 
                 <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card border-0 shadow-sm h-100">
+                    <div class="card impact-card">
                         <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Impact Story">
                         <div class="card-body">
                             <h5 class="card-title">Policy Influence</h5>
@@ -395,7 +920,7 @@
                 </div>
                 
                 <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card border-0 shadow-sm h-100">
+                    <div class="card impact-card">
                         <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Impact Story">
                         <div class="card-body">
                             <h5 class="card-title">International Recognition</h5>
@@ -407,106 +932,88 @@
         </div>
     </section>
 
-   <!-- Gallery Section -->
-<section class="py-5 bg-light">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-12 text-center">
-                <h2 class="mb-3">Gallery</h2>
-                <p class="lead text-muted">Memories from the summit</p>
-            </div>
-        </div>
-        
-        <div class="row g-3">
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="gallery-item">
-                      <img src="/lds-main/2021SummitImages/m1.jpg" class="img-fluid rounded" alt="Summit Photo">
-                    </a>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="gallery-item">
-                    <img src="/lds-main/2021SummitImages/m2.jpg" class="img-fluid rounded" alt="Summit Photo">
-                    </a>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="gallery-item">
-                    <img src="/lds-main/2021SummitImages/m3.jpg" class="img-fluid rounded" alt="Summit Photo">
-                    </a>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="gallery-item">
-                     <img src="/lds-main/2021SummitImages/m4.jpg" class="img-fluid rounded" alt="Summit Photo">
-                    </a>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="gallery-item">
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#galleryModal" data-bs-img="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
-                        <img src="/lds-main/2021SummitImages/m5.jpg" class="img-fluid rounded" alt="Summit Photo">
-                    </a>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="gallery-item">
-                     <img src="/lds-main/2021SummitImages/m6.jpg" class="img-fluid rounded" alt="Summit Photo">
-                    </a>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="gallery-item">
-                    <img src="/lds-main/2021SummitImages/m7.jpg" class="img-fluid rounded" alt="Summit Photo">
-                    </a>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="gallery-item">
-                    <img src="/lds-main/2021SummitImages/m8.jpg" class="img-fluid rounded" alt="Summit Photo">
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="text-center mt-4">
-            <a href="#" class="btn btn-primary">View More Photos</a>
-        </div>
-    </div>
-</section>
-    <!-- Gallery Modal -->
-    <div class="modal fade" id="galleryModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-body p-0">
-                    <img src="" class="img-fluid" id="galleryModalImage" alt="Summit Photo">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
+    <!-- Gallery Section -->
+    <section class="py-5 bg-light">
         <div class="container">
-            <h2>Ready to Join the 2025 Digital Revolution?</h2>
-            <p>Register now for the Digital Innovators Summit 2025 and be part of shaping Lesotho's digital future.</p>
-            <div class="d-flex flex-wrap justify-content-center gap-3">
-                <a href="register.html" class="btn btn-light btn-lg">Register Now</a>
-                <a href="contact.html" class="btn btn-outline-light btn-lg">Contact Us</a>
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="mb-3 section-title">Gallery</h2>
+                    <p class="lead text-muted">Memories from the summit</p>
+                </div>
+            </div>
+            
+            <div class="row g-3">
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="gallery-item">
+                        <img src="/lds-main/2021SummitImages/m1.jpg" class="img-fluid rounded" alt="Summit Photo">
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="gallery-item">
+                        <img src="/lds-main/2021SummitImages/m2.jpg" class="img-fluid rounded" alt="Summit Photo">
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="gallery-item">
+                        <img src="/lds-main/2021SummitImages/m3.jpg" class="img-fluid rounded" alt="Summit Photo">
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="gallery-item">
+                        <img src="/lds-main/2021SummitImages/m4.jpg" class="img-fluid rounded" alt="Summit Photo">
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="gallery-item">
+                        <img src="/lds-main/2021SummitImages/m5.jpg" class="img-fluid rounded" alt="Summit Photo">
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="gallery-item">
+                        <img src="/lds-main/2021SummitImages/m6.jpg" class="img-fluid rounded" alt="Summit Photo">
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="gallery-item">
+                        <img src="/lds-main/2021SummitImages/m7.jpg" class="img-fluid rounded" alt="Summit Photo">
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="gallery-item">
+                        <img src="/lds-main/2021SummitImages/m8.jpg" class="img-fluid rounded" alt="Summit Photo">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-primary">View More Photos</a>
             </div>
         </div>
     </section>
- <!-- Footer -->
+
+   <!-- CTA Section -->
+<section class="cta-section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="mb-4 animate__animated animate__fadeInDown">Ready to Join the 2025 Digital Revolution?</h2>
+                <p class="lead mb-5 animate__animated animate__fadeIn animate__delay-1s">Register now for the Digital Innovators Summit 2025 and be part of shaping Lesotho's digital future.</p>
+                <div class="d-flex flex-wrap justify-content-center gap-3 animate__animated animate__fadeInUp animate__delay-2s">
+                    <a href="register.html" class="btn btn-primary btn-lg px-4 py-3">Register Now</a>
+                    <a href="contact.html" class="btn btn-outline-light btn-lg px-4 py-3">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Footer -->
     <footer class="main-footer">
-        <div class="container">
+        <div class="container footer-content">
             <div class="row">
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <img src="https://via.placeholder.com/150x50?text=SkyAlpha+HD" alt="SkyAlpha HD" class="footer-logo">
                     <p class="footer-about">SkyAlpha HD is Lesotho's premier media house dedicated to promoting innovation and digital transformation in education through annual Digital Innovation Summits.</p>
-                    <div class="social-links">
+                    <div class="social-links d-flex">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
@@ -519,10 +1026,7 @@
                     <div class="footer-links">
                         <h5>Summits</h5>
                         <ul>
-                            <li><a href="#">2023 Summit</a></li>
-                            <li><a href="#">2022 Summit</a></li>
-                            <li><a href="#">2021 Summit</a></li>
-                            <li><a href="#">All Summits</a></li>
+                            <li><a href="2024Summit.html">2024 Summit</a></li>
                         </ul>
                     </div>
                 </div>
@@ -580,13 +1084,79 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Scroll reveal animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal, .timeline-container');
+            
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const revealTop = reveals[i].getBoundingClientRect().top;
+                const revealPoint = 150;
+                
+                if (revealTop < windowHeight - revealPoint) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
         // Gallery Modal Script
         var galleryModal = document.getElementById('galleryModal');
-        galleryModal.addEventListener('show.bs.modal', function (event) {
-            var button = event.relatedTarget;
-            var imgSrc = button.getAttribute('data-bs-img');
-            var modalImage = galleryModal.querySelector('#galleryModalImage');
-            modalImage.src = imgSrc;
+        if (galleryModal) {
+            galleryModal.addEventListener('show.bs.modal', function (event) {
+                var button = event.relatedTarget;
+                var imgSrc = button.getAttribute('data-bs-img');
+                var modalImage = galleryModal.querySelector('#galleryModalImage');
+                modalImage.src = imgSrc;
+            });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
     </script>
 </body>
