@@ -27,11 +27,13 @@
             line-height: 1.6;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            text-align: justify;
         }
         
         h1, h2, h3, h4, h5, h6 {
             font-weight: 700;
             font-family: 'Poppins', sans-serif;
+            text-align: left;
         }
         
         .bg-primary {
@@ -49,6 +51,84 @@
         .text-secondary {
             color: var(--secondary-color) !important;
         }
+
+        /* Header Styles */
+      .main-header {
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar-brand img {
+        height: 40px;
+      }
+
+      .nav-link {
+        font-weight: 600;
+        color: var(--primary-color);
+        padding: 10px 15px !important;
+      }
+
+      .nav-link:hover {
+        color: var(--secondary-color);
+      }
+
+      .dropdown-menu {
+        border: none;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 0;
+      }
+
+      .dropdown-item {
+        font-weight: 500;
+        padding: 8px 20px;
+      }
+
+      .dropdown-item:hover {
+        background-color: rgba(123, 31, 162, 0.1);
+        color: var(--secondary-color);
+      }
+        
+        /* Enhanced dropdown arrow styling */
+        .nav-item.dropdown > .nav-link::after {
+        background: transparent !important;
+        padding: 0;
+        margin: 0;
+        box-shadow: none;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid var(--primary-color);
+        }
+
+        .nav-item.dropdown.show > .nav-link::after,
+        .nav-link[aria-expanded="true"]::after {
+        background: transparent !important;
+        border-top-color: var(--secondary-color);
+        }
+
+
+        /* Rotate arrow when dropdown is open */
+        .nav-item.dropdown.show > .nav-link::after,
+        .nav-link[aria-expanded="true"]::after {
+        transform: rotate(180deg);
+        border-top-color: var(--secondary-color); /* Arrow color when open */
+        }
+
+    /* Mobile view adjustments */
+    @media (max-width: 991.98px) {
+        .navbar-nav .dropdown-toggle::after {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .navbar-nav .dropdown-toggle[aria-expanded="true"]::after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+    }   
+            .navbar-nav .dropdown-toggle[aria-expanded="true"]::after {
+                transform: translateY(-50%) rotate(180deg);
+            }
         
         /* Preloader */
         #preloader {
@@ -246,40 +326,30 @@
         /* Dropdown Menu - Enhanced */
         .dropdown-menu {
             border: none;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             border-radius: 12px;
-            animation: fadeInDown 0.3s ease-out;
-            margin-top: 10px !important;
             padding: 10px 0;
-            min-width: 220px;
+            margin-top: 10px;
+            animation: fadeIn 0.3s ease-out;
+            border: 1px solid rgba(0,0,0,0.05);
         }
         
         .dropdown-item {
-            font-weight: 500;
             padding: 10px 20px;
+            font-weight: 500;
             transition: all 0.3s ease;
-            position: relative;
-            border-radius: 8px;
-            margin: 0 10px;
-            width: auto;
+            color: var(--dark-color);
         }
         
         .dropdown-item:hover {
-            background: linear-gradient(to right, rgba(123,31,162,0.1), rgba(123,31,162,0.05));
+            background-color: rgba(123, 31, 162, 0.1);
             color: var(--secondary-color);
-            padding-left: 25px;
             transform: translateX(5px);
         }
         
-        .dropdown-toggle::after {
-            display: inline-block;
-            margin-left: 8px;
-            vertical-align: middle;
-            transition: transform 0.3s ease;
-        }
-        
-        .dropdown:hover .dropdown-toggle::after {
-            transform: rotate(180deg);
+        .dropdown-item:active {
+            background-color: var(--secondary-color);
+            color: white;
         }
         
         /* Mobile Menu */
@@ -375,6 +445,7 @@
             animation: fadeInUp 1s ease-out 0.2s forwards;
             opacity: 0;
             max-width: 700px;
+            text-align: justify;
         }
         
         .hero-badge {
@@ -390,6 +461,7 @@
             text-transform: uppercase;
             font-size: 0.9rem;
             letter-spacing: 1px;
+            text-align: center;
         }
         
         .hero-buttons {
@@ -753,6 +825,7 @@
         .summit-card .card-text {
             color: #6c757d;
             margin-bottom: 15px;
+            text-align: justify;
         }
         
         /* Testimonials - Enhanced */
@@ -788,6 +861,7 @@
             margin-bottom: 25px;
             position: relative;
             line-height: 1.8;
+            text-align: justify;
         }
         
         .testimonial-card .quote::before {
@@ -861,6 +935,7 @@
             position: relative;
             z-index: 1;
             opacity: 0.9;
+            text-align: justify;
         }
         
         .cta-buttons {
@@ -904,6 +979,7 @@
         .footer-about {
             opacity: 0.7;
             margin-bottom: 25px;
+            text-align: justify;
         }
         
         .footer-links h5 {
@@ -1141,7 +1217,7 @@
         @media (max-width: 992px) {
             .hero-section {
                 padding: 150px 0 100px;
-                text-align: center;
+                text-align: left;
             }
             
             .hero-section h1 {
@@ -1150,12 +1226,12 @@
             
             .hero-section .lead {
                 font-size: 1.2rem;
-                margin-left: auto;
-                margin-right: auto;
+                margin-left: 0;
+                margin-right: 0;
             }
             
             .hero-buttons {
-                justify-content: center;
+                justify-content: flex-start;
             }
             
             .countdown-item {
@@ -1213,21 +1289,21 @@
             }
             
             .footer-about {
-                text-align: center;
+                text-align: justify;
             }
             
             .footer-links {
                 margin-bottom: 30px;
-                text-align: center;
+                text-align: left;
             }
             
             .footer-links h5::after {
-                left: 50%;
-                transform: translateX(-50%);
+                left: 0;
+                transform: none;
             }
             
             .social-links {
-                justify-content: center;
+                justify-content: flex-start;
             }
             
             .testimonial-card {
@@ -1282,7 +1358,7 @@
             
             .testimonial-author {
                 flex-direction: column;
-                text-align: center;
+                text-align: left;
             }
             
             .testimonial-author img {
@@ -1319,78 +1395,146 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Header -->
-    <header class="main-header">
-        <nav class="navbar navbar-expand-lg navbar-light bg-white">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    <img src="logo.jpeg" alt="SkyAlpha HD">
+    <header class="main-header sticky-top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <img src="logo.jpeg" alt="SkyAlpha HD" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                  <span class="nav-link-inner">Home</span>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active-home" href="index.html">
-                                <span class="nav-link-inner">Home</span>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="summitsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Summits
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="summitsDropdown">
-                                <li><a class="dropdown-item" href="2024Summit.html">2024 Summit</a></li>
-                                <li><a class="dropdown-item" href="past-summits.html">All Summits</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="live.html">Live</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="eventDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Event
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="eventDropdown">
-                                <li><a class="dropdown-item" href="live.html">Live</a></li>
-                                <li><a class="dropdown-item" href="sessions.html">Sessions</a></li>
-                                <li><a class="dropdown-item" href="schedule.html">Schedule</a></li>
-                                <li><a class="dropdown-item" href="speakers.html">Speakers</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="universities.html">Universities</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="partnersDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Partners
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="partnersDropdown">
-                                <li><a class="dropdown-item" href="universities.html">Universities</a></li>
-                                <li><a class="dropdown-item" href="partners.html">Organizations</a></li>
-                                <li><a class="dropdown-item" href="sponsors.html">Sponsors</a></li>
-                                <li><a class="dropdown-item" href="collaborators.html">Collaborators</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="contactDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Contact
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="contactDropdown">
-                                <li><a class="dropdown-item" href="contact.html">Contact Us</a></li>
-                                <li><a class="dropdown-item" href="team.html">Our Team</a></li>
-                                <li><a class="dropdown-item" href="faq.html">FAQs</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
-                        </li>
-                    </ul>
-                    <a href="register.html" class="btn btn-primary ms-lg-3">Register Now</a>
-                </div>
-            </div>
-        </nav>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="summitsDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Summits
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="2024Summit.html"
+                      >2024 Summit</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="past-summits.html"
+                      >All Summits</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="live.html">Live</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="eventDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Event
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="live.html">Live</a></li>
+                  <li>
+                    <a class="dropdown-item" href="sessions.html">Sessions</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="schedule.html">Schedule</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="speakers.html">Speakers</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="universities.html">Universities</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="partnersDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Partners
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="universities.html"
+                      >Universities</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="partners.html"
+                      >Organizations</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="sponsors.html">Sponsors</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="collaborators.html"
+                      >Collaborators</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="contactDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Contact
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="contact.html">Contact Us</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="team.html">Our Team</a>
+                  </li>
+                  <li><a class="dropdown-item" href="faq.html">FAQs</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">about</a>
+              </li>
+              <a class="nav-link active-home" href="contact.html">
+                <span class="nav-link-inner">Contact Us</span>
+              </a>
+            </ul>
+            <a href="register.html" class="btn btn-primary ms-lg-3"
+              >Register Now</a
+            >
+          </div>
+        </div>
+      </nav>
     </header>
 
     <!-- Hero Section - Updated with 2025 Summit Info -->
@@ -1418,7 +1562,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
     <section class="live-section" id="live">
         <div class="container">
             <div class="row mb-5">
-                <div class="col-12 text-center">
+                <div class="col-12">
                     <h2 class="mb-3 section-title reveal">Live Stream</h2>
                     <p class="lead text-muted reveal" style="transition-delay: 0.1s;">Watch the current sessions happening right now</p>
                 </div>
@@ -1466,7 +1610,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
     <section class="sessions-section" id="sessions">
         <div class="container">
             <div class="row mb-5">
-                <div class="col-12 text-center">
+                <div class="col-12">
                     <h2 class="mb-3 section-title reveal">Featured Sessions</h2>
                     <p class="lead text-muted reveal" style="transition-delay: 0.1s;">Preview of planned sessions for 2025</p>
                 </div>
@@ -1523,7 +1667,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
     <section class="universities-section" id="universities">
         <div class="container">
             <div class="row mb-5">
-                <div class="col-12 text-center">
+                <div class="col-12">
                     <h2 class="mb-3 section-title reveal">Participating Institutions</h2>
                     <p class="lead text-muted reveal" style="transition-delay: 0.1s;">Our academic and organizational partners</p>
                 </div>
@@ -1572,7 +1716,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
     <section class="past-summits-section" id="past-summits">
         <div class="container">
             <div class="row mb-5">
-                <div class="col-12 text-center">
+                <div class="col-12">
                     <h2 class="mb-3 section-title reveal">Our Achievements</h2>
                     <p class="lead text-muted reveal" style="transition-delay: 0.1s;">Impact from previous summits</p>
                 </div>
