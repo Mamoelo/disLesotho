@@ -539,7 +539,7 @@
         .countdown-timer {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            padding: 40px;
+            padding: 30px;
             border-radius: 16px;
             text-align: center;
             box-shadow: 0 20px 50px rgba(0,0,0,0.15);
@@ -1086,29 +1086,11 @@
             }
         }
         
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
         
         @keyframes pulse {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(233, 30, 99, 0.7); }
             70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(233, 30, 99, 0); }
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(233, 30, 99, 0); }
-        }
-        
-        /* Floating elements */
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .floating-2 {
-            animation: float 5s ease-in-out infinite 1s;
-        }
-        
-        .floating-3 {
-            animation: float 7s ease-in-out infinite 0.5s;
         }
         
         /* Section titles */
@@ -1856,8 +1838,6 @@ We're championing the ethical use of AI to fight misinformation, empower digital
                         <h5>Summits</h5>
                         <ul>
                             <li><a href="2024Summit.html">2024 Summit</a></li>
-                            <li><a href="past-summits.html">Past Summits</a></li>
-                            <li><a href="2025Summit.html">2025 Summit</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1921,7 +1901,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         // Preloader
-        window.addEventListener('load', function() {
+       window.addEventListener('load', function() {
             const preloader = document.getElementById('preloader');
             setTimeout(function() {
                 preloader.style.opacity = '0';
@@ -1971,7 +1951,6 @@ We're championing the ethical use of AI to fight misinformation, empower digital
         
         window.addEventListener('scroll', revealOnScroll);
         window.addEventListener('load', revealOnScroll);
-
         // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('.main-header');
