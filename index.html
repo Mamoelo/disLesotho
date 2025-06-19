@@ -18,7 +18,7 @@
             --light-color: #f8f9fa;
             --dark-color: #212529;
             --animation-duration: 0.5s;
-            --nav-height: 80px;
+            --nav-height: 70px;
         }
         
         body {
@@ -28,6 +28,7 @@
             overflow-x: hidden;
             scroll-behavior: smooth;
             text-align: justify;
+            padding-top: var(--nav-height);
         }
         
         h1, h2, h3, h4, h5, h6 {
@@ -53,82 +54,131 @@
         }
 
         /* Header Styles */
-      .main-header {
-        background-color: white;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      }
+        .main-header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            height: var(--nav-height);
+            transition: all 0.3s ease;
+        }
 
-      .navbar-brand img {
-        height: 40px;
-      }
+        .navbar-brand img {
+            height: 40px;
+            transition: all 0.3s ease;
+        }
 
-      .nav-link {
-        font-weight: 600;
-        color: var(--primary-color);
-        padding: 10px 15px !important;
-      }
+        .scrolled .navbar-brand img {
+            height: 35px;
+        }
 
-      .nav-link:hover {
-        color: var(--secondary-color);
-      }
+        .nav-link {
+            font-weight: 600;
+            color: var(--primary-color);
+            padding: 8px 12px !important;
+        }
 
-      .dropdown-menu {
-        border: none;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        border-radius: 0;
-      }
+        .nav-link:hover {
+            color: var(--secondary-color);
+        }
 
-      .dropdown-item {
-        font-weight: 500;
-        padding: 8px 20px;
-      }
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 0;
+        }
 
-      .dropdown-item:hover {
-        background-color: rgba(123, 31, 162, 0.1);
-        color: var(--secondary-color);
-      }
+        .dropdown-item {
+            font-weight: 500;
+            padding: 8px 20px;
+        }
+
+        .dropdown-item:hover {
+            background-color: rgba(123, 31, 162, 0.1);
+            color: var(--secondary-color);
+        }
         
         /* Enhanced dropdown arrow styling */
         .nav-item.dropdown > .nav-link::after {
-        background: transparent !important;
-        padding: 0;
-        margin: 0;
-        box-shadow: none;
-        border-left: 6px solid transparent;
-        border-right: 6px solid transparent;
-        border-top: 6px solid var(--primary-color);
+            background: transparent !important;
+            padding: 0;
+            margin: 0;
+            box-shadow: none;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid var(--primary-color);
         }
 
         .nav-item.dropdown.show > .nav-link::after,
         .nav-link[aria-expanded="true"]::after {
-        background: transparent !important;
-        border-top-color: var(--secondary-color);
+            background: transparent !important;
+            border-top-color: var(--secondary-color);
         }
-
 
         /* Rotate arrow when dropdown is open */
         .nav-item.dropdown.show > .nav-link::after,
         .nav-link[aria-expanded="true"]::after {
-        transform: rotate(180deg);
-        border-top-color: var(--secondary-color); /* Arrow color when open */
+            transform: rotate(180deg);
+            border-top-color: var(--secondary-color); /* Arrow color when open */
         }
 
-    /* Mobile view adjustments */
-    @media (max-width: 991.98px) {
-        .navbar-nav .dropdown-toggle::after {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        
-        .navbar-nav .dropdown-toggle[aria-expanded="true"]::after {
-            transform: translateY(-50%) rotate(180deg);
-        }
-    }   
+        /* Mobile view adjustments */
+        @media (max-width: 991.98px) {
+            .navbar-nav .dropdown-toggle::after {
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            
             .navbar-nav .dropdown-toggle[aria-expanded="true"]::after {
                 transform: translateY(-50%) rotate(180deg);
             }
+            
+            .navbar-collapse {
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                max-height: calc(100vh - var(--nav-height));
+                overflow-y: auto;
+                transition: all 0.4s ease;
+                transform: translateY(-20px);
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+            }
+            
+            .navbar-collapse.show {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
+            
+            .nav-item {
+                margin: 5px 0;
+            }
+            
+            .nav-link {
+                padding: 12px 15px !important;
+                margin: 0;
+            }
+            
+            .dropdown-menu {
+                box-shadow: none;
+                border-left: 2px solid var(--secondary-color);
+                margin-left: 20px !important;
+                animation: none;
+                position: static !important;
+                transform: none !important;
+            }
+        }   
         
         /* Preloader */
         #preloader {
@@ -167,12 +217,12 @@
             overflow: hidden;
             border: none;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 10px 20px;
+            font-size: 0.9rem;
         }
         
         .btn-primary {
             background-color: var(--secondary-color);
-            padding: 12px 30px;
-            font-weight: 600;
             position: relative;
             overflow: hidden;
             z-index: 1;
@@ -208,7 +258,6 @@
         .btn-outline-primary {
             border: 2px solid var(--secondary-color);
             color: var(--secondary-color);
-            padding: 10px 25px;
             background: transparent;
         }
         
@@ -220,29 +269,9 @@
         }
         
         /* Header Styles - Enhanced Navbar */
-        .main-header {
-            background-color: white;
-            box-shadow: 0 2px 30px rgba(0,0,0,0.1);
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            height: var(--nav-height);
-        }
-        
         .main-header.scrolled {
             box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-            height: 70px;
-        }
-        
-        .navbar-brand img {
-            height: 40px;
-            transition: all 0.3s ease;
-        }
-        
-        .scrolled .navbar-brand img {
-            height: 35px;
+            height: 60px;
         }
         
         .navbar-toggler {
@@ -293,9 +322,6 @@
         }
         
         .nav-link {
-            font-weight: 600;
-            color: var(--primary-color);
-            padding: 10px 15px !important;
             position: relative;
             transition: all 0.3s ease;
             margin: 0 5px;
@@ -303,7 +329,6 @@
         }
         
         .nav-link:hover {
-            color: var(--secondary-color);
             background: rgba(123, 31, 162, 0.1);
         }
         
@@ -325,8 +350,6 @@
         
         /* Dropdown Menu - Enhanced */
         .dropdown-menu {
-            border: none;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             border-radius: 12px;
             padding: 10px 0;
             margin-top: 10px;
@@ -335,66 +358,17 @@
         }
         
         .dropdown-item {
-            padding: 10px 20px;
-            font-weight: 500;
             transition: all 0.3s ease;
             color: var(--dark-color);
         }
         
         .dropdown-item:hover {
-            background-color: rgba(123, 31, 162, 0.1);
-            color: var(--secondary-color);
             transform: translateX(5px);
         }
         
         .dropdown-item:active {
             background-color: var(--secondary-color);
             color: white;
-        }
-        
-        /* Mobile Menu */
-        @media (max-width: 991.98px) {
-            .navbar-collapse {
-                position: fixed;
-                top: var(--nav-height);
-                left: 0;
-                width: 100%;
-                background: white;
-                padding: 20px;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-                max-height: calc(100vh - var(--nav-height));
-                overflow-y: auto;
-                transition: all 0.4s ease;
-                transform: translateY(-20px);
-                opacity: 0;
-                visibility: hidden;
-                pointer-events: none;
-            }
-            
-            .navbar-collapse.show {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-                pointer-events: auto;
-            }
-            
-            .nav-item {
-                margin: 5px 0;
-            }
-            
-            .nav-link {
-                padding: 12px 15px !important;
-                margin: 0;
-            }
-            
-            .dropdown-menu {
-                box-shadow: none;
-                border-left: 2px solid var(--secondary-color);
-                margin-left: 20px !important;
-                animation: none;
-                position: static !important;
-                transform: none !important;
-            }
         }
         
         /* Hero Section - Enhanced with Particles */
@@ -404,7 +378,7 @@
             background-position: center;
             background-attachment: fixed;
             color: white;
-            padding: 180px 0 120px;
+            padding: 100px 0 80px;
             position: relative;
             overflow: hidden;
             min-height: 100vh;
@@ -429,7 +403,7 @@
         }
         
         .hero-section h1 {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 20px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
@@ -438,28 +412,27 @@
         }
         
         .hero-section .lead {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 300;
             margin-bottom: 30px;
             text-shadow: 0 1px 2px rgba(0,0,0,0.3);
             animation: fadeInUp 1s ease-out 0.2s forwards;
             opacity: 0;
-            max-width: 700px;
-            text-align: justify;
+            max-width: 100%;
         }
         
         .hero-badge {
             display: inline-block;
             background-color: var(--accent-color);
             color: white;
-            padding: 8px 25px;
+            padding: 8px 20px;
             border-radius: 50px;
             font-weight: 600;
             margin-bottom: 20px;
             animation: fadeIn 0.8s ease-out, pulse 2s infinite 1s;
             box-shadow: 0 8px 20px rgba(233, 30, 99, 0.3);
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             letter-spacing: 1px;
             text-align: center;
         }
@@ -470,8 +443,10 @@
         }
         
         .hero-buttons .btn {
-            margin-right: 15px;
-            margin-bottom: 15px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            font-size: 0.9rem;
         }
         
         /* Particles Background */
@@ -487,24 +462,24 @@
         /* Live Stream Section - Enhanced */
         .live-section {
             background-color: white;
-            padding: 100px 0;
+            padding: 60px 0;
             position: relative;
         }
         
         .live-badge {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 10px;
+            right: 10px;
             background-color: var(--accent-color);
             color: white;
-            padding: 8px 25px;
+            padding: 6px 15px;
             border-radius: 50px;
             font-weight: 600;
             z-index: 10;
             animation: pulse 2s infinite;
             box-shadow: 0 8px 20px rgba(233, 30, 99, 0.3);
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             letter-spacing: 1px;
         }
         
@@ -514,16 +489,11 @@
             height: 0;
             overflow: hidden;
             background-color: #000;
-            border-radius: 16px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-            transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 8px solid white;
-        }
-        
-        .video-container:hover {
-            transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1.02);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            border: 5px solid white;
+            margin-bottom: 20px;
         }
         
         .video-container iframe,
@@ -539,15 +509,15 @@
         .countdown-timer {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            padding: 30px;
-            border-radius: 16px;
+            padding: 20px;
+            border-radius: 12px;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border: 8px solid white;
+            border: 5px solid white;
             position: relative;
             overflow: hidden;
         }
@@ -571,34 +541,35 @@
         .countdown-container {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin: 20px 0;
+            gap: 10px;
+            margin: 15px 0;
             position: relative;
             z-index: 2;
+            flex-wrap: wrap;
         }
         
         .countdown-item {
             text-align: center;
-            min-width: 80px;
+            min-width: 60px;
         }
         
         .countdown-number {
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             font-weight: 800;
             color: white;
             line-height: 1;
             background: rgba(255,255,255,0.1);
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 8px;
             display: inline-block;
-            min-width: 70px;
+            min-width: 50px;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255,255,255,0.2);
         }
         
         .countdown-label {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: rgba(255,255,255,0.8);
             text-transform: uppercase;
             font-weight: 500;
@@ -607,7 +578,7 @@
         
         /* Featured Sessions - Enhanced with Owl Carousel */
         .sessions-section {
-            padding: 120px 0;
+            padding: 60px 0;
             background-color: #f8f9fa;
             position: relative;
             overflow: hidden;
@@ -615,11 +586,11 @@
         
         .session-card {
             border: none;
-            border-radius: 16px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             height: 100%;
             position: relative;
             z-index: 1;
@@ -627,29 +598,29 @@
         }
         
         .session-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
         
         .session-card .card-img-top {
-            height: 220px;
+            height: 180px;
             object-fit: cover;
             transition: all 0.5s ease;
         }
         
         .session-card:hover .card-img-top {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
         
         .session-card .card-body {
-            padding: 30px;
+            padding: 20px;
             position: relative;
         }
         
         .session-card .card-title {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             transition: color 0.3s ease;
         }
         
@@ -658,46 +629,46 @@
         }
         
         .session-card .university {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: var(--secondary-color);
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .session-card .date-time {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: #6c757d;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         
         .session-card .badge {
             font-weight: 500;
-            padding: 8px 15px;
+            padding: 6px 12px;
             border-radius: 50px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             letter-spacing: 0.5px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         
         /* Universities Section - Enhanced with Logos Carousel */
         .universities-section {
-            padding: 120px 0;
+            padding: 60px 0;
             background-color: white;
             position: relative;
         }
         
         .university-logo-container {
-            padding: 30px;
+            padding: 20px;
             transition: all 0.3s ease;
             text-align: center;
-            height: 150px;
+            height: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         
         .university-logo {
-            height: 80px;
+            height: 60px;
             width: auto;
             max-width: 100%;
             margin: 0 auto;
@@ -710,7 +681,7 @@
         .university-logo-container:hover .university-logo {
             filter: grayscale(0%) brightness(1);
             opacity: 1;
-            transform: scale(1.1);
+            transform: scale(1);
         }
         
         /* Owl Carousel Customization */
@@ -731,13 +702,13 @@
         
         .owl-carousel .owl-nav button {
             pointer-events: all;
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             background: white !important;
             border-radius: 50% !important;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
             color: var(--primary-color) !important;
-            font-size: 1.5rem !important;
+            font-size: 1.2rem !important;
             transition: all 0.3s ease;
         }
         
@@ -748,21 +719,21 @@
         }
         
         .owl-carousel .owl-nav button.owl-prev {
-            margin-left: -25px;
+            margin-left: -20px;
         }
         
         .owl-carousel .owl-nav button.owl-next {
-            margin-right: -25px;
+            margin-right: -20px;
         }
         
         .owl-dots {
-            margin-top: 30px !important;
+            margin-top: 20px !important;
         }
         
         .owl-theme .owl-dots .owl-dot span {
-            width: 12px;
-            height: 12px;
-            margin: 5px 7px;
+            width: 10px;
+            height: 10px;
+            margin: 5px 5px;
             background: rgba(123, 31, 162, 0.2);
             transition: all 0.3s ease;
         }
@@ -770,51 +741,51 @@
         .owl-theme .owl-dots .owl-dot.active span,
         .owl-theme .owl-dots .owl-dot:hover span {
             background: var(--secondary-color);
-            transform: scale(1.2);
+            transform: scale(1.1);
         }
         
         /* Past Summits - Enhanced */
         .past-summits-section {
-            padding: 120px 0;
+            padding: 60px 0;
             background-color: #f8f9fa;
             position: relative;
         }
         
         .summit-card {
             border: none;
-            border-radius: 16px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             position: relative;
             z-index: 1;
             background: white;
         }
         
         .summit-card:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
         
         .summit-card .card-img-top {
-            height: 220px;
+            height: 180px;
             object-fit: cover;
             transition: all 0.5s ease;
         }
         
         .summit-card:hover .card-img-top {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
         
         .summit-card .card-body {
-            padding: 30px;
+            padding: 20px;
         }
         
         .summit-card .card-title {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             transition: color 0.3s ease;
         }
         
@@ -824,13 +795,13 @@
         
         .summit-card .card-text {
             color: #6c757d;
-            margin-bottom: 15px;
-            text-align: justify;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
         }
         
         /* Testimonials - Enhanced */
         .testimonials-section {
-            padding: 120px 0;
+            padding: 60px 0;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
             position: relative;
@@ -839,37 +810,37 @@
         
         .testimonial-card {
             background-color: rgba(255,255,255,0.1);
-            border-radius: 16px;
-            padding: 40px;
+            border-radius: 12px;
+            padding: 25px;
             height: 100%;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.15);
             position: relative;
             z-index: 1;
+            margin-bottom: 20px;
         }
         
         .testimonial-card:hover {
             background-color: rgba(255,255,255,0.15);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
         
         .testimonial-card .quote {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             font-style: italic;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             position: relative;
-            line-height: 1.8;
-            text-align: justify;
+            line-height: 1.6;
         }
         
         .testimonial-card .quote::before {
             content: '"';
-            font-size: 4rem;
+            font-size: 3rem;
             position: absolute;
-            left: -20px;
-            top: -20px;
+            left: -15px;
+            top: -15px;
             opacity: 0.2;
             line-height: 1;
             font-family: Georgia, serif;
@@ -881,35 +852,35 @@
         }
         
         .testimonial-author img {
-            width: 70px;
-            height: 70px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            margin-right: 20px;
+            margin-right: 15px;
             object-fit: cover;
-            border: 3px solid rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.2);
             transition: all 0.3s ease;
         }
         
         .testimonial-card:hover .testimonial-author img {
             border-color: rgba(255,255,255,0.4);
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
         
         .author-name {
             font-weight: 700;
             margin-bottom: 5px;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
         }
         
         .author-title {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             opacity: 0.8;
             margin-bottom: 0;
         }
         
         /* CTA Section - Enhanced */
         .cta-section {
-            padding: 120px 0;
+            padding: 60px 0;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
             text-align: center;
@@ -918,116 +889,121 @@
         }
         
         .cta-section h2 {
-            font-size: 3rem;
+            font-size: 2rem;
             font-weight: 800;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             position: relative;
             z-index: 1;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
         
         .cta-section p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            max-width: 700px;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            max-width: 100%;
             margin-left: auto;
             margin-right: auto;
             position: relative;
             z-index: 1;
             opacity: 0.9;
-            text-align: justify;
+            padding: 0 15px;
         }
         
         .cta-buttons {
             position: relative;
             z-index: 1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
         }
         
         .cta-buttons .btn {
-            margin: 0 10px 15px;
+            margin: 0 5px 10px;
+            padding: 10px 20px;
+            font-size: 0.9rem;
         }
         
-        
-      /* Footer */
-      .main-footer {
-        background-color: var(--primary-color);
-        color: white;
-        padding: 60px 0 0;
-      }
+        /* Footer */
+        .main-footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 0 0;
+        }
 
-      .footer-logo {
-        height: 70px;
-        margin-bottom: 20px;
-        background-color: aliceblue;
-        border-radius: 20%;
-      }
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 15px;
+            background-color: aliceblue;
+            border-radius: 20%;
+            max-width: 100%;
+        }
 
-      .footer-about {
-        opacity: 0.7;
-        margin-bottom: 20px;
-      }
+        .footer-about {
+            opacity: 0.7;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
 
-      .footer-links h5 {
-        font-size: 1.1rem;
-        font-weight: 700;
-        margin-bottom: 20px;
-        color: white;
-      }
+        .footer-links h5 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+        }
 
-      .footer-links ul {
-        list-style: none;
-        padding: 0;
-      }
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
 
-      .footer-links li {
-        margin-bottom: 10px;
-      }
+        .footer-links li {
+            margin-bottom: 8px;
+        }
 
-      .footer-links a {
-        color: rgba(255, 255, 255, 0.7);
-        text-decoration: none;
-        transition: all 0.3s ease;
-      }
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
 
-      .footer-links a:hover {
-        color: var(--secondary-color);
-        padding-left: 5px;
-      }
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
 
-      .social-links a {
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        background-color: rgba(255, 255, 255, 0.1);
-        color: white;
-        border-radius: 50%;
-        text-align: center;
-        line-height: 40px;
-        margin-right: 10px;
-        transition: all 0.3s ease;
-      }
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
 
-      .social-links a:hover {
-        background-color: var(--secondary-color);
-        transform: translateY(-3px);
-      }
+        .social-links a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
 
-      .footer-bottom {
-        background-color: rgba(0, 0, 0, 0.2);
-        padding: 20px 0;
-        margin-top: 40px;
-      }
-      .footer-bottom {
-        background-color: rgba(0, 0, 0, 0.2);
-        padding: 20px 0;
-        margin-top: 40px;
-      }
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
 
-      /* Default mobile padding (small screens) */
-      .footer-bottom .container {
-        padding-left: 15px;
-        padding-right: 15px;
-      }
+        .footer-bottom {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 15px 0;
+            margin-top: 30px;
+            font-size: 0.8rem;
+        }
         
         /* Scroll reveal animation */
         .reveal {
@@ -1043,7 +1019,7 @@
         
         /* Custom scrollbar */
         ::-webkit-scrollbar {
-            width: 12px;
+            width: 8px;
         }
         
         ::-webkit-scrollbar-track {
@@ -1063,18 +1039,18 @@
         /* Back to top button - Enhanced */
         .back-to-top {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
             background: linear-gradient(45deg, var(--accent-color), var(--secondary-color));
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             opacity: 0;
             visibility: hidden;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -1089,13 +1065,35 @@
         
         .back-to-top:hover {
             transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        
+        /* Section titles */
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        .section-title.light::after {
+            background: linear-gradient(to right, white, rgba(255,255,255,0.5));
         }
         
         /* Responsive Adjustments */
-        @media (max-width: 1200px) {
+        @media (min-width: 576px) {
             .hero-section h1 {
-                font-size: 3rem;
+                font-size: 2.8rem;
             }
             
             .hero-section .lead {
@@ -1103,43 +1101,102 @@
             }
             
             .countdown-number {
+                font-size: 2rem;
+            }
+            
+            .session-card .card-title,
+            .summit-card .card-title {
+                font-size: 1.2rem;
+            }
+            
+            .cta-section h2 {
                 font-size: 2.2rem;
-                min-width: 60px;
             }
         }
         
-        @media (max-width: 992px) {
+        @media (min-width: 768px) {
             .hero-section {
-                padding: 150px 0 100px;
-                text-align: left;
+                padding: 120px 0 100px;
             }
             
             .hero-section h1 {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
             
             .hero-section .lead {
-                font-size: 1.2rem;
-                margin-left: 0;
-                margin-right: 0;
+                font-size: 1.4rem;
             }
             
-            .hero-buttons {
-                justify-content: flex-start;
-            }
-            
-            .countdown-item {
-                min-width: 70px;
+            .live-section,
+            .sessions-section,
+            .universities-section,
+            .past-summits-section,
+            .testimonials-section,
+            .cta-section {
+                padding: 80px 0;
             }
             
             .countdown-number {
-                font-size: 2rem;
-                min-width: 60px;
+                font-size: 2.2rem;
             }
             
-            .section-title::after {
-                bottom: -8px;
-                height: 3px;
+            .session-card .card-img-top,
+            .summit-card .card-img-top {
+                height: 200px;
+            }
+            
+            .session-card .card-title,
+            .summit-card .card-title {
+                font-size: 1.3rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 2.5rem;
+            }
+            
+            .footer-logo {
+                height: 70px;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .hero-section {
+                padding: 150px 0 120px;
+            }
+            
+            .hero-section h1 {
+                font-size: 3.5rem;
+            }
+            
+            .hero-section .lead {
+                font-size: 1.5rem;
+                max-width: 700px;
+            }
+            
+            .live-section,
+            .sessions-section,
+            .universities-section,
+            .past-summits-section,
+            .testimonials-section,
+            .cta-section {
+                padding: 100px 0;
+            }
+            
+            .countdown-number {
+                font-size: 2.5rem;
+            }
+            
+            .session-card .card-img-top,
+            .summit-card .card-img-top {
+                height: 220px;
+            }
+            
+            .cta-section h2 {
+                font-size: 3rem;
+            }
+            
+            .cta-section p {
+                max-width: 700px;
             }
             
             .footer-logo {
@@ -1147,133 +1204,18 @@
             }
         }
         
-        @media (max-width: 768px) {
-            .hero-section {
-                padding: 130px 0 80px;
-            }
-            
+        @media (min-width: 1200px) {
             .hero-section h1 {
-                font-size: 2.2rem;
+                font-size: 4rem;
             }
             
-            .countdown-container {
-                gap: 10px;
-            }
-            
-            .countdown-number {
-                font-size: 1.8rem;
-                padding: 10px;
-            }
-            
-            .countdown-label {
-                font-size: 0.8rem;
-            }
-            
-            .cta-section h2 {
-                font-size: 2.2rem;
-            }
-            
-            .cta-section p {
-                font-size: 1.1rem;
-            }
-            
-            .footer-logo {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            
-            .footer-about {
-                text-align: justify;
-            }
-            
-            .footer-links {
-                margin-bottom: 30px;
-                text-align: left;
-            }
-            
-            .footer-links h5::after {
-                left: 0;
-                transform: none;
-            }
-            
-            .social-links {
-                justify-content: flex-start;
-            }
-            
-            .testimonial-card {
-                padding: 30px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .hero-section {
-                padding: 120px 0 70px;
-            }
-            
-            .hero-section h1 {
-                font-size: 2rem;
-            }
-            
-            .hero-section .lead {
-                font-size: 1.1rem;
-            }
-            
-            .hero-badge {
-                font-size: 0.9rem;
-            }
-            
-            .countdown-item {
-                min-width: 60px;
-            }
-            
-            .countdown-number {
-                font-size: 1.5rem;
-                min-width: 50px;
-                padding: 8px;
-            }
-            
-            .countdown-label {
-                font-size: 0.7rem;
-            }
-            
-            .section-title::after {
-                width: 60px;
-                height: 2px;
-                bottom: -6px;
-            }
-            
-            .cta-section h2 {
-                font-size: 1.8rem;
-            }
-            
-            .cta-section p {
-                font-size: 1rem;
-            }
-            
-            .testimonial-author {
-                flex-direction: column;
-                text-align: left;
-            }
-            
-            .testimonial-author img {
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
-            
-            .footer-links li:hover {
-                transform: translateX(5px);
-            }
-            
-            .footer-links a:hover {
-                padding-left: 5px;
-            }
-            
-            .back-to-top {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-                bottom: 20px;
-                right: 20px;
+            .live-section,
+            .sessions-section,
+            .universities-section,
+            .past-summits-section,
+            .testimonials-section,
+            .cta-section {
+                padding: 120px 0;
             }
         }
     </style>
@@ -1293,7 +1235,7 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container">
           <a class="navbar-brand" href="index.html">
-            <img src="logo.jpeg" alt="SkyAlpha HD" />
+            <img src="logo.jpeg" alt="SkyAlpha HD" class="img-fluid" />
           </a>
           <button
             class="navbar-toggler"
@@ -1419,9 +1361,11 @@
               <li class="nav-item">
                 <a class="nav-link" href="about.html">about</a>
               </li>
-              <a class="nav-link active-home" href="contact.html">
-                <span class="nav-link-inner">Contact Us</span>
-              </a>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">
+                  <span class="nav-link-inner">Contact Us</span>
+                </a>
+              </li>
             </ul>
             <a href="register.html" class="btn btn-primary ms-lg-3"
               >Register Now</a
@@ -1455,7 +1399,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
     <!-- Live Stream Section - Updated for 2025 -->
     <section class="live-section" id="live">
         <div class="container">
-            <div class="row mb-5">
+            <div class="row mb-4">
                 <div class="col-12">
                     <h2 class="mb-3 section-title reveal">Live Stream</h2>
                     <p class="lead text-muted reveal" style="transition-delay: 0.1s;">Watch the current sessions happening right now</p>
@@ -1464,7 +1408,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
             
             <div class="row">
                 <div class="col-lg-8 mb-4 mb-lg-0 reveal">
-                    <div class="video-container floating">
+                    <div class="video-container">
                         <div class="live-badge">
                             <i class="fas fa-circle me-2"></i> LIVE NOW
                         </div>
@@ -1472,8 +1416,8 @@ We're championing the ethical use of AI to fight misinformation, empower digital
                     </div>
                 </div> 
                 <div class="col-lg-4 reveal" style="transition-delay: 0.2s;">
-                    <div class="countdown-timer floating-2">
-                        <h4 class="mb-4">Next Session Starts In:</h4>
+                    <div class="countdown-timer">
+                        <h4 class="mb-3">Next Session Starts In:</h4>
                         <div class="countdown-container">
                             <div class="countdown-item">
                                 <div class="countdown-number" id="days">00</div>
@@ -1488,11 +1432,11 @@ We're championing the ethical use of AI to fight misinformation, empower digital
                                 <div class="countdown-label">Minutes</div>
                             </div>
                         </div>
-                        <div class="mt-4">
-                            <h5 class="mb-3">Up Next:</h5>
+                        <div class="mt-3">
+                            <h5 class="mb-2">Up Next:</h5>
                             <p class="mb-1"><strong>Digital Transformation in Higher Education</strong></p>
-                            <p class="mb-3">Dr. Thabo Mokoena, National University of Lesotho</p>
-                            <a href="event.ics" download class="btn btn-outline-light ">Add to Calendar</a>
+                            <p class="mb-2">Dr. Thabo Mokoena, National University of Lesotho</p>
+                            <a href="event.ics" download class="btn btn-outline-light btn-sm">Add to Calendar</a>
                         </div>
                     </div>
                 </div>
@@ -1503,7 +1447,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
     <!-- Featured Sessions - Updated with 2025 Speakers -->
     <section class="sessions-section" id="sessions">
         <div class="container">
-            <div class="row mb-5">
+            <div class="row mb-4">
                 <div class="col-12">
                     <h2 class="mb-3 section-title reveal">Featured Sessions</h2>
                     <p class="lead text-muted reveal" style="transition-delay: 0.1s;">Preview of planned sessions for 2025</p>
@@ -1511,7 +1455,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
             </div>
             
             <div class="row">
-                <div class="col-md-6 col-lg-4 reveal">
+                <div class="col-md-6 col-lg-4 mb-4 reveal">
                     <div class="card session-card">
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="AI Session">
                         <div class="card-body">
@@ -1519,12 +1463,12 @@ We're championing the ethical use of AI to fight misinformation, empower digital
                             <h5 class="card-title">AI Talent and Higher Education</h5>
                             <p class="university">Prof. Mosotho George, NUL</p>
                             <p class="date-time">Day 1, 11:00 AM - 12:30 PM</p>
-                            <a href="speakers.html#george" class="btn btn-outline-primary">Speaker Profile</a>
+                            <a href="speakers.html#george" class="btn btn-outline-primary btn-sm">Speaker Profile</a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.1s;">
+                <div class="col-md-6 col-lg-4 mb-4 reveal" style="transition-delay: 0.1s;">
                     <div class="card session-card">
                         <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Policy Session">
                         <div class="card-body">
@@ -1532,12 +1476,12 @@ We're championing the ethical use of AI to fight misinformation, empower digital
                             <h5 class="card-title">Policy Foundations for AI</h5>
                             <p class="university">Mr Kanono Ramashamole, MICSTI</p>
                             <p class="date-time">Day 1, 2:00 PM - 3:30 PM</p>
-                            <a href="speakers.html#ramashamole" class="btn btn-outline-primary">Speaker Profile</a>
+                            <a href="speakers.html#ramashamole" class="btn btn-outline-primary btn-sm">Speaker Profile</a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.2s;">
+                <div class="col-md-6 col-lg-4 mb-4 reveal" style="transition-delay: 0.2s;">
                     <div class="card session-card">
                         <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Ethics Session">
                         <div class="card-body">
@@ -1545,13 +1489,13 @@ We're championing the ethical use of AI to fight misinformation, empower digital
                             <h5 class="card-title">Ethical AI and Global Partnerships</h5>
                             <p class="university">H.E. Harry MacDonald</p>
                             <p class="date-time">Day 2, 9:00 AM - 10:30 AM</p>
-                            <a href="speakers.html#macdonald" class="btn btn-outline-primary">Speaker Profile</a>
+                            <a href="speakers.html#macdonald" class="btn btn-outline-primary btn-sm">Speaker Profile</a>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="text-center mt-4 reveal" style="transition-delay: 0.3s;">
+            <div class="text-center mt-3 reveal" style="transition-delay: 0.3s;">
                 <a href="schedule.html" class="btn btn-primary">View Full Schedule</a>
             </div>
         </div>
@@ -1560,7 +1504,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
     <!-- Participating Universities - Updated with actual partners -->
     <section class="universities-section" id="universities">
         <div class="container">
-            <div class="row mb-5">
+            <div class="row mb-4">
                 <div class="col-12">
                     <h2 class="mb-3 section-title reveal">Participating Institutions</h2>
                     <p class="lead text-muted reveal" style="transition-delay: 0.1s;">Our academic and organizational partners</p>
@@ -1600,7 +1544,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
                 </div>
             </div>
             
-            <div class="text-center mt-4 reveal" style="transition-delay: 0.6s;">
+            <div class="text-center mt-3 reveal" style="transition-delay: 0.6s;">
                 <a href="partners.html" class="btn btn-outline-primary">See All Partners</a>
             </div>
         </div>
@@ -1609,7 +1553,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
     <!-- Past Summits - Updated with actual achievements -->
     <section class="past-summits-section" id="past-summits">
         <div class="container">
-            <div class="row mb-5">
+            <div class="row mb-4">
                 <div class="col-12">
                     <h2 class="mb-3 section-title reveal">Our Achievements</h2>
                     <p class="lead text-muted reveal" style="transition-delay: 0.1s;">Impact from previous summits</p>
@@ -1617,7 +1561,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
             </div>
             
             <div class="row">
-                <div class="col-md-6 col-lg-4 reveal">
+                <div class="col-md-6 col-lg-4 mb-4 reveal">
                     <div class="card summit-card">
                         <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Summit Impact">
                         <div class="card-body">
@@ -1631,7 +1575,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
                     </div>
                 </div>
                 
-                <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.1s;">
+                <div class="col-md-6 col-lg-4 mb-4 reveal" style="transition-delay: 0.1s;">
                     <div class="card summit-card">
                         <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Advocacy">
                         <div class="card-body">
@@ -1645,7 +1589,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
                     </div>
                 </div>
                 
-                <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.2s;">
+                <div class="col-md-6 col-lg-4 mb-4 reveal" style="transition-delay: 0.2s;">
                     <div class="card summit-card">
                         <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Collaborations">
                         <div class="card-body">
@@ -1665,7 +1609,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
     <!-- Testimonials - Updated with actual quotes -->
     <section class="testimonials-section">
         <div class="container">
-            <div class="row mb-5">
+            <div class="row mb-4">
                 <div class="col-12 text-center">
                     <h2 class="mb-3 section-title light reveal">What People Are Saying</h2>
                     <p class="lead opacity-75 reveal" style="transition-delay: 0.1s;">Hear from past attendees and participants</p>
@@ -1674,7 +1618,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
             
             <div class="row">
                 <div class="col-md-4 mb-4 reveal">
-                    <div class="testimonial-card floating">
+                    <div class="testimonial-card">
                         <div class="quote">"The summit has been lauded as a cornerstone for digital literacy advancement in Lesotho, earning national awards."</div>
                         <div class="testimonial-author">
                             <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Participant">
@@ -1687,7 +1631,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
                 </div>
                 
                 <div class="col-md-4 mb-4 reveal" style="transition-delay: 0.1s;">
-                    <div class="testimonial-card floating-2">
+                    <div class="testimonial-card">
                         <div class="quote">"Journalists and content creators reported improved accuracy and ethical reporting practices post-training."</div>
                         <div class="testimonial-author">
                             <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Media Professional">
@@ -1700,7 +1644,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
                 </div>
                 
                 <div class="col-md-4 mb-4 reveal" style="transition-delay: 0.2s;">
-                    <div class="testimonial-card floating-3">
+                    <div class="testimonial-card">
                         <div class="quote">"Government and private sector partners now actively support digital transformation policies influenced by summit themes."</div>
                         <div class="testimonial-author">
                             <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Government Official">
@@ -1720,7 +1664,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
         <div class="container">
             <h2 class="reveal">Ready to Join the 2025 Digital Revolution?</h2>
             <p class="reveal" style="transition-delay: 0.1s;">Register now for the Digital Innovators Summit 2025 and be part of shaping Lesotho's digital future.</p>
-            <div class="d-flex flex-wrap justify-content-center gap-3 cta-buttons">
+            <div class="cta-buttons">
                 <a href="register.html" class="btn btn-light btn-lg reveal" style="transition-delay: 0.2s;">Register Now</a>
                 <a href="contact.html" class="btn btn-outline-light btn-lg reveal" style="transition-delay: 0.3s;">Contact Us</a>
             </div>
@@ -1733,7 +1677,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
             <div class="row">
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <a href="https://www.skyalphahd.com" target="_blank" rel="noopener noreferrer">
-                        <img src="images/logos/skyalpha.png" alt="SkyAlpha HD" class="footer-logo">
+                        <img src="images/logos/skyalpha.png" alt="SkyAlpha HD" class="footer-logo img-fluid">
                     </a>
                     <p class="footer-about">Aligned with Lesotho's National Digital Transformation Strategy, the Digital Innovators Summit is a movement toward creating a digitally empowered society.</p>
                     <div class="social-links">
@@ -1813,7 +1757,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         // Preloader
-       window.addEventListener('load', function() {
+        window.addEventListener('load', function() {
             const preloader = document.getElementById('preloader');
             setTimeout(function() {
                 preloader.style.opacity = '0';
@@ -1850,19 +1794,17 @@ We're championing the ethical use of AI to fight misinformation, empower digital
             for (let i = 0; i < reveals.length; i++) {
                 const windowHeight = window.innerHeight;
                 const revealTop = reveals[i].getBoundingClientRect().top;
-                const revealPoint = 150;
+                const revealPoint = 100;
                 
                 if (revealTop < windowHeight - revealPoint) {
                     reveals[i].classList.add('active');
-                } else {
-                    // Optional: Remove active class when element is out of view
-                    // reveals[i].classList.remove('active');
                 }
             }
         }
         
         window.addEventListener('scroll', revealOnScroll);
         window.addEventListener('load', revealOnScroll);
+        
         // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('.main-header');
@@ -1924,7 +1866,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     // Calculate offset considering fixed header
-                    const offset = 80;
+                    const offset = 70;
                     const elementPosition = targetElement.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - offset;
                     
@@ -1975,7 +1917,7 @@ We're championing the ethical use of AI to fight misinformation, empower digital
                 particlesJS('particles-js', {
                     "particles": {
                         "number": {
-                            "value": 80,
+                            "value": 60,
                             "density": {
                                 "enable": true,
                                 "value_area": 800
