@@ -12,364 +12,129 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <style>
         :root {
-            --primary-color: #4a148c; /* Deep purple */
-            --secondary-color: #7b1fa2; /* Medium purple */
-            --accent-color: #e91e63; /* Pink accent */
-            --light-color: #f8f9fa;
-            --dark-color: #212529;
-            --animation-duration: 0.5s;
-            --nav-height: 70px;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: #333;
-            line-height: 1.6;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-            text-align: justify;
-            padding-top: var(--nav-height);
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-            font-family: 'Poppins', sans-serif;
-            text-align: left;
-        }
-        
-        .bg-primary {
-            background-color: var(--primary-color) !important;
-        }
-        
-        .bg-secondary {
-            background-color: var(--secondary-color) !important;
-        }
-        
-        .text-primary {
-            color: var(--primary-color) !important;
-        }
-        
-        .text-secondary {
-            color: var(--secondary-color) !important;
-        }
+                 --primary-color: #4a148c; /* Deep purple */
+        --secondary-color: #7b1fa2; /* Medium purple */
+        --accent-color: #e91e63; /* Pink accent */
+        --light-color: #f8f9fa;
+        --dark-color: #212529;
+      }
 
-        /* Header Styles */
-        .main-header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            height: var(--nav-height);
-            transition: all 0.3s ease;
-        }
+      body {
+        font-family: "Roboto", sans-serif;
+        color: #333;
+        line-height: 1.6;
+      }
 
-        .navbar-brand img {
-            height: 40px;
-            transition: all 0.3s ease;
-        }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 700;
+      }
 
-        .scrolled .navbar-brand img {
-            height: 35px;
-        }
+      .bg-primary {
+        background-color: var(--primary-color) !important;
+      }
 
-        .nav-link {
-            font-weight: 600;
-            color: var(--primary-color);
-            padding: 8px 12px !important;
-        }
+      .bg-secondary {
+        background-color: var(--secondary-color) !important;
+      }
 
-        .nav-link:hover {
-            color: var(--secondary-color);
-        }
+      .text-primary {
+        color: var(--primary-color) !important;
+      }
 
-        .dropdown-menu {
-            border: none;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 0;
-        }
+      .text-secondary {
+        color: var(--secondary-color) !important;
+      }
 
-        .dropdown-item {
-            font-weight: 500;
-            padding: 8px 20px;
-        }
+      .btn-primary {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        padding: 10px 25px;
+        font-weight: 600;
+      }
 
-        .dropdown-item:hover {
-            background-color: rgba(123, 31, 162, 0.1);
-            color: var(--secondary-color);
-        }
-        
-        /* Enhanced dropdown arrow styling */
-        .nav-item.dropdown > .nav-link::after {
-            background: transparent !important;
-            padding: 0;
-            margin: 0;
-            box-shadow: none;
-            border-left: 6px solid transparent;
-            border-right: 6px solid transparent;
-            border-top: 6px solid var(--primary-color);
-        }
+      .btn-primary:hover {
+        background-color: #6a1b9a;
+        border-color: #6a1b9a;
+      }
 
-        .nav-item.dropdown.show > .nav-link::after,
-        .nav-link[aria-expanded="true"]::after {
-            background: transparent !important;
-            border-top-color: var(--secondary-color);
-        }
+      .btn-outline-primary {
+        border-color: var(--secondary-color);
+        color: var(--secondary-color);
+        font-weight: 600;
+      }
 
-        /* Rotate arrow when dropdown is open */
-        .nav-item.dropdown.show > .nav-link::after,
-        .nav-link[aria-expanded="true"]::after {
-            transform: rotate(180deg);
-            border-top-color: var(--secondary-color); /* Arrow color when open */
-        }
+      .btn-outline-primary:hover {
+        background-color: var(--secondary-color);
+        color: white;
+      }
 
-        /* Mobile view adjustments */
-        @media (max-width: 991.98px) {
-            .navbar-nav .dropdown-toggle::after {
-                position: absolute;
-                right: 15px;
-                top: 50%;
-                transform: translateY(-50%);
-            }
-            
-            .navbar-nav .dropdown-toggle[aria-expanded="true"]::after {
-                transform: translateY(-50%) rotate(180deg);
-            }
-            
-            .navbar-collapse {
-                position: fixed;
-                top: var(--nav-height);
-                left: 0;
-                width: 100%;
-                background: white;
-                padding: 20px;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-                max-height: calc(100vh - var(--nav-height));
-                overflow-y: auto;
-                transition: all 0.4s ease;
-                transform: translateY(-20px);
-                opacity: 0;
-                visibility: hidden;
-                pointer-events: none;
-            }
-            
-            .navbar-collapse.show {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-                pointer-events: auto;
-            }
-            
-            .nav-item {
-                margin: 5px 0;
-            }
-            
-            .nav-link {
-                padding: 12px 15px !important;
-                margin: 0;
-            }
-            
-            .dropdown-menu {
-                box-shadow: none;
-                border-left: 2px solid var(--secondary-color);
-                margin-left: 20px !important;
-                animation: none;
-                position: static !important;
-                transform: none !important;
-            }
-        }   
-        
-        /* Preloader */
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--primary-color);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.5s ease;
-        }
-        
-        .loader {
-            width: 48px;
-            height: 48px;
-            border: 5px solid rgba(255,255,255,0.2);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 1s ease-in-out infinite;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        /* Buttons */
-        .btn {
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            position: relative;
-            overflow: hidden;
-            border: none;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            padding: 10px 20px;
-            font-size: 0.9rem;
-        }
-        
-        .btn-primary {
-            background-color: var(--secondary-color);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .btn-primary:hover {
-            background-color: #6a1b9a;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-        }
-        
-        .btn-primary:active {
-            transform: translateY(1px);
-        }
-        
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, var(--accent-color), var(--secondary-color));
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .btn-primary:hover::before {
-            opacity: 1;
-        }
-        
-        .btn-outline-primary {
-            border: 2px solid var(--secondary-color);
-            color: var(--secondary-color);
-            background: transparent;
-        }
-        
-        .btn-outline-primary:hover {
-            background-color: var(--secondary-color);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-        }
-        
-        /* Header Styles - Enhanced Navbar */
-        .main-header.scrolled {
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-            height: 60px;
-        }
-        
-        .navbar-toggler {
-            border: none;
-            padding: 0.5rem;
-            outline: none !important;
-            box-shadow: none !important;
-        }
-        
-        .navbar-toggler-icon {
-            background-image: none;
-            position: relative;
-            width: 24px;
-            height: 2px;
-            background-color: var(--primary-color);
-            transition: all 0.3s ease;
-        }
-        
-        .navbar-toggler-icon::before,
-        .navbar-toggler-icon::after {
-            content: '';
-            position: absolute;
-            width: 24px;
-            height: 2px;
-            background-color: var(--primary-color);
-            left: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .navbar-toggler-icon::before {
-            transform: translateY(-6px);
-        }
-        
-        .navbar-toggler-icon::after {
-            transform: translateY(6px);
-        }
-        
-        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
-            background-color: transparent;
-        }
-        
-        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
-            transform: rotate(45deg);
-        }
-        
-        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
-            transform: rotate(-45deg);
-        }
-        
-        .nav-link {
-            position: relative;
-            transition: all 0.3s ease;
-            margin: 0 5px;
-            border-radius: 50px;
-        }
-        
-        .nav-link:hover {
-            background: rgba(123, 31, 162, 0.1);
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 8px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--secondary-color);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-        
-        .nav-link:hover::after {
-            width: 40%;
-        }
-        
-        /* Dropdown Menu - Enhanced */
-        .dropdown-menu {
-            border-radius: 12px;
-            padding: 10px 0;
-            margin-top: 10px;
-            animation: fadeIn 0.3s ease-out;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-        
-        .dropdown-item {
-            transition: all 0.3s ease;
-            color: var(--dark-color);
-        }
-        
-        .dropdown-item:hover {
-            transform: translateX(5px);
-        }
-        
-        .dropdown-item:active {
-            background-color: var(--secondary-color);
-            color: white;
-        }
+      /* Header Styles */
+      .main-header {
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar-brand img {
+        height: 40px;
+      }
+
+      .nav-link {
+        font-weight: 600;
+        color: var(--primary-color);
+        padding: 10px 15px !important;
+      }
+
+      .nav-link:hover {
+        color: var(--secondary-color);
+      }
+
+      .dropdown-menu {
+        border: none;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 0;
+      }
+
+      .dropdown-item {
+        font-weight: 500;
+        padding: 8px 20px;
+      }
+
+      .dropdown-item:hover {
+        background-color: rgba(123, 31, 162, 0.1);
+        color: var(--secondary-color);
+      }
+      /* Custom Active State for Home */
+      .nav-link.active-home {
+        position: relative;
+        color: var(--primary-color) !important;
+      }
+
+      .nav-link.active-home .nav-link-inner {
+        position: relative;
+        display: inline-block;
+      }
+
+      .nav-link.active-home .nav-link-inner::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--secondary-color);
+        transform: scaleX(1);
+        transition: transform 0.3s ease;
+      }
+
+      /* Hover effect for other nav items */
+      .nav-link:not(.active-home):hover {
+        color: var(--secondary-color) !important;
+      } 
         
         /* Hero Section - Enhanced with Particles */
         .hero-section {
@@ -1230,12 +995,12 @@
     <button class="back-to-top">
         <i class="fas fa-arrow-up"></i>
     </button>
-
+<!-- Header -->
     <header class="main-header sticky-top">
       <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container">
           <a class="navbar-brand" href="index.html">
-            <img src="logo.jpeg" alt="SkyAlpha HD" class="img-fluid" />
+            <img src="logo.jpeg" alt="SkyAlpha HD" />
           </a>
           <button
             class="navbar-toggler"
@@ -1271,6 +1036,7 @@
                       >2024 Summit</a
                     >
                   </li>
+                  <li><hr class="dropdown-divider" /></li>
                   <li>
                     <a class="dropdown-item" href="past-summits.html"
                       >All Summits</a
@@ -1362,8 +1128,8 @@
                 <a class="nav-link" href="about.html">about</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="contact.html">
-                  <span class="nav-link-inner">Contact Us</span>
+                <a class="nav-link active-home" href="speakers.html">
+                  <span class="nav-link-inner">Speakers</span>
                 </a>
               </li>
             </ul>
@@ -1514,22 +1280,22 @@ We're championing the ethical use of AI to fight misinformation, empower digital
             <div class="owl-carousel owl-theme">
                 <div class="item reveal">
                     <div class="university-logo-container">
-                        <img src="https://via.placeholder.com/150x80?text=NUL" alt="National University of Lesotho" class="university-logo">
+                        <img src='images/logos/NUL_LOGO.png' alt="National University of Lesotho" class="university-logo">
                     </div>
                 </div>
                 <div class="item reveal" style="transition-delay: 0.1s;">
                     <div class="university-logo-container">
-                        <img src="https://via.placeholder.com/150x80?text=Botho" alt="Botho University" class="university-logo">
+                        <img src='images/logos/botho uni.avif' alt="Botho University" class="university-logo">
                     </div>
                 </div>
                 <div class="item reveal" style="transition-delay: 0.2s;">
                     <div class="university-logo-container">
-                        <img src="https://via.placeholder.com/150x80?text=Limkokwing" alt="Limkokwing University" class="university-logo">
+                        <img src='images/logos/luct logo.webp' alt="Limkokwing University" class="university-logo">
                     </div>
                 </div>
                 <div class="item reveal" style="transition-delay: 0.3s;">
                     <div class="university-logo-container">
-                        <img src="images/logos/" alt="American Corner" class="university-logo">
+                        <img src="images/logos/american-corner.png" alt="American Corner" class="university-logo">
                     </div>
                 </div>
                 <div class="item reveal" style="transition-delay: 0.4s;">
@@ -1563,13 +1329,12 @@ We're championing the ethical use of AI to fight misinformation, empower digital
             <div class="row">
                 <div class="col-md-6 col-lg-4 mb-4 reveal">
                     <div class="card summit-card">
-                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Summit Impact">
+                        <img src='images/people/bg.jpg' class="card-img-top" alt="Summit Impact">
                         <div class="card-body">
                             <h5 class="card-title">Broad Reach</h5>
                             <p class="card-text">Engaged 500+ participants from leading universities including NUL, Botho University, and Limkokwing.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <small class="text-muted">30% implemented digital tools</small>
-                                <a href="past-summits.html" class="btn btn-sm btn-primary">Learn More</a>
                             </div>
                         </div>
                     </div>
@@ -1577,13 +1342,12 @@ We're championing the ethical use of AI to fight misinformation, empower digital
                 
                 <div class="col-md-6 col-lg-4 mb-4 reveal" style="transition-delay: 0.1s;">
                     <div class="card summit-card">
-                        <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Advocacy">
+                        <img src='images/people/bg2.jpg' class="card-img-top" alt="Advocacy">
                         <div class="card-body">
                             <h5 class="card-title">Advocacy Impact</h5>
                             <p class="card-text">Participants have actively led campaigns against misinformation using AI tools from the summit.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <small class="text-muted">Improved reporting practices</small>
-                                <a href="past-summits.html" class="btn btn-sm btn-primary">Learn More</a>
                             </div>
                         </div>
                     </div>
@@ -1591,13 +1355,12 @@ We're championing the ethical use of AI to fight misinformation, empower digital
                 
                 <div class="col-md-6 col-lg-4 mb-4 reveal" style="transition-delay: 0.2s;">
                     <div class="card summit-card">
-                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Collaborations">
+                        <img src="images/people/bg3.jpg" class="card-img-top" alt="Collaborations">
                         <div class="card-body">
                             <h5 class="card-title">Established Collaborations</h5>
                             <p class="card-text">MOUs with universities ensure continuity in digital education initiatives.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <small class="text-muted">Government & private support</small>
-                                <a href="past-summits.html" class="btn btn-sm btn-primary">Learn More</a>
                             </div>
                         </div>
                     </div>
