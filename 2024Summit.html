@@ -9,31 +9,58 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
-        :root {
+          :root {
             --primary-color: #4a148c; /* Deep purple */
             --secondary-color: #7b1fa2; /* Medium purple */
             --accent-color: #e91e63; /* Pink accent */
             --light-color: #f8f9fa;
             --dark-color: #212529;
-            --transition-speed: 0.3s;
+            --animation-duration: 0.5s;
+            --nav-height: 70px;
         }
-
+        
         body {
-            font-family: 'Roboto', sans-serif;
-            background: whitesmoke;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            text-align: justify;
+            padding-top: var(--nav-height);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            text-align: left;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-color) !important;
+        }
+        
+        .bg-secondary {
+            background-color: var(--secondary-color) !important;
+        }
+        
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+        
+        .text-secondary {
+            color: var(--secondary-color) !important;
         }
 
         /* Header Styles */
         .main-header {
             background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            height: var(--nav-height);
             transition: all 0.3s ease;
-        }
-
-        .main-header.scrolled {
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
         }
 
         .navbar-brand img {
@@ -41,18 +68,272 @@
             transition: all 0.3s ease;
         }
 
+        .scrolled .navbar-brand img {
+            height: 35px;
+        }
+
         .nav-link {
             font-weight: 600;
             color: var(--primary-color);
-            padding: 10px 15px !important;
-            position: relative;
-            transition: all 0.3s ease;
+            padding: 8px 12px !important;
         }
 
+        .nav-link:hover {
+            color: var(--secondary-color);
+        }
+
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 0;
+        }
+
+        .dropdown-item {
+            font-weight: 500;
+            padding: 8px 20px;
+        }
+
+        .dropdown-item:hover {
+            background-color: rgba(123, 31, 162, 0.1);
+            color: var(--secondary-color);
+        }
+        
+        /* Enhanced dropdown arrow styling */
+        .nav-item.dropdown > .nav-link::after {
+            background: transparent !important;
+            padding: 0;
+            margin: 0;
+            box-shadow: none;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid var(--primary-color);
+        }
+
+        .nav-item.dropdown.show > .nav-link::after,
+        .nav-link[aria-expanded="true"]::after {
+            background: transparent !important;
+            border-top-color: var(--secondary-color);
+        }
+
+        /* Rotate arrow when dropdown is open */
+        .nav-item.dropdown.show > .nav-link::after,
+        .nav-link[aria-expanded="true"]::after {
+            transform: rotate(180deg);
+            border-top-color: var(--secondary-color); /* Arrow color when open */
+        }
+
+        /* Mobile view adjustments */
+        @media (max-width: 991.98px) {
+            .navbar-nav .dropdown-toggle::after {
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            
+            .navbar-nav .dropdown-toggle[aria-expanded="true"]::after {
+                transform: translateY(-50%) rotate(180deg);
+            }
+            
+            .navbar-collapse {
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                max-height: calc(100vh - var(--nav-height));
+                overflow-y: auto;
+                transition: all 0.4s ease;
+                transform: translateY(-20px);
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+            }
+            
+            .navbar-collapse.show {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
+            
+            .nav-item {
+                margin: 5px 0;
+            }
+            
+            .nav-link {
+                padding: 12px 15px !important;
+                margin: 0;
+            }
+            
+            .dropdown-menu {
+                box-shadow: none;
+                border-left: 2px solid var(--secondary-color);
+                margin-left: 20px !important;
+                animation: none;
+                position: static !important;
+                transform: none !important;
+            }
+        }   
+        
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-color);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Buttons */
+        .btn {
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-primary:hover {
+            background-color: #6a1b9a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(1px);
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--accent-color), var(--secondary-color));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .btn-primary:hover::before {
+            opacity: 1;
+        }
+        
+        .btn-outline-primary {
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+            background: transparent;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Header Styles - Enhanced Navbar */
+        .main-header.scrolled {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            height: 60px;
+        }
+        
+        .navbar-toggler {
+            border: none;
+            padding: 0.5rem;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+        
+        .navbar-toggler-icon {
+            background-image: none;
+            position: relative;
+            width: 24px;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-toggler-icon::before,
+        .navbar-toggler-icon::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 2px;
+            background-color: var(--primary-color);
+            left: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-toggler-icon::before {
+            transform: translateY(-6px);
+        }
+        
+        .navbar-toggler-icon::after {
+            transform: translateY(6px);
+        }
+        
+        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+            background-color: transparent;
+        }
+        
+        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+            transform: rotate(45deg);
+        }
+        
+        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+            transform: rotate(-45deg);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+            margin: 0 5px;
+            border-radius: 50px;
+        }
+        
+        .nav-link:hover {
+            background: rgba(123, 31, 162, 0.1);
+        }
+        
         .nav-link::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: 8px;
             left: 50%;
             width: 0;
             height: 2px;
@@ -60,9 +341,32 @@
             transition: all 0.3s ease;
             transform: translateX(-50%);
         }
-
+        
         .nav-link:hover::after {
-            width: 100%;
+            width: 40%;
+        }
+        
+        /* Dropdown Menu - Enhanced */
+        .dropdown-menu {
+            border-radius: 12px;
+            padding: 10px 0;
+            margin-top: 10px;
+            animation: fadeIn 0.3s ease-out;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .dropdown-item {
+            transition: all 0.3s ease;
+            color: var(--dark-color);
+        }
+        
+        .dropdown-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .dropdown-item:active {
+            background-color: var(--secondary-color);
+            color: white;
         }
 
         /* Button Styles */
@@ -392,126 +696,87 @@
         transform: translateY(-3px);
         box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
-/* Footer */
-.main-footer {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 80px 0 0;
-            position: relative;
-        }
-        
-        .main-footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(0,0,0,0.1)" d="M0,0 L100,0 L100,100 Q50,80 0,100 Z"></path></svg>');
-            background-size: 100% auto;
-            background-repeat: no-repeat;
-            background-position: bottom;
-            z-index: 0;
-        }
-        
-        .footer-content {
-            position: relative;
-            z-index: 1;
-        }
-        
+    /* Footer */
+    .main-footer {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 40px 0 0;
+    }
+
         .footer-logo {
-            height: 80px;
-            margin-bottom: 20px;
+            height: 60px;
+            margin-bottom: 15px;
             background-color: aliceblue;
-            border-radius: 12px;
-            padding: 10px;
-            transition: all 0.3s ease;
+            border-radius: 20%;
+            max-width: 100%;
         }
-        
-        .footer-logo:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
+
         .footer-about {
             opacity: 0.7;
             margin-bottom: 20px;
+            font-size: 0.9rem;
         }
-        
+
         .footer-links h5 {
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: white;
-            position: relative;
-            display: inline-block;
         }
-        
-        .footer-links h5::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background-color: var(--accent-color);
-        }
-        
+
         .footer-links ul {
             list-style: none;
             padding: 0;
         }
-        
+
         .footer-links li {
-            margin-bottom: 12px;
-            transition: all 0.3s ease;
+            margin-bottom: 8px;
         }
-        
-        .footer-links li:hover {
-            transform: translateX(5px);
-        }
-        
+
         .footer-links a {
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             transition: all 0.3s ease;
-            display: inline-block;
+            font-size: 0.9rem;
         }
-        
+
         .footer-links a:hover {
             color: white;
             padding-left: 5px;
         }
-        
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
         .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background-color: rgba(255,255,255,0.1);
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background-color: rgba(255, 255, 255, 0.1);
             color: white;
             border-radius: 50%;
             text-align: center;
-            line-height: 45px;
-            margin-right: 10px;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            line-height: 35px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
-        
+
         .social-links a:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
         }
-        
+
         .footer-bottom {
-            background-color: rgba(0,0,0,0.2);
-            padding: 25px 0;
-            margin-top: 60px;
-            position: relative;
-            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 15px 0;
+            margin-top: 30px;
+            font-size: 0.8rem;
         }
-        
+       
         .copyright {
             opacity: 0.7;
             font-size: 0.95rem;
@@ -568,142 +833,132 @@
         }
 
         /* Responsive Adjustments */
-    @media (max-width: 992px) {
-        .cta-section h2 {
-            font-size: 2.2rem;
-        }
-        
-        .cta-section .lead {
-            font-size: 1.1rem;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .cta-section h2 {
-            font-size: 1.8rem;
-        }
-        
-        .cta-section .btn {
-            width: 100%;
-            max-width: 250px;
-        }
-    }
-
-    @media (max-width: 576px) {
-        .cta-section h2 {
-            font-size: 1.5rem;
-        }
-        
-        .cta-section .lead {
-            font-size: 1rem;
-        }
-        
-        .cta-section .btn {
-            padding: 0.75rem 1.5rem;
-        }
-    }
-       
-
-        @media (max-width: 992px) {
-            .timeline::after {
-                left: 31px;
+        @media (min-width: 576px) {
+            .hero-section h1 {
+                font-size: 2.8rem;
             }
             
-            .timeline-container {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
+            .hero-section .lead {
+                font-size: 1.3rem;
             }
             
-            .timeline-container::before {
-                left: 60px;
-                border: medium solid white;
-                border-width: 10px 10px 10px 0;
-                border-color: transparent white transparent transparent;
+            .countdown-number {
+                font-size: 2rem;
             }
             
-            .left::after, .right::after {
-                left: 15px;
-            }
-            
-            .right {
-                left: 0%;
-            }
-            
-            .section-title::after {
-                bottom: -8px;
-                height: 3px;
-            }
-        }
-
-            
-            .footer-logo {
-                height: 40px;
-                margin-left: auto;
-                margin-right: auto;
-                display: block;
-            }
-            
-            .footer-about {
-                text-align: center;
-            }
-            
-            .footer-links {
-                margin-bottom: 30px;
-                text-align: center;
-            }
-            
-            .footer-links h5::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            
-            .social-links {
-                justify-content: center;
-                margin-bottom: 30px;
-            }
-    
-
-        @media (max-width: 576px) {
-            .cta-section {
-                padding: 70px 0;
+            .session-card .card-title,
+            .summit-card .card-title {
+                font-size: 1.2rem;
             }
             
             .cta-section h2 {
-                font-size: 1.8rem;
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .hero-section {
+                padding: 120px 0 100px;
+            }
+            
+            .hero-section h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-section .lead {
+                font-size: 1.4rem;
+            }
+            
+            .live-section,
+            .sessions-section,
+            .universities-section,
+            .past-summits-section,
+            .testimonials-section,
+            .cta-section {
+                padding: 80px 0;
+            }
+            
+            .countdown-number {
+                font-size: 2.2rem;
+            }
+            
+            .session-card .card-img-top,
+            .summit-card .card-img-top {
+                height: 200px;
+            }
+            
+            .session-card .card-title,
+            .summit-card .card-title {
+                font-size: 1.3rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 2.5rem;
+            }
+            
+            .footer-logo {
+                height: 70px;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .hero-section {
+                padding: 150px 0 120px;
+            }
+            
+            .hero-section h1 {
+                font-size: 3.5rem;
+            }
+            
+            .hero-section .lead {
+                font-size: 1.5rem;
+                max-width: 700px;
+            }
+            
+            .live-section,
+            .sessions-section,
+            .universities-section,
+            .past-summits-section,
+            .testimonials-section,
+            .cta-section {
+                padding: 100px 0;
+            }
+            
+            .countdown-number {
+                font-size: 2.5rem;
+            }
+            
+            .session-card .card-img-top,
+            .summit-card .card-img-top {
+                height: 220px;
+            }
+            
+            .cta-section h2 {
+                font-size: 3rem;
             }
             
             .cta-section p {
-                font-size: 1rem;
+                max-width: 700px;
             }
             
-            .section-title::after {
-                width: 60px;
-                height: 2px;
-                bottom: -6px;
+            .footer-logo {
+                height: 80px;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .hero-section h1 {
+                font-size: 4rem;
             }
             
-            .stats-card .display-4 {
-                font-size: 2rem;
+            .live-section,
+            .sessions-section,
+            .universities-section,
+            .past-summits-section,
+            .testimonials-section,
+            .cta-section {
+                padding: 120px 0;
             }
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: var(--secondary-color);
-            border-radius: 5px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-color);
         }
     </style>
 </head>
@@ -881,7 +1136,7 @@
                         <h3>Session 4 - NUL</h3>
                         <p class="text-muted">Coming June 10-12, 2025</p>
                         <p>Building on past successes with a theme of "Empowering Truth in the Age of AI: Building Digital Futures for Lesotho".</p>
-                        <a href="session4.html" class="btn btn-sm btn-primary">View Details</a>
+                        <a href="session4.html" class="btn btn-sm btn-primary">View</a>
                     </div>
                 </div>
             </div>
@@ -984,10 +1239,6 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="text-center mt-4">
-                <a href="#" class="btn btn-primary">View More Photos</a>
-            </div>
         </div>
     </section>
 
@@ -1006,19 +1257,21 @@
         </div>
     </div>
 </section>
-    <!-- Footer -->
+    <!-- Footer - Updated with proper links -->
     <footer class="main-footer">
         <div class="container footer-content">
             <div class="row">
                 <div class="col-lg-4 mb-5 mb-lg-0">
-                    <img src="https://via.placeholder.com/150x50?text=SkyAlpha+HD" alt="SkyAlpha HD" class="footer-logo">
-                    <p class="footer-about">SkyAlpha HD is Lesotho's premier media house dedicated to promoting innovation and digital transformation in education through annual Digital Innovation Summits.</p>
-                    <div class="social-links d-flex">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.skyalphahd.com" target="_blank" rel="noopener noreferrer">
+                        <img src="images/logos/skyalpha.png" alt="SkyAlpha HD" class="footer-logo img-fluid">
+                    </a>
+                    <p class="footer-about">Aligned with Lesotho's National Digital Transformation Strategy, the Digital Innovators Summit is a movement toward creating a digitally empowered society.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/DigitalInnovatorsSummitLesotho" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/DIS_Lesotho2025" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/digitalinnovatorslesotho" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/digital-innovators-summit-lesotho" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/c/DigitalInnovatorsSummitLesotho" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
@@ -1033,49 +1286,51 @@
                 
                 <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
                     <div class="footer-links">
-                        <h5>Sessions</h5>
+                        <h5>Event</h5>
                         <ul>
-                            <li><a href="#">Live Streams</a></li>
-                            <li><a href="#">Recorded Videos</a></li>
-                            <li><a href="#">Schedule</a></li>
-                            <li><a href="#">Speakers</a></li>
+                            <li><a href="schedule.html">Schedule</a></li>
+                            <li><a href="speakers.html">Speakers</a></li>
+                            <li><a href="sessions.html">Sessions</a></li>
+                            <li><a href="live.html">Live Stream</a></li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
                     <div class="footer-links">
-                        <h5>Universities</h5>
+                        <h5>Partners</h5>
                         <ul>
-                            <li><a href="#">National University</a></li>
-                            <li><a href="#">Botho University</a></li>
-                            <li><a href="#">Limkokwing</a></li>
-                            <li><a href="#">All Universities</a></li>
+                            <li><a href="universities.html">Universities</a></li>
+                            <li><a href="partners.html">Organizations</a></li>
+                            <li><a href="sponsors.html">Sponsors</a></li>
+                            <li><a href="collaborators.html">Collaborators</a></li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="col-lg-2 col-md-4">
                     <div class="footer-links">
-                        <h5>About</h5>
+                        <h5>Contact</h5>
                         <ul>
-                            <li><a href="#">Our Mission</a></li>
-                            <li><a href="#">Team</a></li>
-                            <li><a href="#">Partners</a></li>
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="team.html">Our Team</a></li>
+                            <li><a href="register.html">Register</a></li>
+                            <li><a href="faq.html">FAQs</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <div class="row">
-                    <div class="col-md-6">
-                        <p class="copyright mb-3 mb-md-0">© 2023 SkyAlpha HD. All rights reserved.</p>
-                    </div>
-                    <div class="col-md-6 text-md-end">
-                        <a href="#" class="text-white-50 me-3">Privacy Policy</a>
-                        <a href="#" class="text-white-50">Terms of Service</a>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="copyright mb-3 mb-md-0">© 2025 Digital Innovators Summit. All rights reserved.</p>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <a href="privacy.html" class="text-white-50 me-3">Privacy Policy</a>
+                            <a href="terms.html" class="text-white-50">Terms of Service</a>
+                        </div>
                     </div>
                 </div>
             </div>
