@@ -25,46 +25,95 @@
             scroll-behavior: smooth;
         }
 
+        .btn {
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-primary:hover {
+            background-color: #6a1b9a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        
         /* Header Styles */
         .main-header {
             background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .main-header.scrolled {
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .navbar-brand img {
             height: 40px;
-            transition: all 0.3s ease;
+            max-width: 100%;
         }
 
         .nav-link {
             font-weight: 600;
             color: var(--primary-color);
             padding: 10px 15px !important;
-            position: relative;
-            transition: all 0.3s ease;
         }
 
-        .nav-link::after {
-            content: '';
+        .nav-link:hover {
+            color: var(--secondary-color);
+        }
+
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 0;
+        }
+
+        .dropdown-item {
+            font-weight: 500;
+            padding: 8px 20px;
+        }
+
+        .dropdown-item:hover {
+            background-color: rgba(123, 31, 162, 0.1);
+            color: var(--secondary-color);
+        }
+        
+        /* Custom Active State for Home */
+        .nav-link.active-home {
+            position: relative;
+            color: var(--primary-color) !important;
+        }
+
+        .nav-link.active-home .nav-link-inner {
+            position: relative;
+            display: inline-block;
+        }
+
+        .nav-link.active-home .nav-link-inner::after {
+            content: "";
             position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
             height: 2px;
             background: var(--secondary-color);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
+            transform: scaleX(1);
+            transition: transform 0.3s ease;
         }
 
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
+        /* Hover effect for other nav items */
+        .nav-link:not(.active-home):hover {
+            color: var(--secondary-color) !important;
+        } 
         /* Team Section Styles */
         .team-section {
             padding: 100px 0;
