@@ -241,11 +241,12 @@
             z-index: 1;
         }
         
-/* ===== Purple Gradient Breaking News ===== */
+/* ===== Updated Breaking News Ticker Styles ===== */
 .breaking-news-ticker {
   position: relative;
   z-index: 20;
   background: #f8f9fa;
+  overflow: hidden;
 }
 
 .ticker-container {
@@ -254,34 +255,38 @@
 }
 
 .breaking-label .badge {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   letter-spacing: 0.5px;
   box-shadow: 0 2px 10px rgba(255,255,255,0.3);
   animation: pulse 2s infinite;
+  white-space: nowrap;
 }
 
 .ticker-track {
   display: flex;
-  gap: 3rem;
+  gap: 2rem;
   will-change: transform;
+  padding-right: 100px; /* Ensure content doesn't get cut off */
 }
 
 .ticker-item {
   display: inline-flex;
   align-items: center;
   color: rgba(255,255,255,0.95);
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .ticker-link {
   color: rgba(255,255,255,0.8);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 500;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .ticker-link:hover {
@@ -300,41 +305,30 @@
   right: 0;
   top: 0;
   height: 100%;
-  width: 60px;
-  background: linear-gradient(90deg, rgba(123,31,162,0) 0%, #7b1fa2 80%);
+  width: 40px;
+  background: linear-gradient(90deg, rgba(123,31,162,0) 0%, #7b1fa2 100%);
   pointer-events: none;
-}
-
-.btn-glass {
-  background: rgba(255,255,255,0.15);
-  color: white;
-  border: 1px solid rgba(255,255,255,0.2);
-  transition: all 0.3s ease;
-}
-
-.btn-glass:hover {
-  background: rgba(255,255,255,0.25);
-  transform: translateY(-1px);
+  z-index: 2;
 }
 
 /* Animation */
 @keyframes ticker-scroll {
   0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-100% - 3rem)); }
+  100% { transform: translateX(calc(-100% - 2rem)); }
 }
 
-.ticker-track[data-speed="50"] {
-  animation: ticker-scroll 50s linear infinite;
+.ticker-track[data-speed="30"] {
+  animation: ticker-scroll 30s linear infinite;
 }
 
-/* Responsive */
-@media (max-width: 991.98px) {
+/* Responsive Adjustments */
+@media (max-width: 767.98px) {
   .ticker-container {
-    padding: 0.7rem 1rem;
+    padding: 0.5rem 1rem;
   }
   
   .ticker-item {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
   
   .ticker-link span {
@@ -347,22 +341,30 @@
   }
   
   .ticker-gradient-end {
-    width: 40px;
+    width: 30px;
+  }
+  
+  .breaking-label .badge {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
   }
 }
 
 @media (max-width: 575.98px) {
-  .breaking-label .badge {
-    padding: 0.25rem 0.75rem;
-    font-size: 0.7rem;
-  }
-  
   .ticker-item {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
   
   .breaking-label i {
-    display: none;
+    margin-right: 0.25rem;
+  }
+  
+  .ticker-track {
+    gap: 1.5rem;
+  }
+  
+  .ticker-track[data-speed="30"] {
+    animation: ticker-scroll 25s linear infinite;
   }
 }
 /* Live Stream Section - Enhanced */
@@ -1375,55 +1377,41 @@ We're championing the ethical use of AI to fight misinformation, empower digital
     </section>
 <!-- Elegant Purple Gradient Breaking News Ticker -->
 <section class="breaking-news-ticker py-2">
-  <div class="container-fluid px-lg-4">
-    <div class="ticker-container rounded-3 px-3 py-2" style="background: linear-gradient(135deg, #7b1fa2, #4a148c);">
-      <div class="row g-0 align-items-center">
+  <div class="container-fluid px-0">
+    <div class="ticker-container rounded-0 px-lg-4 py-2" style="background: linear-gradient(135deg, #7b1fa2, #4a148c);">
+      <div class="row g-0 align-items-center mx-0">
         
         <!-- Breaking Badge -->
-        <div class="col-auto pe-3">
+        <div class="col-auto ps-3 pe-2">
           <div class="breaking-label d-flex align-items-center">
-            <span class="badge bg-white text-primary fw-bold px-3 py-1 rounded-pill me-2">
-              <i class="fas fa-bolt me-2"></i>BREAKING NEWS
+            <span class="badge bg-white text-primary fw-bold px-2 px-sm-3 py-1 rounded-pill me-1 me-sm-2">
+              <i class="fas fa-bolt me-1 me-sm-2"></i>BREAKING
             </span>
-            <i class="fas fa-satellite-dish text-white opacity-75"></i>
           </div>
         </div>
         
         <!-- News Content -->
-        <div class="col position-relative overflow-hidden pe-4">
-          <div class="ticker-track" data-speed="50">
+        <div class="col position-relative overflow-hidden pe-4 pe-sm-5">
+          <div class="ticker-track" data-speed="30">
             <div class="ticker-item">
               <span class="text-white fw-bold">LIVE:</span> Digital Innovators Summit keynote address starting now 
-              <a href="#live" class="ticker-link ms-2">Watch Stream <i class="fas fa-play-circle ms-1"></i></a>
+              <a href="#live" class="ticker-link ms-1 ms-sm-2">Watch <i class="fas fa-play-circle ms-1"></i></a>
             </div>
             <div class="ticker-item">
               <span class="text-white fw-bold">UPDATE:</span> Lesotho AI policy framework approved by parliament
-              <a href="#" class="ticker-link ms-2">Read More <i class="fas fa-external-link-alt ms-1"></i></a>
+              <a href="#" class="ticker-link ms-1 ms-sm-2">Read <i class="fas fa-external-link-alt ms-1"></i></a>
             </div>
             <div class="ticker-item">
               <span class="text-white fw-bold">ALERT:</span> Registration extended for student hackathon
-              <a href="register.html" class="ticker-link ms-2">Sign Up <i class="fas fa-arrow-right ms-1"></i></a>
+              <a href="register.html" class="ticker-link ms-1 ms-sm-2">Sign Up <i class="fas fa-arrow-right ms-1"></i></a>
             </div>
           </div>
           <div class="ticker-gradient-end"></div>
-        </div>
-        
-        <!-- Controls -->
-        <div class="col-auto d-none d-lg-block ps-2">
-          <div class="ticker-nav btn-group">
-            <button class="btn btn-sm btn-glass px-2 py-1 ticker-prev">
-              <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="btn btn-sm btn-glass px-2 py-1 ticker-next">
-              <i class="fas fa-chevron-right"></i>
-            </button>
-          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
     <!-- Live Stream Section - Updated for 2025 -->
     <section class="live-section" id="live">
         <div class="container">
@@ -1813,127 +1801,33 @@ We're championing the ethical use of AI to fight misinformation, empower digital
             }, 500);
         });
 
-        document.addEventListener('DOMContentLoaded', function() {
+ document.addEventListener('DOMContentLoaded', function() {
     const track = document.querySelector('.ticker-track');
     if (!track) return;
 
-    const items = track.querySelectorAll('.ticker-item');
-    const prevBtn = document.querySelector('.ticker-prev');
-    const nextBtn = document.querySelector('.ticker-next');
-    const speed = parseInt(track.dataset.speed) || 50; // Get speed from data attribute
-    
     // Clone items for infinite loop
+    const items = track.querySelectorAll('.ticker-item');
     items.forEach(item => {
         const clone = item.cloneNode(true);
         track.appendChild(clone);
     });
 
-    let currentPosition = 0;
-    let autoScroll = true;
-    let scrollInterval;
-    const itemWidth = items[0].offsetWidth + 48; // 48px for gap (3rem)
-
-    // Initialize ticker
-    function initTicker() {
-        if (window.innerWidth > 992) {
-            // Desktop - manual controls + auto-scroll
-            setupDesktopTicker();
-        } else {
-            // Mobile - continuous auto-scroll only
-            setupMobileTicker();
-        }
-    }
-
-    function setupDesktopTicker() {
-        // Pause on hover
-        track.addEventListener('mouseenter', () => {
-            autoScroll = false;
-            clearInterval(scrollInterval);
-        });
-
-        track.addEventListener('mouseleave', () => {
-            autoScroll = true;
-            startAutoScroll();
-        });
-
-        // Navigation controls
-        if (prevBtn && nextBtn) {
-            prevBtn.addEventListener('click', () => {
-                manualScroll(-1);
-            });
-
-            nextBtn.addEventListener('click', () => {
-                manualScroll(1);
-            });
-        }
-
-        startAutoScroll();
-    }
-
-    function setupMobileTicker() {
-        // Mobile - continuous scroll animation handled by CSS
-        // No manual controls needed
-    }
-
-    function manualScroll(direction) {
-        clearInterval(scrollInterval);
-        currentPosition += direction * itemWidth;
+    // Adjust animation speed based on content width
+    function adjustTickerSpeed() {
+        const contentWidth = track.scrollWidth / 2; // Since we cloned items
+        const viewportWidth = window.innerWidth;
+        const speedRatio = contentWidth / viewportWidth;
         
-        // Boundary checks
-        if (currentPosition > 0) currentPosition = -(items.length * itemWidth);
-        if (currentPosition < -(items.length * itemWidth)) currentPosition = 0;
+        // Faster speed for wider content
+        const baseSpeed = 30; // seconds for one loop
+        const adjustedSpeed = baseSpeed * speedRatio;
         
-        animateScroll();
-        
-        // Restart auto-scroll after pause
-        if (autoScroll) {
-            setTimeout(startAutoScroll, 5000);
-        }
+        track.style.animationDuration = `${adjustedSpeed}s`;
     }
 
-    function animateScroll() {
-        track.style.transition = 'transform 0.5s ease-in-out';
-        track.style.transform = `translateX(${currentPosition}px)`;
-        
-        // Reset position when reaching clone items
-        setTimeout(() => {
-            if (currentPosition <= -(items.length * itemWidth)) {
-                track.style.transition = 'none';
-                currentPosition = 0;
-                track.style.transform = `translateX(${currentPosition}px)`;
-            }
-        }, 500);
-    }
-
-    function startAutoScroll() {
-        if (!autoScroll) return;
-        
-        scrollInterval = setInterval(() => {
-            currentPosition -= itemWidth;
-            animateScroll();
-            
-            // Reset to first item (not the clone)
-            if (currentPosition <= -(items.length * itemWidth)) {
-                setTimeout(() => {
-                    track.style.transition = 'none';
-                    currentPosition = 0;
-                    track.style.transform = `translateX(${currentPosition}px)`;
-                }, 500);
-            }
-        }, 5000); // Change slide every 5 seconds
-    }
-
-    // Initialize based on screen size
-    initTicker();
-    
-    // Re-initialize on resize
-    window.addEventListener('resize', () => {
-        clearInterval(scrollInterval);
-        track.style.transition = 'none';
-        currentPosition = 0;
-        track.style.transform = 'translateX(0)';
-        initTicker();
-    });
+    // Initialize and adjust on resize
+    adjustTickerSpeed();
+    window.addEventListener('resize', adjustTickerSpeed);
 });
         // Countdown Timer Script - Updated for 2025 summit
         function updateCountdown() {
