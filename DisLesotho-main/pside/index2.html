@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Innovators Summit</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* Loading spinner styles */
+      .loading-spinner {
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        border: 0.25em solid rgba(0, 0, 0, 0.1);
+        border-left-color: #0d6efd;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Error message styles */
+      .error-message {
+        color: #dc3545;
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        padding: 10px;
+        border-radius: 4px;
+        margin: 10px 0;
+      }
+
+      /* Your existing styles */
+      .hero-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("hero-bg.jpg");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 100px 0;
+      }
+
+      .hero-badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 8px 15px;
+        border-radius: 50px;
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+
+      .video-container {
+        position: relative;
+        background: #000;
+        border-radius: 8px;
+        overflow: hidden;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+      }
+
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      .live-badge {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background: #dc3545;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 14px;
+        z-index: 10;
+      }
+
+      .countdown-timer {
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+      }
+
+      .countdown-container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+
+      .countdown-item {
+        text-align: center;
+      }
+
+      .countdown-number {
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      .countdown-label {
+        font-size: 0.8rem;
+        opacity: 0.8;
+      }
+
+      .session-card {
+        height: 100%;
+        transition: transform 0.3s ease;
+      }
+
+      .session-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .university-logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        padding: 15px;
+        background: white;
+        border-radius: 4px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .university-logo {
+        max-height: 70px;
+        max-width: 100%;
+        object-fit: contain;
+      }
+
+      .testimonial-card {
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        height: 100%;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        margin-top: 15px;
+      }
+
+      .testimonial-author img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 15px;
+      }
+
+      .author-name {
+        font-weight: bold;
+        margin-bottom: 0;
+      }
+
+      .author-title {
+        font-size: 0.8rem;
+        opacity: 0.7;
+        margin-bottom: 0;
+      }
+
+      .quote {
+        font-style: italic;
+        position: relative;
+        padding-left: 20px;
+      }
+
+      .quote:before {
+        content: '"';
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 2rem;
+        line-height: 1;
+        opacity: 0.3;
+      }
+
+      .cta-section {
+        background: #0d6efd;
+        color: white;
+        padding: 60px 0;
+        text-align: center;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #0d6efd;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .back-to-top.active {
+        opacity: 1;
+        visibility: visible;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Header -->
+    <header class="main-header sticky-top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <img src="" alt="SkyAlpha HD" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active-home" href="index.html">
+                  <span class="nav-link-inner">Home</span>
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="summitsDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Summits
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="2024Summit.html"
+                      >2024 Summit</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="past-summits.html"
+                      >All Summits</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="live.html">Live</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="eventDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Event
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="live.html">Live</a></li>
+                  <li>
+                    <a class="dropdown-item" href="sessions.html">Sessions</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="schedule.html">Schedule</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="speakers.html">Speakers</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="universities.html">Universities</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="partnersDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Partners
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="universities.html"
+                      >Universities</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="partners.html"
+                      >Organizations</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="sponsors.html">Sponsors</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="collaborators.html"
+                      >Collaborators</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="contactDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Contact
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="contact.html">Contact Us</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="team.html">Our Team</a>
+                  </li>
+                  <li><a class="dropdown-item" href="faq.html">FAQs</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">about</a>
+              </li>
+            </ul>
+            <a href="register.html" class="btn btn-primary ms-lg-3"
+              >Register Now</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section - Now with dynamic breaking news -->
+    <section class="hero-section">
+      <div class="container hero-content">
+        <div class="row align-items-center">
+          <div class="col-lg-8">
+            <span class="hero-badge" id="breaking-news-badge">
+              <i class="fas fa-circle me-2"></i> Loading...
+            </span>
+            <h1 id="hero-title">Welcome to the Digital Innovators Summit</h1>
+            <p class="lead" id="hero-description">
+              A space where ideas meet innovation.
+            </p>
+            <div class="d-flex flex-wrap gap-3 hero-buttons">
+              <a href="register.html" class="btn btn-light btn-lg"
+                >Register Now</a
+              >
+              <a href="about.html" class="btn btn-outline-light btn-lg"
+                >Learn More</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Stream Section - Dynamic -->
+    <section class="live-section" id="live">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 text-center">
+            <h2 class="mb-3 section-title reveal">Live Stream</h2>
+            <p
+              class="lead text-muted reveal"
+              style="transition-delay: 0.1s"
+              id="stream-description"
+            >
+              Watch the current sessions happening right now
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-8 mb-4 mb-lg-0 reveal">
+            <div class="video-container floating" id="stream-container">
+              <!-- Content will be loaded dynamically -->
+              <div
+                class="d-flex justify-content-center align-items-center h-100"
+              >
+                <div class="text-center text-white">
+                  <div class="loading-spinner mb-3"></div>
+                  <p>Loading stream information...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 reveal" style="transition-delay: 0.2s">
+            <div class="countdown-timer floating-2" id="countdown-container">
+              <h4 class="mb-4">Next Session Starts In:</h4>
+              <div class="countdown-container">
+                <div class="countdown-item">
+                  <div class="countdown-number" id="days">00</div>
+                  <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                  <div class="countdown-number" id="hours">00</div>
+                  <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                  <div class="countdown-number" id="minutes">00</div>
+                  <div class="countdown-label">Minutes</div>
+                </div>
+              </div>
+              <div class="mt-4" id="next-session-info">
+                <h5 class="mb-3">Up Next:</h5>
+                <p class="mb-1"><strong>Loading session info...</strong></p>
+                <p class="mb-3"></p>
+                <a
+                  href="#"
+                  class="btn btn-outline-light w-100"
+                  id="calendar-btn"
+                  >Add to Calendar</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Sessions - Dynamic -->
+    <section class="sessions-section" id="sessions">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 text-center">
+            <h2 class="mb-3 section-title reveal">Featured Sessions</h2>
+            <p class="lead text-muted reveal" style="transition-delay: 0.1s">
+              Preview of planned sessions for 2025
+            </p>
+          </div>
+        </div>
+
+        <div class="row" id="sessions-container">
+          <!-- Sessions will be loaded here dynamically -->
+          <div class="col-12 text-center py-5">
+            <div class="loading-spinner"></div>
+            <p>Loading featured sessions...</p>
+          </div>
+        </div>
+
+        <div class="text-center mt-4 reveal" style="transition-delay: 0.3s">
+          <a href="schedule.html" class="btn btn-primary">View Full Schedule</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Participating Universities - Dynamic -->
+    <section class="universities-section" id="universities">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 text-center">
+            <h2 class="mb-3 section-title reveal">
+              Participating Institutions
+            </h2>
+            <p class="lead text-muted reveal" style="transition-delay: 0.1s">
+              Our academic and organizational partners
+            </p>
+          </div>
+        </div>
+
+        <div class="row" id="partners-container">
+          <!-- Partners will be loaded here dynamically -->
+          <div class="col-12 text-center py-5">
+            <div class="loading-spinner"></div>
+            <p>Loading partner institutions...</p>
+          </div>
+        </div>
+
+        <div class="text-center mt-4 reveal" style="transition-delay: 0.4s">
+          <a href="partners.html" class="btn btn-outline-primary"
+            >See All Partners</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Past Summits - Dynamic -->
+    <section class="past-summits-section" id="past-summits">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 text-center">
+            <h2 class="mb-3 section-title reveal">Our Achievements</h2>
+            <p class="lead text-muted reveal" style="transition-delay: 0.1s">
+              Impact from previous summits
+            </p>
+          </div>
+        </div>
+
+        <div class="row" id="achievements-container">
+          <!-- Achievements will be loaded here dynamically -->
+          <div class="col-12 text-center py-5">
+            <div class="loading-spinner"></div>
+            <p>Loading achievements...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials - Dynamic -->
+    <section class="testimonials-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 text-center">
+            <h2 class="mb-3 section-title reveal">What People Are Saying</h2>
+            <p class="lead opacity-75 reveal" style="transition-delay: 0.1s">
+              Hear from past attendees and participants
+            </p>
+          </div>
+        </div>
+
+        <div class="row" id="testimonials-container">
+          <!-- Testimonials will be loaded here dynamically -->
+          <div class="col-12 text-center py-5">
+            <div class="loading-spinner"></div>
+            <p>Loading testimonials...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section - Dynamic -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 class="reveal" id="cta-title">
+          Ready to Join the 2025 Digital Revolution?
+        </h2>
+        <p class="reveal" style="transition-delay: 0.1s" id="cta-description">
+          Register now for the Digital Innovators Summit 2025 and be part of
+          shaping Lesotho's digital future.
+        </p>
+        <div class="d-flex flex-wrap justify-content-center gap-3 cta-buttons">
+          <a
+            href="register.html"
+            class="btn btn-light btn-lg reveal"
+            style="transition-delay: 0.2s"
+            >Register Now</a
+          >
+          <a
+            href="contact.html"
+            class="btn btn-outline-light btn-lg reveal"
+            style="transition-delay: 0.3s"
+            >Contact Us</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+      <div class="container footer-content">
+        <div class="row">
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <a
+              href="https://www.skyalphahd.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="" alt="SkyAlpha HD" class="footer-logo" />
+            </a>
+            <p class="footer-about">
+              Aligned with Lesotho's National Digital Transformation Strategy,
+              the Digital Innovators Summit is a movement toward creating a
+              digitally empowered society.
+            </p>
+            <div class="social-links d-flex">
+              <a
+                href="https://www.facebook.com/DigitalInnovatorsSummitLesotho"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="https://twitter.com/DIS_Lesotho2025"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a
+                href="https://www.instagram.com/digitalinnovatorslesotho"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/company/digital-innovators-summit-lesotho"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a
+                href="https://www.youtube.com/c/DigitalInnovatorsSummitLesotho"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Summits</h5>
+              <ul>
+                <li><a href="2024Summit.html">2024 Summit</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Event</h5>
+              <ul>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="speakers.html">Speakers</a></li>
+                <li><a href="sessions.html">Sessions</a></li>
+                <li><a href="live.html">Live Stream</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Partners</h5>
+              <ul>
+                <li><a href="universities.html">Universities</a></li>
+                <li><a href="partners.html">Organizations</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+                <li><a href="collaborators.html">Collaborators</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4">
+            <div class="footer-links">
+              <h5>Contact</h5>
+              <ul>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="copyright mb-3 mb-md-0">
+                  © 2025 Digital Innovators Summit. All rights reserved.
+                </p>
+              </div>
+              <div class="col-md-6 text-md-end">
+                <a href="privacy.html" class="text-white-50 me-3"
+                  >Privacy Policy</a
+                >
+                <a href="terms.html" class="text-white-50">Terms of Service</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Utility functions for safe image handling
+      function getSafeImageUrl(imagePath, text = "", width = 150, height = 80) {
+        // First try the actual image path if provided
+        if (imagePath && typeof imagePath === "string") {
+          return imagePath;
+        }
+
+        // Fallback to generated placeholder
+        return generatePlaceholderSvg(text, width, height);
+      }
+      function generatePlaceholderSvg(text = "", width = 150, height = 80) {
+        // Ensure text is a string and has content
+        const displayText =
+          typeof text === "string" && text.trim()
+            ? text.substring(0, 15) // Only call substring if text exists
+            : "Image";
+
+        return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
+          <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
+            <rect width="${width}" height="${height}" fill="#ddd"/>
+            <text x="50%" y="50%" fill="#666" font-family="Arial" text-anchor="middle" dy=".3em">
+              ${displayText}
+            </text>
+          </svg>
+        `)}`;
+      } // Main App Controller
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize the page
+        initPage();
+
+        // Set up scroll reveal animations
+        setupScrollReveal();
+
+        // Set up back to top button
+        setupBackToTop();
+
+        // Load all dynamic content
+        loadDynamicContent();
+      });
+
+      // Initialize page elements
+      function initPage() {
+        // Initialize any elements that need setup
+      }
+
+      // Set up scroll reveal animations
+      function setupScrollReveal() {
+        const reveals = document.querySelectorAll(".reveal");
+
+        const revealOnScroll = () => {
+          for (let i = 0; i < reveals.length; i++) {
+            const windowHeight = window.innerHeight;
+            const revealTop = reveals[i].getBoundingClientRect().top;
+            const revealPoint = 150;
+
+            if (revealTop < windowHeight - revealPoint) {
+              reveals[i].classList.add("active");
+            }
+          }
+        };
+
+        window.addEventListener("scroll", revealOnScroll);
+        window.addEventListener("load", revealOnScroll);
+      }
+
+      // Set up back to top button
+      function setupBackToTop() {
+        const backToTopButton = document.querySelector(".back-to-top");
+
+        window.addEventListener("scroll", function () {
+          if (window.pageYOffset > 300) {
+            backToTopButton.classList.add("active");
+          } else {
+            backToTopButton.classList.remove("active");
+          }
+        });
+
+        backToTopButton.addEventListener("click", function (e) {
+          e.preventDefault();
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+      }
+      // Update the initCountdownTimer function in your frontend code
+      function initCountdownTimer(summitDate) {
+        const countdownInterval = setInterval(() => {
+          const now = new Date();
+          const targetDate = new Date(summitDate);
+          const diff = targetDate - now;
+
+          // Stop if date has passed
+          if (diff <= 0) {
+            clearInterval(countdownInterval);
+            document.getElementById("countdown-container").innerHTML = `
+                      <h4 class="mb-4">Summit has started!</h4>
+                      <a href="#live" class="btn btn-primary">Watch Live Now</a>
+                  `;
+            return;
+          }
+
+          // Calculate days, hours, minutes
+          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const minutes = Math.floor(diff % (1000 * 60 * 60)) / (1000 * 60);
+
+          // Update display
+          document.getElementById("days").textContent = days
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("hours").textContent = hours
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("minutes").textContent = minutes
+            .toString()
+            .padStart(2, "0");
+        }, 1000);
+      }
+      // Load all dynamic content
+      async function loadDynamicContent() {
+        try {
+          // Show loading states
+          showLoadingStates();
+
+          // Fetch all data
+          const data = await fetchHomepageData();
+
+          if (data) {
+            // Update each section with the fetched data
+            updateHeroSection(data);
+            updateLiveSection(data);
+            updateFeaturedSessions(data.featuredSessions);
+            updatePartners(data.partners);
+            updateAchievements(data.achievements);
+            updateTestimonials(data.testimonials);
+
+            // Initialize countdown timer after data is loaded
+            initCountdownTimer(data.summitDate);
+          }
+        } catch (error) {
+          console.error("Error loading dynamic content:", error);
+          showErrorStates();
+        }
+      }
+
+      // Show loading states
+      function showLoadingStates() {
+        // You can add specific loading indicators if needed
+      }
+
+      // Show error states
+      function showErrorStates() {
+        // You can add error messages to each section if needed
+        const errorContainers = document.querySelectorAll(
+          "#stream-container, #sessions-container, #partners-container, #achievements-container, #testimonials-container"
+        );
+
+        errorContainers.forEach((container) => {
+          container.innerHTML = `
+                          <div class="col-12">
+                              <div class="error-message">
+                                  <i class="fas fa-exclamation-circle me-2"></i>
+                                  Failed to load content. Please try again later.
+                              </div>
+                          </div>
+                      `;
+        });
+      }
+
+      // Fetch homepage data from API
+      async function fetchHomepageData() {
+        try {
+          const response = await fetch("/api/homepage-data");
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+
+          if (data.success) {
+            return data.data;
+          } else {
+            throw new Error(data.error || "Failed to load homepage data");
+          }
+        } catch (error) {
+          console.error("Error fetching homepage data:", error);
+          throw error;
+        }
+      }
+
+      // Update hero section with dynamic data
+      function updateHeroSection(data) {
+        const heroBadge = document.getElementById("breaking-news-badge");
+        const heroTitle = document.getElementById("hero-title");
+        const heroDescription = document.getElementById("hero-description");
+
+        // Update breaking news badge if available
+        if (data.breakingNews && data.breakingNews.length > 0) {
+          const latestNews = data.breakingNews[0];
+          heroBadge.innerHTML = `
+                          <i class="fas fa-circle me-2"></i>
+                          BREAKING: ${latestNews.title}
+                      `;
+        }
+
+        // You can update other hero section elements as needed
+        // heroTitle.textContent = "Custom Title from API";
+        // heroDescription.textContent = "Custom description from API";
+      }
+
+      // In your updateLiveSection function, replace with:
+      function updateLiveSection(data) {
+        const streamContainer = document.getElementById("stream-container");
+
+        if (data.liveStreams && data.liveStreams.length > 0) {
+          const liveStream = data.liveStreams[0];
+          const videoUrl = liveStream.video_url;
+          const videoId = videoUrl.match(
+            /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&\n?#]+)/
+          )[1];
+
+          streamContainer.innerHTML = `
+                  <div class="live-badge">
+                      <i class="fas fa-circle me-2"></i> LIVE NOW
+                  </div>
+                  <iframe width="100%" height="450"
+                          src="https://www.youtube.com/embed/${videoId}?autoplay=1"
+                          frameborder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowfullscreen>
+                  </iframe>
+                  <div class="stream-info mt-3">
+                      <h3>${liveStream.stream_title}</h3>
+                      <p>${liveStream.description}</p>
+                  </div>
+              `;
+        }
+      }
+      function updateFeaturedSessions(sessions) {
+        const sessionsContainer = document.getElementById("sessions-container");
+
+        if (!sessionsContainer) return;
+
+        try {
+          if (sessions?.length > 0) {
+            sessionsContainer.innerHTML = sessions
+              .map(
+                (session) => `
+              <div class="col-md-6 col-lg-4 reveal">
+                <div class="card session-card h-100">
+                  <img src="${getSafeImageUrl(session.imageUrl, session.title)}"
+                       class="card-img-top"
+                       alt="${session.title || "Session image"}"
+                       onerror="this.src='${generatePlaceholderSvg(
+                         session.title || "Session"
+                       )}'">
+                  <div class="card-body d-flex flex-column">
+                    ${
+                      session.category
+                        ? `
+                      <span class="badge ${getBadgeClass(
+                        session.category
+                      )} mb-2">
+                        ${session.category}
+                      </span>
+                    `
+                        : ""
+                    }
+                    <h5 class="card-title">${
+                      session.title || "Session Title"
+                    }</h5>
+                    ${
+                      session.speaker
+                        ? `
+                      <p class="university">${session.speaker}</p>
+                    `
+                        : ""
+                    }
+                    <p class="date-time">${formatSessionTime(session)}</p>
+                    ${
+                      session.speakerId
+                        ? `
+                      <a href="speakers.html#${session.speakerId}"
+                         class="btn btn-outline-primary mt-auto">
+                        Speaker Profile
+                      </a>
+                    `
+                        : ""
+                    }
+                  </div>
+                </div>
+              </div>
+            `
+              )
+              .join("");
+          } else {
+            sessionsContainer.innerHTML = `
+              <div class="col-12">
+                <div class="alert alert-info">
+                  No featured sessions scheduled yet. Check back soon!
+                </div>
+              </div>
+            `;
+          }
+        } catch (error) {
+          console.error("Error updating sessions:", error);
+          sessionsContainer.innerHTML = `
+            <div class="col-12">
+              <div class="alert alert-danger">
+                Error loading session information
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      // Helper function to get badge class based on category
+      function getBadgeClass(category) {
+        const classes = {
+          AI: "bg-primary",
+          Policy: "bg-secondary",
+          Ethics: "bg-danger",
+          Technology: "bg-success",
+          Education: "bg-warning",
+        };
+        return classes[category] || "bg-info";
+      }
+
+      // Helper function to format session time
+      function formatSessionTime(session) {
+        if (session.startTime && session.endTime) {
+          return `Day ${session.day}, ${session.startTime} - ${session.endTime}`;
+        }
+        return `Day ${session.day}`;
+      }
+
+      // Update partners section
+      function updatePartners(partners) {
+        const partnersContainer = document.getElementById("partners-container");
+
+        if (!partnersContainer) return;
+
+        try {
+          if (partners?.length > 0) {
+            partnersContainer.innerHTML = partners
+              .map(
+                (partner) => `
+              <div class="col-6 col-md-3 mb-4 reveal">
+                <div class="university-logo-container text-center">
+                  <img src="${getSafeImageUrl(
+                    partner.logoUrl,
+                    partner.name,
+                    150,
+                    80
+                  )}"
+                       class="university-logo"
+                       alt="${partner.name || "Partner logo"}"
+                       onerror="this.src='${generatePlaceholderSvg(
+                         partner.name || "Partner",
+                         150,
+                         80
+                       )}'">
+                  ${
+                    partner.name
+                      ? `
+                    <p class="small mt-2">${partner.name}</p>
+                  `
+                      : ""
+                  }
+                </div>
+              </div>
+            `
+              )
+              .join("");
+          } else {
+            partnersContainer.innerHTML = `
+              <div class="col-12">
+                <div class="alert alert-info">
+                  Partner information will be available soon
+                </div>
+              </div>
+            `;
+          }
+        } catch (error) {
+          console.error("Error updating partners:", error);
+          partnersContainer.innerHTML = `
+            <div class="col-12">
+              <div class="alert alert-danger">
+                Error loading partner information
+              </div>
+            </div>
+          `;
+        }
+      }
+      // Update achievements section
+      function updateAchievements(achievements) {
+        const achievementsContainer = document.getElementById(
+          "achievements-container"
+        );
+
+        if (achievements && achievements.length > 0) {
+          achievementsContainer.innerHTML = achievements
+            .map(
+              (achievement) => `
+                          <div class="col-md-6 col-lg-4 reveal">
+                              <div class="card summit-card">
+                                  <img src="${
+                                    achievement.imageUrl ||
+                                    "https://via.placeholder.com/300x200?text=Achievement"
+                                  }"
+                                       class="card-img-top"
+                                       alt="${achievement.title}">
+                                  <div class="card-body">
+                                      <h5 class="card-title">${
+                                        achievement.title
+                                      }</h5>
+                                      <p class="card-text">${
+                                        achievement.description
+                                      }</p>
+                                      <div class="d-flex justify-content-between align-items-center">
+                                          <small class="text-muted">${
+                                            achievement.statistic
+                                          }</small>
+                                          <a href="past-summits.html" class="btn btn-sm btn-primary">Learn More</a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      `
+            )
+            .join("");
+        } else {
+          achievementsContainer.innerHTML = `
+                          <div class="col-12">
+                              <div class="alert alert-info">
+                                  No achievements to display at this time.
+                              </div>
+                          </div>
+                      `;
+        }
+      }
+
+      // Update testimonials section
+      function updateTestimonials(testimonials) {
+        const testimonialsContainer = document.getElementById(
+          "testimonials-container"
+        );
+
+        if (testimonials && testimonials.length > 0) {
+          testimonialsContainer.innerHTML = testimonials
+            .map(
+              (testimonial) => `
+                          <div class="col-md-4 mb-4 reveal">
+                              <div class="testimonial-card floating">
+                                  <div class="quote">${testimonial.quote}</div>
+                                  <div class="testimonial-author">
+                                      <img src="${
+                                        testimonial.authorImage ||
+                                        "https://randomuser.me/api/portraits/men/" +
+                                          Math.floor(Math.random() * 100) +
+                                          ".jpg"
+                                      }"
+                                           alt="${testimonial.authorName}">
+                                      <div>
+                                          <p class="author-name">${
+                                            testimonial.authorName
+                                          }</p>
+                                          <p class="author-title">${
+                                            testimonial.authorTitle
+                                          }</p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      `
+            )
+            .join("");
+        } else {
+          testimonialsContainer.innerHTML = `
+                          <div class="col-12">
+                              <div class="alert alert-info">
+                                  No testimonials available at this time.
+                              </div>
+                          </div>
+                      `;
+        }
+      }
+
+      // Initialize countdown timer
+      function initCountdownTimer(summitDate) {
+        // Set the date we're counting down to (use provided date or default to June 10, 2025)
+        const countDownDate = summitDate
+          ? new Date(summitDate).getTime()
+          : new Date("June 10, 2025 09:00:00").getTime();
+
+        // Update the count down every 1 second
+        const countdownTimer = setInterval(function () {
+          // Get today's date and time
+          const now = new Date().getTime();
+
+          // Find the distance between now and the count down date
+          const distance = countDownDate - now;
+
+          // Time calculations for days, hours, minutes and seconds
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const minutes = Math.floor(
+            (distance % (1000 * 60 * 60)) / (1000 * 60)
+          );
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          // Display the result
+          document.getElementById("days").textContent = days
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("hours").textContent = hours
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("minutes").textContent = minutes
+            .toString()
+            .padStart(2, "0");
+
+          // If the count down is finished, clear the interval
+          if (distance < 0) {
+            clearInterval(countdownTimer);
+            document.getElementById("days").textContent = "00";
+            document.getElementById("hours").textContent = "00";
+            document.getElementById("minutes").textContent = "00";
+            document.querySelector("#countdown-container h4").textContent =
+              "The Summit Has Started!";
+            document.getElementById("next-session-info").innerHTML = `
+                              <h5 class="mb-3">Happening Now:</h5>
+                              <p class="mb-1"><strong>Digital Innovators Summit 2025</strong></p>
+                              <p class="mb-3">Join us now!</p>
+                              <a href="live.html" class="btn btn-outline-light w-100">Watch Live</a>
+                          `;
+          }
+        }, 1000);
+      }
+
+      // Initialize mobile menu close on outside click
+      function initMobileMenu() {
+        document.addEventListener("click", function (event) {
+          const navbarCollapse = document.getElementById("navbarNav");
+          const navbarToggler = document.querySelector(".navbar-toggler");
+
+          if (
+            navbarCollapse.classList.contains("show") &&
+            !event.target.closest(".navbar") &&
+            !event.target.classList.contains("navbar-toggler")
+          ) {
+            const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+              toggle: false,
+            });
+            bsCollapse.hide();
+
+            navbarToggler.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+
+      // Smooth scroll for anchor links
+      function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: "smooth",
+              });
+
+              // Close mobile menu if open
+              const navbarCollapse = document.getElementById("navbarNav");
+              if (navbarCollapse.classList.contains("show")) {
+                const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                  toggle: false,
+                });
+                bsCollapse.hide();
+              }
+            }
+          });
+        });
+      }
+
+      // Initialize header scroll effect
+      function initHeaderScroll() {
+        window.addEventListener("scroll", function () {
+          const header = document.querySelector(".main-header");
+          if (window.scrollY > 50) {
+            header.classList.add("scrolled");
+          } else {
+            header.classList.remove("scrolled");
+          }
+        });
+      }
+
+      // Initialize all components
+      function init() {
+        initMobileMenu();
+        initSmoothScroll();
+        initHeaderScroll();
+        loadDynamicContent();
+      }
+
+      // Start the application
+      document.addEventListener("DOMContentLoaded", init);
+    </script>
+  </body>
+</html>

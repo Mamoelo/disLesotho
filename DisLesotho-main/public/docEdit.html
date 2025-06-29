@@ -1,0 +1,184 @@
+<!-- docEdit.js -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOCX Manager</title>
+</head>
+<body>
+  <h1>DOCX Manager</h1>
+
+  <section>
+    <h2>Create New Document</h2>
+    <label>Category:
+      <select id="category">
+        <option value="default">Default</option>
+        <!-- Add more categories here -->
+      </select>
+    </label><br><br>
+    <label>File Name: <input id="filename" type="text" placeholder="example"></label><br><br>
+    <textarea id="docContent" rows="8" cols="60" placeholder="Type your content here..."></textarea><br><br>
+    <button id="createBtn">Create & Store</button>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Existing Documents</h2>
+    <label>Category:
+      <select id="listCategory">
+        <option value="default" role="button" id="category">Default</option>
+        <!-- Add more categories here -->
+      </select>
+    </label>
+    <select id="docList"><option value="">-- Select a document --</option></select>
+    <button id="loadBtn">Load</button>
+    <button id="updateBtn" disabled>Update</button>
+    <button id="downloadBtn" disabled>Download</button>
+  </section>
+
+  <script>
+    const API = window.location.origin + '/api';
+
+    async function fetchJSON(url, options) {
+      const response = await fetch(url, options);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      if (typeof response.json !== 'function') {
+        throw new Error('Invalid response, .json missing');
+      }
+      const data = await response.json();
+      return data;
+    }
+
+    async function fetchCategories(selectId) {
+      const cats = await fetchJSON(`${API}/categories`);
+      const sel = document.getElementById(selectId);
+      sel.innerHTML = '';
+      cats.forEach(c => {
+        const opt = document.createElement('option'); opt.value = c; opt.textContent = c;
+        sel.appendChild(opt);
+        refreshList();
+      });
+      const newOpt = document.createElement('option');
+      newOpt.value = '__new__';
+      newOpt.textContent = 'Create New Category...';
+      sel.appendChild(newOpt);
+      refreshList();
+    }
+
+    // Handle creation of a new folder
+    async function handleNewCategory(selectId) {
+      const currentText = document.getElementById('docContent').value;
+      const currentName = document.getElementById('filename').value;
+
+      const sel = document.getElementById(selectId);
+      sel.addEventListener('change', async () => {
+        if (sel.value === '__new__') {
+          let parent = null;
+          // ask if it's subfolder under an existing
+          const useParent = confirm('Create subfolder under existing category?');
+          if (useParent) parent = prompt('Enter parent category (choose from list):', sel.options[0].value);
+          const name = prompt('Enter new category name:');
+          document.getElementById('docContent').value = currentText;
+          document.getElementById('filename').value = currentName;
+          if (!name) return sel.value = sel.options[0].value;
+          // call server to create folder
+          await fetch(`${API}/categories`, {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({ name, parent })
+          });
+          // refresh all category selects
+          await fetchCategories('category');
+          await fetchCategories('listCategory');
+          refreshList();
+        }
+      });
+    }
+
+    async function refreshList() {
+      const cat = document.getElementById('listCategory').value;
+      if (cat === '__new__') return;
+      const names = await fetchJSON(`${API}/docs?category=${encodeURIComponent(cat)}`);
+      const sel = document.getElementById('docList');
+      sel.innerHTML = '<option value="">-- Select a document --</option>';
+      names.forEach(n => {
+        const opt = document.createElement('option');
+        opt.value = n;
+        opt.textContent = n;
+        sel.appendChild(opt);
+      });
+      document.getElementById('updateBtn').disabled = true;
+      document.getElementById('downloadBtn').disabled = true;
+      document.getElementById('docContent').value = '';
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await fetchCategories('category');
+      await fetchCategories('listCategory');
+      handleNewCategory('category');
+      handleNewCategory('listCategory');
+      refreshList();
+
+      document.getElementById('createBtn').onclick = async () => {
+        const category = document.getElementById('category').value;
+        if (category === '__new__') return;
+        const name = document.getElementById('filename').value.trim();
+        const text = document.getElementById('docContent').value;
+        if (!name) return alert('Enter a file name');
+        const res = await fetch(`${API}/docs`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ category, name, content: text })
+        });
+        if (!res.ok) {
+          console.error('Create failed:', res.status);
+          alert('Failed to create document');
+        } else {
+          console.log('Document created successfully');
+          document.getElementById('filename').value = '';
+          document.getElementById('docContent').value = '';
+          refreshList();
+        }
+      };
+
+      document.getElementById('loadBtn').onclick = async () => {
+        const cat = document.getElementById('listCategory').value;
+        if (cat === '__new__') return;
+        const name = document.getElementById('docList').value;
+        if (!name) return;
+        const doc = await fetchJSON(`${API}/docs/${encodeURIComponent(cat)}/${encodeURIComponent(name)}`);
+        document.getElementById('docContent').value = doc.content;
+        document.getElementById('updateBtn').disabled = false;
+        document.getElementById('downloadBtn').disabled = false;
+      };
+
+      document.getElementById('updateBtn').onclick = async () => {
+        const cat = document.getElementById('listCategory').value;
+        const name = document.getElementById('docList').value;
+        const text = document.getElementById('docContent').value;
+        if (!name) return;
+        const res = await fetch(`${API}/docs/${encodeURIComponent(cat)}/${encodeURIComponent(name)}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ content: text })
+        });
+        if (!res.ok) {
+          console.error('Update failed:', res.status);
+          alert('Failed to update document');
+        } else {
+          console.log('Document updated successfully');
+        }
+      };
+
+      document.getElementById('downloadBtn').onclick = () => {
+        const cat = document.getElementById('listCategory').value;
+        const name = document.getElementById('docList').value;
+        window.location = `${API}/docs/${encodeURIComponent(cat)}/${encodeURIComponent(name)}/download`;
+      };
+    //   refreshList();
+    });
+  </script>
+</body>
+</html>

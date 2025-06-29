@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ... (keep all your existing head content) ... -->
+    <style>
+      /* Add this new style for partner type sections */
+      .partner-type-section {
+        margin-bottom: 60px;
+      }
+      .partner-type-header {
+        border-bottom: 2px solid var(--secondary-color);
+        padding-bottom: 10px;
+        margin-bottom: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header (keep your existing header) ... -->
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <h1>Supporting Organizations</h1>
+        <p class="lead">
+          Meet the institutions and associations driving digital transformation
+          in Lesotho
+        </p>
+      </div>
+    </section>
+
+    <!-- Partner Organizations Section - Dynamically Loaded -->
+    <section class="py-5" id="partner-organizations">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Valued Partners</h2>
+          <p class="lead">
+            Organizations collaborating to advance digital innovation in Lesotho
+          </p>
+        </div>
+
+        <!-- Partner types will be loaded here dynamically -->
+        <div id="partners-container">
+          <!-- Loading spinner -->
+          <div class="text-center py-5">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <p>Loading partner organizations...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact Section (keep your existing impact section) ... -->
+
+    <!-- Partnership Types (keep your existing partnership types section) ... -->
+
+    <!-- Testimonials (keep your existing testimonials section) ... -->
+
+    <!-- CTA Section (keep your existing CTA section) ... -->
+
+    <!-- Footer (keep your existing footer) ... -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Simple animation for organization cards
+      document.addEventListener("DOMContentLoaded", function () {
+        const orgCards = document.querySelectorAll(".org-card");
+
+        orgCards.forEach((card, index) => {
+          // Add slight delay to each card's animation
+          card.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Load partners from database
+        loadPartners();
+      });
+
+      // Function to load partners from the backend
+      async function loadPartners() {
+        const container = document.getElementById("partners-container");
+
+        try {
+          // Fetch partners from the public endpoint
+          const response = await fetch("/api/public/partners");
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const result = await response.json();
+
+          if (!result.success || !result.data) {
+            throw new Error("Invalid response format");
+          }
+
+          const partnersByType = result.data;
+
+          if (!partnersByType || partnersByType.length === 0) {
+            container.innerHTML = `
+        <div class="alert alert-info">
+          No partner organizations found. Please check back later.
+        </div>
+      `;
+            return;
+          }
+
+          // Generate HTML for each partner type
+          let html = "";
+          partnersByType.forEach((type) => {
+            if (type.partners && type.partners.length > 0) {
+              html += `
+          <div class="partner-type-section">
+            <div class="partner-type-header">
+              <h3>${type.type_name}</h3>
+              ${
+                type.type_description
+                  ? `<p class="text-muted">${type.type_description}</p>`
+                  : ""
+              }
+            </div>
+            <div class="row">
+              ${type.partners
+                .map(
+                  (partner) => `
+                <div class="col-md-6 col-lg-4 mb-4">
+                  <div class="card org-card h-100">
+                    ${
+                      partner.logo_path
+                        ? `
+                      <div class="card-body text-center">
+                        <img src="/uploads/${partner.logo_path}" 
+                             alt="${partner.partner_name}" 
+                             class="org-logo">
+                      </div>
+                    `
+                        : ""
+                    }
+                    <div class="card-body">
+                      <h5 class="card-title">${partner.partner_name}</h5>
+                      ${
+                        partner.description
+                          ? `<p class="card-text">${partner.description}</p>`
+                          : ""
+                      }
+                      ${
+                        partner.website_url
+                          ? `
+                        <a href="${partner.website_url}" 
+                           target="_blank" 
+                           class="btn btn-outline-primary mt-auto">
+                          Visit Website
+                        </a>
+                      `
+                          : ""
+                      }
+                    </div>
+                  </div>
+                </div>
+              `
+                )
+                .join("")}
+            </div>
+          </div>
+        `;
+            }
+          });
+
+          container.innerHTML = html;
+        } catch (error) {
+          console.error("Error loading partners:", error);
+          container.innerHTML = `
+      <div class="alert alert-danger">
+        Error loading partner organizations. Please try again later.
+        ${error.message ? `<small>${error.message}</small>` : ""}
+      </div>
+    `;
+        }
+      }
+      document.addEventListener("click", function (event) {
+        const navbarCollapse = document.getElementById("navbarNav");
+        const navbarToggler = document.querySelector(".navbar-toggler");
+
+        // Only proceed if elements exist
+        if (!navbarCollapse || !navbarToggler) return;
+
+        if (
+          navbarCollapse.classList.contains("show") &&
+          !event.target.closest(".navbar") &&
+          !event.target.classList.contains("navbar-toggler")
+        ) {
+          const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+            toggle: false,
+          });
+          bsCollapse.hide();
+
+          navbarToggler.setAttribute("aria-expanded", "false");
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,2196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesotho Digital Innovators Summit | SkyAlpha HD</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --primary-color: #4a148c; /* Deep purple */
+        --secondary-color: #7b1fa2; /* Medium purple */
+        --accent-color: #e91e63; /* Pink accent */
+        --light-color: #f8f9fa;
+        --dark-color: #212529;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 700;
+      }
+
+      .bg-primary {
+        background-color: var(--primary-color) !important;
+      }
+
+      .bg-secondary {
+        background-color: var(--secondary-color) !important;
+      }
+
+      .text-primary {
+        color: var(--primary-color) !important;
+      }
+
+      .text-secondary {
+        color: var(--secondary-color) !important;
+      }
+
+      .btn-primary {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        padding: 10px 25px;
+        font-weight: 600;
+      }
+
+      .btn-primary:hover {
+        background-color: #6a1b9a;
+        border-color: #6a1b9a;
+      }
+
+      .btn-outline-primary {
+        border-color: var(--secondary-color);
+        color: var(--secondary-color);
+        font-weight: 600;
+      }
+
+      .btn-outline-primary:hover {
+        background-color: var(--secondary-color);
+        color: white;
+      }
+
+      /* Header Styles */
+      .main-header {
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar-brand img {
+        height: 40px;
+      }
+
+      .nav-link {
+        font-weight: 600;
+        color: var(--primary-color);
+        padding: 10px 15px !important;
+      }
+
+      .nav-link:hover {
+        color: var(--secondary-color);
+      }
+
+      .dropdown-menu {
+        border: none;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 0;
+      }
+
+      .dropdown-item {
+        font-weight: 500;
+        padding: 8px 20px;
+      }
+
+      .dropdown-item:hover {
+        background-color: rgba(123, 31, 162, 0.1);
+        color: var(--secondary-color);
+      }
+
+      /* Custom Active State for Home */
+      .nav-link.active-home {
+        position: relative;
+        color: var(--primary-color) !important;
+      }
+
+      .nav-link.active-home .nav-link-inner {
+        position: relative;
+        display: inline-block;
+      }
+
+      .nav-link.active-home .nav-link-inner::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--secondary-color);
+        transform: scaleX(1);
+        transition: transform 0.3s ease;
+      }
+
+      /* Hover effect for other nav items */
+      .nav-link:not(.active-home):hover {
+        color: var(--secondary-color) !important;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background: linear-gradient(
+            rgba(71, 109, 180, 0.8),
+            rgba(102, 45, 145, 0.8)
+          ),
+          url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 100px 0;
+        position: relative;
+      }
+
+      .hero-section h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+      }
+
+      .hero-section .lead {
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin-bottom: 30px;
+      }
+
+      .hero-badge {
+        display: inline-block;
+        background-color: var(--accent-color);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 4px;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+
+      /* Live Stream Section */
+      .live-section {
+        background-color: white;
+        padding: 60px 0;
+      }
+
+      .live-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: var(--accent-color);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 4px;
+        font-weight: 600;
+        z-index: 10;
+      }
+
+      .video-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        background-color: #000;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .video-container iframe,
+      .video-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .countdown-timer {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 30px;
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      .countdown-item {
+        display: inline-block;
+        margin: 0 10px;
+      }
+
+      .countdown-number {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: white;
+        line-height: 1;
+      }
+
+      .countdown-label {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.8);
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+
+      /* Featured Sessions */
+      .sessions-section {
+        padding: 80px 0;
+        background-color: #f8f9fa;
+      }
+
+      .session-card {
+        border: none;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        margin-bottom: 30px;
+        height: 100%;
+      }
+
+      .session-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .session-card .card-img-top {
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .session-card .card-body {
+        padding: 25px;
+      }
+
+      .session-card .card-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+      }
+
+      .session-card .university {
+        font-size: 0.9rem;
+        color: var(--secondary-color);
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .session-card .date-time {
+        font-size: 0.9rem;
+        color: #6c757d;
+        margin-bottom: 15px;
+      }
+
+      .session-card .badge {
+        font-weight: 500;
+        padding: 5px 10px;
+        border-radius: 4px;
+      }
+
+      /* Universities Section */
+      .universities-section {
+        padding: 80px 0;
+        background-color: rgb(255, 255, 255);
+      }
+      .university-logo-container {
+        padding: 20px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .university-logo {
+        max-height: 80px;
+        max-width: 150px;
+        width: auto;
+        height: auto;
+        margin: 0 auto 15px;
+        display: block;
+        filter: grayscale(30%);
+        opacity: 0.9;
+        transition: all 0.3s ease;
+      }
+
+      .university-logo:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: scale(1.05);
+      }
+
+      .university-logo-container p {
+        color: var(--dark-color);
+        font-weight: 500;
+        margin: 0;
+      }
+      #partners-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+        align-items: center;
+      }
+
+      @media (max-width: 768px) {
+        #partners-container {
+          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+          gap: 15px;
+        }
+      }
+
+      /* Testimonials */
+      .testimonials-section {
+        padding: 80px 0;
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .testimonial-card {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 30px;
+        height: 100%;
+      }
+
+      .testimonial-card .quote {
+        font-size: 1.1rem;
+        font-style: italic;
+        margin-bottom: 20px;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+      }
+
+      .testimonial-author img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 15px;
+        object-fit: cover;
+      }
+
+      .author-name {
+        font-weight: 700;
+        margin-bottom: 0;
+      }
+
+      .author-title {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        margin-bottom: 0;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        padding: 80px 0;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: white;
+        text-align: center;
+      }
+
+      .cta-section h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+      }
+
+      .cta-section p {
+        font-size: 1.25rem;
+        margin-bottom: 30px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Footer */
+      .main-footer {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 60px 0 0;
+      }
+
+      .footer-logo {
+        height: 70px;
+        margin-bottom: 20px;
+        background-color: aliceblue;
+        border-radius: 20%;
+      }
+
+      .footer-about {
+        opacity: 0.7;
+        margin-bottom: 20px;
+      }
+
+      .footer-links h5 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: white;
+      }
+
+      .footer-links ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--secondary-color);
+        padding-left: 5px;
+      }
+
+      .social-links a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        margin-right: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-3px);
+      }
+
+      .footer-bottom {
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: 20px 0;
+        margin-top: 40px;
+      }
+
+      .footer-bottom .container {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      @media (min-width: 768px) {
+        .footer-bottom .container {
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+      }
+
+      @media (min-width: 992px) {
+        .footer-bottom .container {
+          padding-left: 100px;
+          padding-right: 100px;
+        }
+      }
+
+      .copyright {
+        opacity: 0.7;
+        font-size: 0.9rem;
+      }
+
+      /* Loading spinner styles */
+      .loading-spinner {
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        border: 0.25em solid rgba(0, 0, 0, 0.1);
+        border-left-color: var(--secondary-color);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Error message styles */
+      .error-message {
+        color: #dc3545;
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        padding: 10px;
+        border-radius: 4px;
+        margin: 10px 0;
+      }
+
+      /* Reveal animations */
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Back to top button */
+      .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: var(--secondary-color);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 999;
+      }
+
+      .back-to-top:hover {
+        background: var(--primary-color);
+      }
+
+      .back-to-top.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* Responsive Adjustments */
+      @media (max-width: 992px) {
+        .hero-section h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero-section .lead {
+          font-size: 1.25rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-section {
+          padding: 80px 0;
+        }
+
+        .hero-section h1 {
+          font-size: 2rem;
+        }
+
+        .countdown-item {
+          margin: 0 5px;
+        }
+
+        .countdown-number {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero-section {
+          padding: 60px 0;
+        }
+
+        .countdown-item {
+          margin: 0 3px;
+        }
+
+        .countdown-number {
+          font-size: 1.5rem;
+        }
+
+        .countdown-label {
+          font-size: 0.7rem;
+        }
+      }
+      /* Debug styles - can remove after fixing */
+      /* Debug styles - force visibility */
+      #partners-container {
+        visibility: visible !important;
+        opacity: 1 !important;
+        display: grid !important;
+      }
+
+      #partners-container * {
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+
+      .university-logo-container {
+        background: white !important;
+        border: 1px solid #ccc !important;
+      }
+
+      .university-logo {
+        opacity: 1 !important;
+        filter: none !important;
+      }
+      /* Partner link styles */
+      .partner-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.3s ease;
+      }
+
+      .partner-link:hover {
+        transform: translateY(-5px);
+        text-decoration: none;
+      }
+
+      .university-logo-container:hover {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      } /* Achievement Cards */
+      .achievement-card {
+        border: none;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .achievement-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .card-img-container {
+        height: 150px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+
+      .card-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(0, 0, 0, 0.7) 100%
+        );
+      }
+
+      .achievement-stats {
+        margin-top: 1rem;
+      }
+
+      .stat-badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background-color: var(--primary);
+        color: white;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+      /* Achievements Section */
+      .past-summits-section {
+        padding: 80px 0;
+        background-color: #f8f9fa;
+      }
+
+      .section-title {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: var(--accent-color);
+      }
+
+      /* Achievement Cards */
+      .achievement-card {
+        border: none;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        height: 100%;
+        background: white;
+        margin-bottom: 30px;
+      }
+
+      .achievement-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .card-img-container {
+        height: 180px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+
+      .card-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(0, 0, 0, 0.5) 100%
+        );
+      }
+
+      .card-body {
+        padding: 20px;
+      }
+
+      .card-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+      }
+
+      .card-text {
+        color: #555;
+        margin-bottom: 15px;
+        font-size: 0.95rem;
+      }
+
+      .stat-badge {
+        display: inline-block;
+        padding: 0.35rem 1rem;
+        background-color: var(--accent-color);
+        color: white;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-top: 10px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .past-summits-section {
+          padding: 60px 0;
+        }
+
+        .card-img-container {
+          height: 150px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .past-summits-section {
+          padding: 50px 0;
+        }
+
+        .section-title {
+          font-size: 1.8rem;
+        }
+      } /* Debug styles - force visibility for achievements */
+      #achievements-container {
+        visibility: visible !important;
+        opacity: 1 !important;
+        display: flex !important;
+        background-color: rgba(
+          238,
+          238,
+          238,
+          0.1
+        ) !important; /* Light red bg to highlight container */
+
+        min-height: 200px !important;
+      }
+
+      #achievements-container * {
+        visibility: visible !important;
+        opacity: 1 !important;
+        background-color: rgba(
+          172,
+          172,
+          172,
+          0.1
+        ) !important; /* Light green for cards */
+      }
+
+      .achievement-card {
+        background: white !important;
+        border: 2px solid purple !important;
+        box-shadow: none !important;
+      }
+
+      .card-overlay {
+        background: rgba(
+          255,
+          255,
+          255,
+          0.2
+        ) !important; /* Semi-transparent blue */
+      }
+
+      .card-body {
+        background: white !important;
+      }
+
+      .stat-badge {
+        background: rgb(241, 241, 241) !important;
+        color: black !important;
+      }
+      /* Debug styles - force visibility for testimonials */
+      #testimonials-container {
+        visibility: visible !important;
+        opacity: 1 !important;
+        display: flex !important;
+        background-color: rgba(
+          255,
+          0,
+          0,
+          0.1
+        ) !important; /* Light red bg to highlight container */
+        min-height: 200px !important;
+        border: 2px dashed red !important; /* Add border to make container visible */
+      }
+
+      #testimonials-container * {
+        visibility: visible !important;
+        opacity: 1 !important;
+        background-color: rgba(
+          0,
+          255,
+          0,
+          0.1
+        ) !important; /* Light green for cards */
+      }
+
+      .testimonial-card {
+        background: white !important;
+        border: 2px solid blue !important;
+        box-shadow: none !important;
+        color: black !important; /* Force text color for visibility */
+      }
+
+      .testimonial-author img {
+        border: 2px solid orange !important;
+        background: pink !important;
+      }
+
+      .author-name,
+      .author-title,
+      .author-affiliation {
+        color: black !important;
+        background: rgba(255, 255, 0, 0.3) !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Header -->
+    <header class="main-header sticky-top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <img src="logo.jpeg" alt="SkyAlpha HD" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active-home" href="index.html">
+                  <span class="nav-link-inner">Home</span>
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="summitsDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Summits
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="2024Summit.html"
+                      >2024 Summit</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="past-summits.html"
+                      >All Summits</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="live.html">Live</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="eventDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Event
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="live.html">Live</a></li>
+                  <li>
+                    <a class="dropdown-item" href="sessions.html">Sessions</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="schedule.html">Schedule</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="speakers.html">Speakers</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="universities.html">Universities</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="partnersDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Partners
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="universities.html"
+                      >Universities</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="partners.html"
+                      >Organizations</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="sponsors.html">Sponsors</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="collaborators.html"
+                      >Collaborators</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="contactDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Contact
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="contact.html">Contact Us</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="team.html">Our Team</a>
+                  </li>
+                  <li><a class="dropdown-item" href="faq.html">FAQs</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">about</a>
+              </li>
+            </ul>
+            <a href="register.html" class="btn btn-primary ms-lg-3"
+              >Register Now</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section - Now with dynamic breaking news -->
+    <section class="hero-section">
+      <div class="container hero-content">
+        <div class="row align-items-center">
+          <div class="col-lg-8">
+            <span class="hero-badge" id="breaking-news-badge">
+              <i class="fas fa-circle me-2"></i> Coming Soon - 2025
+            </span>
+            <h1 id="hero-title">Welcome to the Digital Innovators Summit</h1>
+            <p class="lead" id="hero-description">
+              A space where ideas meet innovation. We're championing the ethical
+              use of AI to fight misinformation, empower digital storytellers,
+              and shape Africa's tech-driven future — starting right here in
+              Lesotho.
+              <br /><br />Explore. Connect. Lead.
+            </p>
+            <div class="d-flex flex-wrap gap-3 hero-buttons">
+              <a href="register.html" class="btn btn-light btn-lg"
+                >Register Now</a
+              >
+              <a href="about.html" class="btn btn-outline-light btn-lg"
+                >Learn More</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Stream Section - Dynamic -->
+    <section class="live-section" id="live">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 text-center">
+            <h2 class="mb-3 section-title reveal">Live Stream</h2>
+            <p
+              class="lead text-muted reveal"
+              style="transition-delay: 0.1s"
+              id="stream-description"
+            >
+              Watch the current sessions happening right now
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-8 mb-4 mb-lg-0 reveal">
+            <div class="video-container" id="stream-container">
+              <!-- Content will be loaded dynamically -->
+              <div
+                class="d-flex justify-content-center align-items-center h-100"
+              >
+                <div class="text-center text-white">
+                  <div class="loading-spinner mb-3"></div>
+                  <p>Loading stream information...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 reveal" style="transition-delay: 0.2s">
+            <div class="countdown-timer" id="countdown-container">
+              <h4 class="mb-4">Next Session Starts In:</h4>
+              <div class="countdown-container">
+                <div class="countdown-item">
+                  <div class="countdown-number" id="days">00</div>
+                  <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                  <div class="countdown-number" id="hours">00</div>
+                  <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                  <div class="countdown-number" id="minutes">00</div>
+                  <div class="countdown-label">Minutes</div>
+                </div>
+              </div>
+              <div class="mt-4" id="next-session-info">
+                <h5 class="mb-3">Up Next:</h5>
+                <p class="mb-1"><strong>Loading session info...</strong></p>
+                <p class="mb-3"></p>
+                <a
+                  href="#"
+                  class="btn btn-outline-light w-100"
+                  id="calendar-btn"
+                  >Add to Calendar</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Sessions - Dynamic -->
+    <section class="sessions-section" id="sessions">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 text-center">
+            <h2 class="mb-3 section-title reveal">Featured Sessions</h2>
+            <p class="lead text-muted reveal" style="transition-delay: 0.1s">
+              Preview of planned sessions for 2025
+            </p>
+          </div>
+        </div>
+
+        <div class="row" id="sessions-container">
+          <!-- Sessions will be loaded here dynamically -->
+          <div class="col-12 text-center py-5">
+            <div class="loading-spinner"></div>
+            <p>Loading featured sessions...</p>
+          </div>
+        </div>
+
+        <div class="text-center mt-4 reveal" style="transition-delay: 0.3s">
+          <a href="schedule.html" class="btn btn-primary">View Full Schedule</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Participating Universities - Dynamic -->
+    <section class="universities-section" id="universities">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 text-center">
+            <h2 class="mb-3 section-title reveal">
+              Participating Institutions
+            </h2>
+            <p class="lead text-muted reveal" style="transition-delay: 0.1s">
+              Our academic and organizational partners
+            </p>
+          </div>
+        </div>
+
+        <div class="row" id="partners-container">
+          <!-- Partners will be loaded here dynamically -->
+          <div class="col-12 text-center py-5">
+            <div class="loading-spinner"></div>
+            <p>Loading partner institutions...</p>
+          </div>
+        </div>
+
+        <div class="text-center mt-4 reveal" style="transition-delay: 0.4s">
+          <a href="partners.html" class="btn btn-outline-primary"
+            >See All Partners</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Past Summits - Dynamic -->
+    <section class="past-summits-section" id="past-summits">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 text-center">
+            <h2 class="mb-3 section-title reveal">Our Achievements</h2>
+            <p class="lead text-muted reveal" style="transition-delay: 0.1s">
+              Impact from previous summits
+            </p>
+          </div>
+        </div>
+
+        <div class="row" id="achievements-container">
+          <!-- Achievements will be loaded here dynamically -->
+          <div class="col-12 text-center py-5">
+            <div class="loading-spinner"></div>
+            <p>Loading achievements...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials - Dynamic -->
+    <section class="testimonials-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 text-center">
+            <h2 class="mb-3 section-title reveal">What People Are Saying</h2>
+            <p class="lead opacity-75 reveal" style="transition-delay: 0.1s">
+              Hear from past attendees and participants
+            </p>
+          </div>
+        </div>
+
+        <div class="row" id="testimonials-container">
+          <!-- Testimonials will be loaded here dynamically -->
+          <div class="col-12 text-center py-5">
+            <div class="loading-spinner"></div>
+            <p>Loading testimonials...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section - Dynamic -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 class="reveal" id="cta-title">
+          Ready to Join the 2025 Digital Revolution?
+        </h2>
+        <p class="reveal" style="transition-delay: 0.1s" id="cta-description">
+          Register now for the Digital Innovators Summit 2025 and be part of
+          shaping Lesotho's digital future.
+        </p>
+        <div class="d-flex flex-wrap justify-content-center gap-3 cta-buttons">
+          <a
+            href="register.html"
+            class="btn btn-light btn-lg reveal"
+            style="transition-delay: 0.2s"
+            >Register Now</a
+          >
+          <a
+            href="contact.html"
+            class="btn btn-outline-light btn-lg reveal"
+            style="transition-delay: 0.3s"
+            >Contact Us</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+      <div class="container footer-content">
+        <div class="row">
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <a
+              href="https://www.skyalphahd.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="images/logos/skyalpha.png"
+                alt="SkyAlpha HD"
+                class="footer-logo"
+              />
+            </a>
+            <p class="footer-about">
+              Aligned with Lesotho's National Digital Transformation Strategy,
+              the Digital Innovators Summit is a movement toward creating a
+              digitally empowered society.
+            </p>
+            <div class="social-links d-flex">
+              <a
+                href="https://www.facebook.com/DigitalInnovatorsSummitLesotho"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="https://twitter.com/DIS_Lesotho2025"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a
+                href="https://www.instagram.com/digitalinnovatorslesotho"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/company/digital-innovators-summit-lesotho"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a
+                href="https://www.youtube.com/c/DigitalInnovatorsSummitLesotho"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Summits</h5>
+              <ul>
+                <li><a href="2024Summit.html">2024 Summit</a></li>
+                <li><a href="past-summits.html">All Summits</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Event</h5>
+              <ul>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="speakers.html">Speakers</a></li>
+                <li><a href="sessions.html">Sessions</a></li>
+                <li><a href="live.html">Live Stream</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+            <div class="footer-links">
+              <h5>Partners</h5>
+              <ul>
+                <li><a href="universities.html">Universities</a></li>
+                <li><a href="partners.html">Organizations</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+                <li><a href="collaborators.html">Collaborators</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4">
+            <div class="footer-links">
+              <h5>Contact</h5>
+              <ul>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="copyright mb-3 mb-md-0">
+                  © 2025 Digital Innovators Summit. All rights reserved.
+                </p>
+              </div>
+              <div class="col-md-6 text-md-end">
+                <a href="privacy.html" class="text-white-50 me-3"
+                  >Privacy Policy</a
+                >
+                <a href="terms.html" class="text-white-50">Terms of Service</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Add this at the top of your script
+      let lastSessionUpdate = 0;
+      const SESSION_UPDATE_THROTTLE = 1000; // 1 second between updates
+
+      function updateFeaturedSessions(sessions) {
+        const container = document.getElementById("sessions-container");
+
+        // 1. Completely destroy and recreate container
+        const newContainer = document.createElement("div");
+        newContainer.id = "sessions-container";
+        newContainer.className = "row";
+        newContainer.style.display = "flex";
+        newContainer.style.flexWrap = "wrap";
+        newContainer.style.gap = "20px";
+        container.replaceWith(newContainer);
+
+        // 2. Force synchronous rendering
+        setTimeout(() => {
+          sessions.forEach((session) => {
+            const card = document.createElement("div");
+            card.className = "col-md-6 col-lg-4";
+            card.innerHTML = `
+                <div class="card" style="width: 100%; height: 100%; border: 2px solid #4a148c;">
+                    <div style="height: 200px; background: #f8f9fa; display: flex; align-items: center; justify-content: center;">
+                        ${
+                          session.imageUrl
+                            ? `<img src="${session.imageUrl}" style="max-height: 100%; max-width: 100%; object-fit: contain;">`
+                            : `<div style="text-align: center; padding: 20px;">
+                                <i class="fas fa-calendar-alt fa-3x" style="color: #7b1fa2;"></i>
+                                <h4>${session.session_title}</h4>
+                            </div>`
+                        }
+                    </div>
+                    <div class="card-body" style="border-top: 1px solid #eee;">
+                        <h5 style="color: #4a148c; margin-bottom: 10px;">${
+                          session.session_title
+                        }</h5>
+                        <p style="color: #7b1fa2; font-weight: 500;">${
+                          session.speaker
+                        }</p>
+                        <p style="color: #666;">${formatSessionTime(
+                          session
+                        )}</p>
+                        <a href="speakers.html#${session.speaker_id}" 
+                           style="display: block; margin-top: 15px; padding: 8px 0; text-align: center; 
+                                  background: #7b1fa2; color: white; border-radius: 4px;">
+                            View Speaker
+                        </a>
+                    </div>
+                </div>
+            `;
+            newContainer.appendChild(card);
+          });
+
+          // 3. Final verification
+          console.log("Rendered sessions:", newContainer.children.length);
+          if (newContainer.children.length === 0) {
+            newContainer.innerHTML = `
+                <div style="width: 100%; padding: 40px; text-align: center; background: #f8f9fa; border: 2px dashed #4a148c;">
+                    <i class="fas fa-exclamation-triangle fa-2x" style="color: #e91e63;"></i>
+                    <h4 style="margin-top: 10px; color: #4a148c;">Sessions loaded but not visible</h4>
+                    <p style="color: #7b1fa2;">Check CSS conflicts</p>
+                </div>
+            `;
+          }
+        }, 0);
+      }
+      function formatSessionTime(session) {
+        try {
+          const start = new Date(session.start_time);
+          const end = new Date(session.end_time);
+
+          const dateOptions = {
+            weekday: "short",
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          };
+
+          const timeOptions = {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true,
+          };
+
+          let dateInfo = "";
+          if (session.day) {
+            dateInfo = `Day ${session.day}, `;
+          }
+
+          return (
+            `${dateInfo}${start.toLocaleDateString("en-US", dateOptions)}, ` +
+            `${start.toLocaleTimeString("en-US", timeOptions)} - ` +
+            `${end.toLocaleTimeString("en-US", timeOptions)}`
+          );
+        } catch (e) {
+          console.error("Error formatting session time:", e);
+          return "Time to be announced";
+        }
+      }
+
+      function generatePlaceholderSvg(text = "", width = 150, height = 80) {
+        // Ensure text is a string and has content
+        const displayText =
+          typeof text === "string" && text.trim()
+            ? text.substring(0, 15)
+            : "Image";
+
+        return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
+                <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
+                    <rect width="${width}" height="${height}" fill="#ddd"/>
+                    <text x="50%" y="50%" fill="#666" font-family="Arial" text-anchor="middle" dy=".3em">
+                        ${displayText}
+                    </text>
+                </svg>
+            `)}`;
+      }
+
+      // Set up scroll reveal animations
+      function setupScrollReveal() {
+        const reveals = document.querySelectorAll(".reveal");
+
+        const revealOnScroll = () => {
+          for (let i = 0; i < reveals.length; i++) {
+            const windowHeight = window.innerHeight;
+            const revealTop = reveals[i].getBoundingClientRect().top;
+            const revealPoint = 150;
+
+            if (revealTop < windowHeight - revealPoint) {
+              reveals[i].classList.add("active");
+            }
+          }
+        };
+
+        window.addEventListener("scroll", revealOnScroll);
+        window.addEventListener("load", revealOnScroll);
+      }
+      // Set up back to top button
+      function setupBackToTop() {
+        const backToTopButton = document.querySelector(".back-to-top");
+
+        window.addEventListener("scroll", function () {
+          if (window.pageYOffset > 300) {
+            backToTopButton.classList.add("active");
+          } else {
+            backToTopButton.classList.remove("active");
+          }
+        });
+
+        backToTopButton.addEventListener("click", function (e) {
+          e.preventDefault();
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+      }
+
+      // Loading state management
+      let isLoading = false;
+      let lastLoadTime = 0;
+      const LOAD_THROTTLE_TIME = 5000; // 5 seconds between loads
+
+      // Enhanced loadDynamicContent function
+      async function loadDynamicContent() {
+        const now = Date.now();
+
+        // Prevent duplicate calls and throttle frequent requests
+        if (isLoading || now - lastLoadTime < LOAD_THROTTLE_TIME) {
+          console.log(
+            "[DEBUG] Skipping load - already loading or too frequent"
+          );
+          return;
+        }
+
+        isLoading = true;
+        lastLoadTime = now;
+
+        try {
+          console.log("[DEBUG] Starting content load");
+          showLoadingStates();
+
+          const data = await fetchHomepageData();
+
+          if (data) {
+            console.log("[DEBUG] Data received, updating UI");
+
+            // Batch updates for better performance
+            await Promise.all([
+              updateHeroSection(data),
+              updateLiveSection(data),
+              updateFeaturedSessions(data.featuredSessions),
+              updatePartners(data.partners),
+              updateAchievements(data.cards), // Instead of data.achievements
+              updateTestimonials(data.testimonials),
+            ]);
+
+            console.log("[DEBUG] UI updates completed");
+          }
+        } catch (error) {
+          console.error("Error loading dynamic content:", error);
+          showErrorStates();
+        } finally {
+          isLoading = false;
+          console.log("[DEBUG] Content load completed");
+        }
+      }
+
+      // Show loading states
+      function showLoadingStates() {
+        // You can add specific loading indicators if needed
+      }
+
+      // Show error states
+      function showErrorStates() {
+        const errorContainers = document.querySelectorAll(
+          "#stream-container, #sessions-container, #partners-container, #achievements-container, #testimonials-container"
+        );
+
+        errorContainers.forEach((container) => {
+          container.innerHTML = `
+                    <div class="col-12">
+                        <div class="error-message">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            Failed to load content. Please try again later.
+                        </div>
+                    </div>
+                `;
+        });
+      }
+
+      // Fetch homepage data from API
+      async function fetchHomepageData() {
+        try {
+          // This would be replaced with your actual API endpoint
+          const response = await fetch("/api/homepage-data");
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+
+          if (data.success) {
+            return data.data;
+          } else {
+            throw new Error(data.error || "Failed to load homepage data");
+          }
+        } catch (error) {
+          console.error("Error fetching homepage data:", error);
+          throw error;
+        }
+      }
+
+      // Update hero section with dynamic data
+      function updateHeroSection(data) {
+        const heroBadge = document.getElementById("breaking-news-badge");
+        const heroTitle = document.getElementById("hero-title");
+        const heroDescription = document.getElementById("hero-description");
+
+        // Update breaking news badge if available
+        if (data.breakingNews && data.breakingNews.length > 0) {
+          const latestNews = data.breakingNews[0];
+          heroBadge.innerHTML = `
+                    <i class="fas fa-circle me-2"></i>
+                    BREAKING: ${latestNews.title}
+                `;
+        }
+
+        // Update other hero section elements if needed
+        if (data.heroTitle) {
+          heroTitle.textContent = data.heroTitle;
+        }
+        if (data.heroDescription) {
+          heroDescription.textContent = data.heroDescription;
+        }
+      }
+
+      // Update live section with dynamic data
+      function updateLiveSection(data) {
+        const streamContainer = document.getElementById("stream-container");
+        const streamDescription = document.getElementById("stream-description");
+
+        if (data.liveStreams && data.liveStreams.length > 0) {
+          const liveStream = data.liveStreams[0];
+          const videoUrl = liveStream.video_url;
+          const videoId = videoUrl.match(
+            /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&\n?#]+)/
+          )[1];
+
+          streamContainer.innerHTML = `
+                    <div class="live-badge">
+                        <i class="fas fa-circle me-2"></i> LIVE NOW
+                    </div>
+                    <iframe width="100%" height="450"
+                            src="https://www.youtube.com/embed/${videoId}?autoplay=1"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                    <div class="stream-info mt-3">
+                        <h3>${liveStream.stream_title}</h3>
+                        <p>${liveStream.description}</p>
+                    </div>
+                `;
+
+          if (liveStream.description) {
+            streamDescription.textContent = liveStream.description;
+          }
+        } else {
+          streamContainer.innerHTML = `
+                    <div class="text-center text-white py-5">
+                        <i class="fas fa-video-slash fa-3x mb-3"></i>
+                        <h4>No live stream currently available</h4>
+                        <p>Check back later for upcoming sessions</p>
+                    </div>
+                `;
+        }
+      }
+
+      // Helper function to generate badge class
+      function getBadgeClass(category) {
+        const classes = {
+          AI: "bg-primary",
+          Policy: "bg-secondary",
+          Ethics: "bg-danger",
+          Technology: "bg-success",
+          Education: "bg-warning",
+        };
+        return classes[category] || "bg-info";
+      }
+      // Helper function to format session time with error handling
+
+      function updatePartners(partners) {
+        const partnersContainer = document.getElementById("partners-container");
+
+        if (!partnersContainer) {
+          console.error("Partners container not found!");
+          return;
+        }
+
+        try {
+          if (partners?.length > 0) {
+            // Flatten the partners array from all types
+            const allPartners = partners.flatMap((type) => type.partners);
+
+            partnersContainer.innerHTML = allPartners
+              .map(
+                (partner) => `
+                <div class="col-6 col-md-3 mb-4 reveal">
+                    <div class="university-logo-container">
+                        <a href="${partner.website_url}" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="partner-link">
+                            <img src="${partner.logo_path}"
+                                 class="university-logo"
+                                 alt="${partner.partner_name || "Partner logo"}"
+                                 loading="lazy"
+                                 onerror="this.src='${generatePlaceholderSvg(
+                                   partner.partner_name || "Partner",
+                                   150,
+                                   80
+                                 )}'">
+                            ${
+                              partner.partner_name
+                                ? `
+                                <p class="small mt-2">${partner.partner_name}</p>
+                            `
+                                : ""
+                            }
+                        </a>
+                    </div>
+                </div>
+            `
+              )
+              .join("");
+          } else {
+            partnersContainer.innerHTML = `
+                <div class="col-12">
+                    <div class="alert alert-info">
+                        Partner information will be available soon
+                    </div>
+                </div>
+            `;
+          }
+        } catch (error) {
+          console.error("Error updating partners:", error);
+          partnersContainer.innerHTML = `
+            <div class="col-12">
+                <div class="alert alert-danger">
+                    Error loading partner information
+                </div>
+            </div>
+        `;
+        }
+      }
+      // Update achievements section with dynamic data
+      // Update achievements section with dynamic data
+      function updateAchievements(cards) {
+        const achievementsContainer = document.getElementById(
+          "achievements-container"
+        );
+
+        if (cards && cards.length > 0) {
+          achievementsContainer.innerHTML = cards
+            .map(
+              (card) => `
+          <div class="col-md-6 col-lg-3 mb-4 reveal" style="transition-delay: ${
+            card.order * 0.1
+          }s">
+            <div class="card h-100 achievement-card">
+              <div class="card-img-container" style="background-image: url('${
+                card.imageUrl
+              }')">
+                <div class="card-overlay"></div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">${card.title}</h5>
+                <p class="card-text">${card.description}</p>
+                <div class="achievement-stats">
+                  <span class="stat-badge">${card.statText}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        `
+            )
+            .join("");
+        } else {
+          achievementsContainer.innerHTML = `
+      <div class="col-12">
+        <div class="alert alert-info">
+          No achievements to display at this time.
+        </div>
+      </div>
+    `;
+        }
+      }
+      // Update testimonials section with dynamic data
+      function updateTestimonials(testimonials) {
+        const testimonialsContainer = document.getElementById(
+          "testimonials-container"
+        );
+
+        if (testimonials && testimonials.length > 0) {
+          testimonialsContainer.innerHTML = testimonials
+            .map(
+              (testimonial) => `
+                        <div class="col-md-4 mb-4 reveal">
+                            <div class="testimonial-card">
+                                <div class="quote">${testimonial.quote}</div>
+                                <div class="testimonial-author">
+                                    <img src="${
+                                      testimonial.authorImage ||
+                                      "https://randomuser.me/api/portraits/men/" +
+                                        Math.floor(Math.random() * 100) +
+                                        ".jpg"
+                                    }"
+                                         alt="${testimonial.authorName}">
+                                    <div>
+                                        <p class="author-name">${
+                                          testimonial.authorName
+                                        }</p>
+                                        <p class="author-title">${
+                                          testimonial.authorTitle
+                                        }</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `
+            )
+            .join("");
+        } else {
+          testimonialsContainer.innerHTML = `
+                    <div class="col-12">
+                        <div class="alert alert-info">
+                            No testimonials available at this time.
+                        </div>
+                    </div>
+                `;
+        }
+      }
+
+      async function fetchNextSession() {
+        try {
+          const response = await fetch("/api/next-session");
+          if (!response.ok) throw new Error("Network response was not ok");
+          return await response.json();
+        } catch (error) {
+          console.error("Failed to fetch next session:", error);
+          return null;
+        }
+      }
+
+      // Format time display
+      function formatSessionTime(start, end) {
+        const options = {
+          month: "short",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+        };
+        const startTime = new Date(start).toLocaleString("en-US", options);
+        const endTime = new Date(end).toLocaleString("en-US", {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        return `${startTime} - ${endTime}`;
+      }
+
+      // Update the countdown display
+      function updateCountdown(session) {
+        const now = new Date();
+        const startTime = new Date(session.start_time);
+        const diff = startTime - now;
+
+        // Calculate time remaining
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours =
+          Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) + 1;
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+        // Update the display
+        document.getElementById("days").textContent = days
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("hours").textContent = hours
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("minutes").textContent = minutes
+          .toString()
+          .padStart(2, "0");
+
+        // Update session info
+        document.getElementById("next-session-info").innerHTML = `
+    <h5 class="mb-3">Up Next:</h5>
+    <div class="d-flex align-items-start mb-3">
+      ${
+        session.speaker_image
+          ? `
+        <img src="${session.speaker_image}" 
+             class="rounded-circle me-3" 
+             style="width: 60px; height: 60px; object-fit: cover;" 
+             alt="${session.speaker_name}">
+      `
+          : ""
+      }
+      <div>
+        <p class="mb-1"><strong>${session.session_title}</strong></p>
+        <p class="mb-1 small">${session.speaker_name}</p>
+        <p class="mb-0 small text-muted">${session.institution}</p>
+      </div>
+    </div>
+    <p class="mb-2">
+      <i class="far fa-clock me-2"></i>
+      ${formatSessionTime(session)}
+    </p>
+    <p class="mb-3 small">${session.description}</p>
+    <div class="d-grid gap-2">
+      <a href="sessions.html#session-${session.session_id}" 
+         class="btn btn-outline-light btn-sm">
+        Session Details
+      </a>
+      <button class="btn btn-outline-light btn-sm" 
+         onclick="addToCalendar(${JSON.stringify(session).replace(
+           /"/g,
+           "&quot;"
+         )})">
+        <i class="far fa-calendar-plus me-1"></i> Add to Calendar
+      </button>
+    </div>
+  `;
+      }
+      function updateTestimonials(testimonials) {
+        const testimonialsContainer = document.getElementById(
+          "testimonials-container"
+        );
+
+        if (testimonials && testimonials.length > 0) {
+          testimonialsContainer.innerHTML = testimonials
+            .map(
+              (testimonial) => `
+          <div class="col-md-4 mb-4 reveal">
+            <div class="testimonial-card">
+              <div class="quote">${testimonial.quote}</div>
+              <div class="testimonial-author">
+                <img src="${
+                  testimonial.imageUrl ||
+                  "https://dislesotho.com/Th19JuneNow/images/people/profile.png"
+                }"
+                     alt="${
+                       testimonial.author.name
+                     }" class="img-fluid rounded-circle">
+                <div>
+                  <p class="author-name">${testimonial.author.name}</p>
+                  <p class="author-title">${testimonial.author.title}</p>
+                  <p class="author-affiliation">${
+                    testimonial.author.affiliation
+                  }</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        `
+            )
+            .join("");
+        } else {
+          testimonialsContainer.innerHTML = `
+      <div class="col-12">
+        <div class="alert alert-info">
+          No testimonials available at this time.
+        </div>
+      </div>
+    `;
+        }
+      }
+      // Initialize countdown
+      async function initCountdown() {
+        const session = await fetchNextSession();
+        const countdownContainer = document.getElementById(
+          "countdown-container"
+        );
+
+        if (!session) {
+          countdownContainer.innerHTML = `
+      <h4 class="mb-4">No Upcoming Sessions</h4>
+      <p>Check back later for scheduled sessions.</p>
+    `;
+          return;
+        }
+
+        updateCountdown(session);
+
+        // Update every minute
+        setInterval(async () => {
+          const updatedSession = await fetchNextSession();
+          if (updatedSession) updateCountdown(updatedSession);
+        }, 60000);
+      }
+      function formatSessionTime(session) {
+        try {
+          const start = new Date(session.start_time);
+          const end = new Date(session.end_time);
+
+          const dateOptions = {
+            weekday: "short",
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          };
+
+          const timeOptions = {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true,
+          };
+
+          let dateInfo = "";
+          if (session.day) {
+            dateInfo = `Day ${session.day}, `;
+          }
+
+          return (
+            `${dateInfo}${start.toLocaleDateString("en-US", dateOptions)}, ` +
+            `${start.toLocaleTimeString("en-US", timeOptions)} - ` +
+            `${end.toLocaleTimeString("en-US", timeOptions)}`
+          );
+        } catch (e) {
+          console.error("Error formatting session time:", e);
+          return "Time to be announced";
+        }
+      }
+
+      // Start when page loads
+      document.addEventListener("DOMContentLoaded", initCountdown);
+
+      // Calendar integration
+      function addToCalendar(session) {
+        const start = new Date(session.start_time);
+        const end = new Date(session.end_time);
+
+        const calendarUrl =
+          `https://www.google.com/calendar/render?action=TEMPLATE` +
+          `&text=${encodeURIComponent(session.session_title)}` +
+          `&dates=${start.toISOString().replace(/[-:]/g, "").split(".")[0]}Z` +
+          `/${end.toISOString().replace(/[-:]/g, "").split(".")[0]}Z` +
+          `&details=${encodeURIComponent(session.description || "")}` +
+          `&location=${encodeURIComponent("Maseru Convention Centre")}` +
+          `&trp=true`;
+
+        window.open(calendarUrl, "_blank");
+      }
+      // Initialize mobile menu close on outside click
+      function initMobileMenu() {
+        document.addEventListener("click", function (event) {
+          const navbarCollapse = document.getElementById("navbarNav");
+          const navbarToggler = document.querySelector(".navbar-toggler");
+
+          if (
+            navbarCollapse.classList.contains("show") &&
+            !event.target.closest(".navbar") &&
+            !event.target.classList.contains("navbar-toggler")
+          ) {
+            const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+              toggle: false,
+            });
+            bsCollapse.hide();
+
+            navbarToggler.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+
+      // Smooth scroll for anchor links
+      function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: "smooth",
+              });
+
+              // Close mobile menu if open
+              const navbarCollapse = document.getElementById("navbarNav");
+              if (navbarCollapse.classList.contains("show")) {
+                const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                  toggle: false,
+                });
+                bsCollapse.hide();
+              }
+            }
+          });
+        });
+      }
+
+      // Initialize header scroll effect
+      function initHeaderScroll() {
+        window.addEventListener("scroll", function () {
+          const header = document.querySelector(".main-header");
+          if (window.scrollY > 50) {
+            header.classList.add("scrolled");
+          } else {
+            header.classList.remove("scrolled");
+          }
+        });
+      }
+      document.addEventListener("DOMContentLoaded", function () {
+        initPage();
+        setupScrollReveal();
+        setupBackToTop();
+        loadDynamicContent();
+      });
+      function initPage() {}
+      function init() {
+        initMobileMenu();
+        initSmoothScroll();
+        initHeaderScroll();
+        loadDynamicContent();
+      }
+      function initPage() {
+        setupScrollReveal();
+        setupBackToTop();
+        loadDynamicContent();
+        setInterval(loadDynamicContent, 300000);
+      }
+
+      document.addEventListener(
+        "DOMContentLoaded",
+        initPage,
+        init,
+        initCountdown
+      );
+    </script>
+  </body>
+</html>

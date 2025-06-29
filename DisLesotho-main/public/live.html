@@ -1,0 +1,260 @@
+<!-- live.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Event Management Portal</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="/public/live.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="logo">
+          <h1><i class="fas fa-video"></i> <span>LiveStream Admin</span></h1>
+        </div>
+        <ul class="nav-links">
+          <li>
+            <a href="#" class="active"
+              ><i class="fas fa-home"></i> <span>Dashboard</span></a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><i class="fas fa-calendar-alt"></i> <span>Events</span></a
+            >
+          </li>
+          <li>
+            <a href="/public/index.html"
+              ><i class="fas fa-arrow-left"></i> <span>Back</span></a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <div class="header">
+          <h2>Event Management Dashboard</h2>
+          <div class="user-info">
+            <div class="notifications">
+              <i class="fas fa-bell"></i>
+            </div>
+            <div class="user-avatar">AJ</div>
+          </div>
+        </div>
+
+        <!-- Dashboard Cards -->
+        <div class="dashboard-cards">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 id="totalEventsCount">0</h3>
+                <p>Total Events</p>
+              </div>
+              <div class="card-icon bg-primary">
+                <i class="fas fa-calendar"></i>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 id="liveEventsCount">0</h3>
+                <p>Live Now</p>
+              </div>
+              <div class="card-icon bg-success">
+                <i class="fas fa-broadcast-tower"></i>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 id="viewersCount">0</h3>
+                <p>Total Viewers</p>
+              </div>
+              <div class="card-icon bg-warning">
+                <i class="fas fa-users"></i>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3>98%</h3>
+                <p>Uptime</p>
+              </div>
+              <div class="card-icon bg-danger">
+                <i class="fas fa-server"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+          <div class="tab active" data-tab="create">Create New Event</div>
+          <div class="tab" data-tab="manage">Manage Events</div>
+          <div class="tab" data-tab="stream">Stream Setup</div>
+          <div class="tab" data-tab="analytics">Analytics</div>
+        </div>
+
+        <!-- Event Creation Form -->
+        <div class="form-container" id="createEventTab">
+          <h3 class="form-title">Create New Event</h3>
+          <form id="eventForm">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="eventTitle">Event Title *</label>
+                <input
+                  type="text"
+                  id="eventTitle"
+                  class="form-control"
+                  placeholder="Enter event title"
+                  required />
+              </div>
+              <div class="form-group">
+                <label for="eventDate">Date & Time *</label>
+                <input
+                  type="datetime-local"
+                  id="eventDate"
+                  class="form-control"
+                  required />
+              </div>
+              <div class="form-group">
+                <label for="eventType">Event Type *</label>
+                <div class="radio-group">
+                  <div class="radio-option">
+                    <input
+                      type="radio"
+                      id="virtual"
+                      name="eventType"
+                      value="virtual"
+                      checked />
+                    <label for="virtual">Virtual</label>
+                  </div>
+                  <div class="radio-option">
+                    <input
+                      type="radio"
+                      id="physical"
+                      name="eventType"
+                      value="physical" />
+                    <label for="physical">Physical</label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="eventHost">Host Name *</label>
+                <input
+                  type="text"
+                  id="eventHost"
+                  class="form-control"
+                  placeholder="Enter host name"
+                  required />
+              </div>
+              <div class="form-group">
+                <label for="eventPresenter">Presenter</label>
+                <input
+                  type="text"
+                  id="eventPresenter"
+                  class="form-control"
+                  placeholder="Enter presenter name" />
+              </div>
+              <div class="form-group">
+                <label for="eventLocation">Location / Platform *</label>
+                <input
+                  type="text"
+                  id="eventLocation"
+                  class="form-control"
+                  placeholder="Enter location or platform" />
+              </div>
+              <div class="form-group">
+                <label for="eventThumbnail">Thumbnail Image</label>
+                <input type="file" id="eventThumbnail" class="form-control" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="eventDescription">Event Description *</label>
+              <textarea
+                id="eventDescription"
+                class="form-control"
+                rows="4"
+                placeholder="Enter event description"
+                required></textarea>
+            </div>
+
+            <!-- Stream Link Section (Visible for virtual events) -->
+            <div id="virtualStreamSection">
+              <div class="form-group">
+                <label for="streamLink">Stream Link</label>
+                <input
+                  type="url"
+                  id="streamLink"
+                  class="form-control"
+                  placeholder="https://" />
+                <small class="form-text"
+                  >Enter the live stream URL (e.g. Zoom, YouTube, etc.)</small
+                >
+              </div>
+            </div>
+
+            <!-- Physical Setup Section (Visible for physical events) -->
+            <div id="physicalSetupSection" style="display: none">
+              <div class="form-group">
+                <label>Stream Source</label>
+                <select class="form-control">
+                  <option>Select a video source</option>
+                  <option>Webcam</option>
+                  <option>HDMI Capture</option>
+                  <option>SDI Input</option>
+                  <option>NDI Source</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Audio Source</label>
+                <select class="form-control">
+                  <option>Select an audio source</option>
+                  <option>Microphone</option>
+                  <option>Mixer Input</option>
+                  <option>System Audio</option>
+                </select>
+              </div>
+              <button type="button" class="btn btn-outline">
+                <i class="fas fa-plug"></i> Connect Devices
+              </button>
+            </div>
+
+            <div class="form-actions">
+              <button type="reset" class="btn btn-outline">Reset</button>
+              <button type="submit" class="btn btn-primary">
+                Create Event
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Events List -->
+        <div
+          class="events-list-container"
+          id="manageEventsTab"
+          style="display: none">
+          <div class="preview-header">
+            <h3>Manage Events</h3>
+          </div>
+
+          <div id="eventsList" class="events-list">
+            <!-- Event cards will be dynamically inserted here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/public/live.js"></script>
+  </body>
+</html>

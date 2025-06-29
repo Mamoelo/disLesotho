@@ -1,0 +1,637 @@
+/* styles.css */
+.login-body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.login-container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #0057b3;
+}
+
+.error {
+  color: #dc3545;
+  margin-top: 1rem;
+}
+
+.hidden {
+  display: none;
+}
+
+#dynamic-content {
+  padding: 0;
+  overflow: auto;
+  height: 100%;
+}
+
+#welcome-content {
+  padding: 2rem;
+  text-align: center;
+}
+
+.admin-info {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-body,
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+.login-body {
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.login-container {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+.form-group {
+  margin-bottom: 1rem;
+  position: relative;
+}
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  padding-right: 2.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+.eye-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #777;
+}
+.btn {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+.btn:hover {
+  background-color: #0069d9;
+}
+.aux-links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+.aux-links a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.aux-links a:hover {
+  text-decoration: underline;
+}
+/*-----------------------------------------------*/
+/* Reset some basic elements */
+.dashboard-body,
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.dashboard-body,
+html {
+  height: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* Root container flex: sidebar + main area */
+.dashboard-body .container {
+  display: flex;
+  height: 100vh;
+}
+
+/* ================
+   SIDEBAR
+   ================ */
+.dashboard-body .sidebar {
+  width: 250px;
+  background-color: #1e1e2f; /* Dark navy-ish */
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Header inside sidebar (logo + collapse button) */
+.dashboard-body .sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px;
+  border-bottom: 1px solid #2e2e40;
+}
+.dashboard-body .sidebar-header .logo {
+  display: flex;
+  align-items: center;
+}
+.dashboard-body .sidebar-header .logo img {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+.dashboard-body .sidebar-header .logo span {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+.dashboard-body .sidebar-header .collapse-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Each group (Collection Types / Plugins / General) */
+.dashboard-body .nav-group {
+  margin-top: 16px;
+}
+.dashboard-body .nav-group-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #9a9aac;
+  padding: 0 16px;
+  margin-bottom: 8px;
+}
+.dashboard-body .nav-list {
+  list-style: none;
+}
+.dashboard-body .nav-item a {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  color: #f0f0f5;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.dashboard-body .nav-item a:hover {
+  background-color: #2e2e40;
+}
+.dashboard-body .nav-item .nav-dot {
+  margin-right: 8px;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+.dashboard-body .nav-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  color: #f0f0f5;
+}
+
+/* Spacer to push footer to bottom */
+.dashboard-body .sidebar-spacer {
+  flex-grow: 1;
+}
+
+/* Footer with version info */
+.dashboard-body .sidebar-footer {
+  padding: 12px 16px;
+  font-size: 0.75rem;
+  border-top: 1px solid #2e2e40;
+  text-align: center;
+  color: #9a9aac;
+}
+
+/* ================
+   MAIN CONTENT
+   ================ */
+.dashboard-body .main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #f7f8fa;
+}
+
+.dashboard-body header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: linear-gradient(90deg, #1e3c72, #2a5298);
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+/* Top header (search + profile) */
+.dashboard-body .main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  border-bottom: 1px solid #e0e0e5;
+  background-color: #fff;
+}
+.dashboard-body .header-left {
+  display: flex;
+  align-items: center;
+}
+.dashboard-body .menu-toggle {
+  font-size: 1.25rem;
+  background: none;
+  border: none;
+  margin-right: 16px;
+  cursor: pointer;
+}
+.dashboard-body .header-left h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.dashboard-body .header-right {
+  display: flex;
+  align-items: center;
+}
+.dashboard-body .search-input {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.dashboard-body .roles-btn {
+  margin-left: 16px;
+  background: #007bff;
+  border: none;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.dashboard-body .profile-dropdown {
+  display: flex;
+  align-items: center;
+  margin-left: 24px;
+  cursor: pointer;
+}
+.dashboard-body .profile-avatar {
+  border-radius: 50%;
+  margin-right: 8px;
+  width: 32px;
+  height: 32px;
+}
+
+/* Main page content area */
+.dashboard-body .content-area {
+  flex-grow: 1;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+/* Page header (title + add button) */
+.dashboard-body .page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.dashboard-body .page-header h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+.dashboard-body .btn-add-new {
+  background: #007bff;
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* Simple table styling */
+.dashboard-body .table-section {
+  background: #fff;
+  border: 1px solid #e0e0e5;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+.dashboard-body .roles-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.dashboard-body .roles-table th,
+.dashboard-body .roles-table td {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #e0e0e5;
+}
+.dashboard-body .roles-table thead {
+  background-color: #f0f0f5;
+}
+.dashboard-body .action-btn {
+  background: none;
+  border: none;
+  color: #007bff;
+  margin-right: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+.dashboard-body .action-btn:hover {
+  text-decoration: underline;
+}
+.dashboard-body .action-btn-delete {
+  background: none;
+  border: none;
+  color: #d93025;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+.dashboard-body .action-btn-delete:hover {
+  text-decoration: underline;
+}
+
+/*update styles*/
+.dashboard-body .update-content-body,
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.dashboard-body .update-content-body {
+  margin-left: 15em;
+  margin-right: 15em;
+}
+.dashboard-body .update-content-body,
+.dashboard-body b {
+  background-color: #eef2f5;
+  padding: 1rem;
+}
+.dashboard-body h2 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.dashboard-body .multimediaUpload {
+  display: flex;
+  justify-content: space-between;
+}
+.dashboard-body .timeAndDateWrapper {
+  display: flex;
+  justify-content: start;
+}
+
+.dashboard-body .section {
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.dashboard-body .section h4 {
+  margin-bottom: 0.75rem;
+  color: #34495e;
+}
+
+.dashboard-body .form-group {
+  margin-bottom: 0.75rem;
+}
+.dashboard-body .timeAndDateWrapper,
+.dashboard-body .form-group-event {
+  margin-right: 5em;
+}
+
+.dashboard-body label {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: #555;
+}
+input[type="text"],
+input[type="file"],
+input[type="date"],
+input[type="time"],
+.dashboard-body textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+.dashboard-body textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.dashboard-body .containerForButton {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.dashboard-body .btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #4a6fcb;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  max-width: 10vw;
+}
+.dashboard-body .btn:hover {
+  background: #3a5cb5;
+  transform: translateY(-2px);
+}
+.dashboard-body .btn-secondary {
+  background-color: #6c757d;
+}
+.dashboard-body .btn-secondary:hover {
+  background-color: #5a6268;
+}
+.dashboard-body .top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.dashboard-body .top-nav a {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 0.95rem;
+}
+.dashboard-body .top-nav a:hover {
+  text-decoration: underline;
+}
+
+/*-----------------------------------------------*/
+/* Basic styling for each file‐entry card */
+.dashboard-body .preview-list {
+  margin-top: 10px;
+}
+
+.dashboard-body .file-entry {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid #ccc;
+  padding: 8px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.dashboard-body .file-entry .thumbnail {
+  flex-shrink: 0;
+}
+
+/* For video/audio, we’ll cap preview size */
+.dashboard-body .file-entry video,
+.dashboard-body .file-entry audio {
+  max-width: 150px;
+  max-height: 100px;
+}
+
+.dashboard-body .file-entry img {
+  max-width: 150px;
+  max-height: 100px;
+  object-fit: contain;
+}
+
+/* Right‐side controls: rename, description, detach */
+.dashboard-body .file-entry .details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dashboard-body .file-entry .details label {
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.dashboard-body .file-entry .details input[type="text"],
+.dashboard-body .file-entry .details textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 4px;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.dashboard-body .file-entry .details textarea {
+  resize: vertical;
+  min-height: 50px;
+}
+
+/* Detach Button styling */
+.dashboard-body .file-entry .details .detach-btn {
+  align-self: flex-start;
+  margin-top: 6px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.dashboard-body .file-entry .details .detach-btn:hover {
+  background-color: #c0392b;
+}
+
+.dashboard-body .containerForButton {
+  margin-top: 12px;
+}
+.dashboard-body .containerForButton .btn {
+  padding: 8px 16px;
+  font-size: 1em;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.dashboard-body .containerForButton .btn:hover {
+  background-color: #2980b9;
+}
+/*-----------------------------------------------*/

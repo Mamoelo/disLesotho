@@ -1,0 +1,87 @@
+<!-- manageAdmins.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Admins</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-users-cog"></i> Admin Management</h1>
+      <p>Create, edit, and manage administrator accounts and permissions</p>
+    </header>
+
+    <div class="main-content">
+      
+      <div class="table-section">
+        <h2 class="section-title"><i class="fas fa-list"></i> Current Admins</h2>
+        <table class="admins-table">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Full Name</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Admins will be populated here -->
+          </tbody>
+        </table>
+        <button id="recoverAdminsBtn" class="btn btn-warning">
+          <i class="fas fa-undo"></i> Show Deleted Admins
+        </button>
+
+        <div id="deleted-section" class="hidden">
+          <h2 class="section-title"><i class="fas fa-trash-restore"></i> Recoverable Admins</h2>
+          <table class="admins-table">
+            <thead>
+              <tr>
+                <th>Username</th><th>Email</th><th>Deleted At</th><th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="deleted-admins">
+              <!-- Deleted admins will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-group">
+          <h2 class="section-title"><i class="fas fa-user-plus"></i> Add New Admin</h2>
+          <div class="form-group">
+            <label for="adminUsername">Username *</label>
+            <input type="text" id="adminUsername" placeholder="Enter username" required>
+          </div>
+          <div class="form-group">
+            <label for="adminPassword">Password *</label>
+            <input type="password" id="adminPassword" placeholder="Create a strong password" required>
+          </div>
+          <div class="form-group">
+            <label for="adminEmail">Email *</label>
+            <input type="email" id="adminEmail" placeholder="admin@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="adminFullName">Full Name</label>
+            <input type="text" id="adminFullName" placeholder="Admin's full name">
+          </div>
+          <div class="form-group">
+            <label for="adminRole">Role *</label>
+            <select id="adminRole" required>
+              <option value="">Select role</option>
+            </select>
+          </div>
+          <button type="button" id="addAdminBtn" class="btn btn-success">
+            <i class="fas fa-plus"></i> Add Admin
+          </button>
+        </div>
+      </div>      
+    </div>
+  </div>
+</body>
+</html>

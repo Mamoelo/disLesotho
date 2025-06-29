@@ -1,0 +1,89 @@
+#dynamic-content .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#dynamic-content header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: linear-gradient(90deg, #1e3c72, #2a5298);
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+#dynamic-content .main-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 15px;
+}
+
+@media (max-width: 900px) {
+  #dynamic-content .main-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+#dynamic-content .form-section,
+#dynamic-content .table-section {
+  background: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+#dynamic-content .section-title {
+  font-size: 1.6rem;
+  color: #2a5298;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eaeaea;
+}
+
+#dynamic-content .admins-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#dynamic-content .admins-table th,
+#dynamic-content .admins-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eaeaea;
+}
+
+#dynamic-content .admins-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+#dynamic-content .btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#dynamic-content .btn-success {
+  background: #4a6fcb;
+  color: white;
+}
+
+#dynamic-content .btn-success:hover {
+  background: #3a5cb5;
+}
+
+#dynamic-content .action-btn {
+  background: #4a6fcb;
+  color: white;
+  padding: 5px 10px;
+}
+
+#dynamic-content .action-btn-delete {
+  background: #dc3545;
+  color: white;
+  padding: 5px 10px;
+}

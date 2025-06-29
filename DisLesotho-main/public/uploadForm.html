@@ -1,0 +1,170 @@
+<!-- uploadForm.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Enhanced News Article Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>
+          <i class="fas fa-newspaper"></i> Enhanced News Article Management
+        </h1>
+        <p>
+          Create, edit, and publish news articles with comprehensive content
+          management
+        </p>
+        
+        <div class="navbar-container">
+          <div class="navbar" id="contentTypeNavbar">
+            <!-- Navbar will be populated dynamically -->
+          </div>
+        </div>
+      </header>
+
+      <div class="main-content">
+        <div class="form-section">
+          <form id="newsForm">
+            <!-- News Content Section -->
+            <div class="form-group">
+              <h2 id="contentTitle" class="section-title">
+                <i class="fas fa-file-alt"></i> News Content
+              </h2>
+              <div class="form-group">
+                <label for="newsTitle">Title</label>
+                <input type="text" id="newsTitle" placeholder="Enter headline" required />
+              </div>
+              <div class="form-group">
+                <label for="newsContent">Content</label>
+                <textarea id="newsContent" placeholder="Write your content here..." required></textarea>
+                <textarea id="extraNotes" placeholder="Extra Notes"></textarea>
+              </div>
+              <div class="button-group">
+                <button type="button" id="highlightBtn" class="btn btn-primary">
+                  <i class="fas fa-highlighter"></i> Highlight Selection
+                </button>
+                <button type="button" id="timestampBtn" class="btn btn-secondary">
+                  <i class="fas fa-clock"></i> Insert Timestamp
+                </button>
+              </div>
+              <label>Attach:</label>
+              <input type="file" id="mediaFile" accept="image/*,video/*" multiple/>
+            </div>
+
+            <!-- Content Attributes Section -->
+            <div class="form-group">
+              <h2 id="attributesTitle" class="section-title">
+                <i class="fas fa-tags"></i> News Attributes
+              </h2>
+              <div class="form-group">
+                <label for="location">Location</label>
+                <input
+                  type="text"
+                  id="location"
+                  placeholder="Where did this occur?" />
+              </div>
+              <div class="form-group">
+                <label for="host">Host/Author</label>
+                <input
+                  type="text"
+                  id="host"
+                  placeholder="Who is hosting this content?" />
+              </div>
+              <div class="form-group" id="contentTypeField">
+                <label for="contentType">Content Type</label>
+                <select id="contentType">
+                  <option value="">Select content type</option>
+                  <option value="breaking">Breaking News</option>
+                  <option value="feature">Feature Story</option>
+                  <option value="interview">Interview</option>
+                  <option value="opinion">Opinion Piece</option>
+                  <option value="analysis">Analysis</option>
+                </select>
+              </div>
+              <div id="additionalFields">
+                <!-- Additional fields will appear here based on content type -->
+              </div>
+              <label for="isBreaking">
+                <input type="checkbox" id="isBreaking"/> Breaking News
+              </label>
+              <label for="categorySelect">Category:</label>
+              <select id="categorySelect"></select>
+              <button id="addCategoryBtn" type="button">+New Cat</button>
+            </div>
+
+            <!-- Upload Button -->
+            <button type="submit" class="btn upload-btn">
+              <i class="fas fa-cloud-upload-alt"></i> Upload
+            </button>
+          </form>
+        </div>
+
+        <!-- Preview Section -->
+        <div class="preview-section">
+          <h2 class="section-title">
+            <i class="fas fa-eye"></i> Content view
+          </h2>
+          <div class="preview-content" id="previewContent">
+            <div id="existingPosts"></div>
+            <div class="preview-placeholder">
+              <p id="previewText">
+                Your content preview will appear here. Fill out the form to see
+                a real-time preview.
+              </p>
+              <p>
+                <i
+                  >As you fill in the form on the left, the preview will update
+                  automatically.</i
+                >
+              </p>
+            </div>
+          </div>
+
+          <!-- Data Summary Section -->
+          <div class="data-summary">
+            <h3><i class="fas fa-database"></i> Data Summary</h3>
+            <div class="data-grid" id="dataSummary">
+              <!-- Data items will be inserted here -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Type Selection Modal -->
+      <div class="modal" id="typeModal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">Select Partner Type</h3>
+            <button class="close-modal">&times;</button>
+          </div>
+          <div class="form-group">
+            <label for="newType">Add New Type</label>
+            <div class="button-group">
+              <input
+                type="text"
+                id="newType"
+                placeholder="Enter new partner type" />
+              <button type="button" id="addTypeBtn" class="btn btn-primary">
+                Add Type
+              </button>
+            </div>
+          </div>
+          <div class="button-group">
+            <button type="button" id="selectTypeBtn" class="btn btn-success">
+              Select Type
+              </button>
+            <button type="button" id="cancelTypeBtn" class="btn btn-secondary">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p>News Management System &copy; 2023 | All rights reserved</p>
+      </footer>
+    </div>
+  </body>
+</html>
