@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesotho Digital Innovators Summit | SkyAlpha HD</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a148c; /* Deep purple */
+            --secondary-color: #7b1fa2; /* Medium purple */
+            --accent-color: #e91e63; /* Pink accent */
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-color) !important;
+        }
+        
+        .bg-secondary {
+            background-color: var(--secondary-color) !important;
+        }
+        
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+        
+        .text-secondary {
+            color: var(--secondary-color) !important;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            padding: 10px 25px;
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover {
+            background-color: #6a1b9a;
+            border-color: #6a1b9a;
+        }
+        
+        .btn-outline-primary {
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        /* Header Styles */
+        .main-header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand img {
+            height: 40px;
+        }
+        
+        .nav-link {
+            font-weight: 600;
+            color: var(--primary-color);
+            padding: 10px 15px !important;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary-color);
+        }
+        
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 0;
+        }
+        
+        .dropdown-item {
+            font-weight: 500;
+            padding: 8px 20px;
+        }
+        
+        .dropdown-item:hover {
+            background-color: rgba(123,31,162,0.1);
+            color: var(--secondary-color);
+        }
+        /* Custom Active State for Home */
+.nav-link.active-home {
+    position: relative;
+    color: var(--primary-color) !important;
+}
+
+.nav-link.active-home .nav-link-inner {
+    position: relative;
+    display: inline-block;
+}
+
+.nav-link.active-home .nav-link-inner::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--secondary-color);
+    transform: scaleX(1);
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect for other nav items */
+.nav-link:not(.active-home):hover {
+    color: var(--secondary-color) !important;
+}
+
+
+        
+        /* Hero Section */
+        .hero-section {
+           background: linear-gradient(rgba(71, 109, 180, 0.8), rgba(102, 45, 145, 0.8)), url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 0;
+    position: relative;
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .hero-section .lead {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        /* Live Stream Section */
+        .live-section {
+            background-color: white;
+            padding: 60px 0;
+        }
+        
+        .live-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 4px;
+            font-weight: 600;
+            z-index: 10;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background-color: #000;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .countdown-timer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .countdown-item {
+            display: inline-block;
+            margin: 0 10px;
+        }
+        
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1;
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+        
+        /* Featured Sessions */
+        .sessions-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .session-card {
+            border: none;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            height: 100%;
+        }
+        
+        .session-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .session-card .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .session-card .card-body {
+            padding: 25px;
+        }
+        
+        .session-card .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .session-card .university {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .session-card .date-time {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+        
+        .session-card .badge {
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        /* Universities Section */
+        .universities-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .university-logo {
+            height: 80px;
+            width: auto;
+            margin: 0 auto 20px;
+            display: block;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .university-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        
+        /* Past Summits */
+        .past-summits-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .summit-card {
+            border: none;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+        
+        .summit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .summit-card .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .summit-card .card-body {
+            padding: 25px;
+        }
+        
+        .summit-card .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .summit-card .card-text {
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+        
+        /* Testimonials */
+        .testimonials-section {
+            padding: 80px 0;
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .testimonial-card {
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 30px;
+            height: 100%;
+        }
+        
+        .testimonial-card .quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+        
+        .author-name {
+            font-weight: 700;
+            margin-bottom: 0;
+        }
+        
+        .author-title {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 0;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Footer */
+        .main-footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 0 0;
+        }
+        
+        .footer-logo {
+            height: 70px;
+            margin-bottom: 20px;
+            background-color: aliceblue;
+            border-radius: 20%;
+
+        }
+        
+        .footer-about {
+            opacity: 0.7;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links h5 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            background-color: rgba(0,0,0,0.2);
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        .footer-bottom {
+    background-color: rgba(0,0,0,0.2);
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+/* Default mobile padding (small screens) */
+.footer-bottom .container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Tablet (medium screens) */
+@media (min-width: 768px) {
+    .footer-bottom .container {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+/* Desktop (large screens) - BIGGER PADDING AS REQUESTED */
+@media (min-width: 992px) {
+    .footer-bottom .container {
+        padding-left: 100px;  /* Increased from 60px to 100px */
+        padding-right: 100px; /* Increased from 60px to 100px */
+    }
+}
+        
+        .copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-section .lead {
+                font-size: 1.25rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 80px 0;
+            }
+            
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            
+            .countdown-item {
+                margin: 0 5px;
+            }
+            
+            .countdown-number {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-section {
+                padding: 60px 0;
+            }
+            
+            .countdown-item {
+                margin: 0 3px;
+            }
+            
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+            
+            .countdown-label {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+<body>
+    <!-- Header -->
+<header class="main-header sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.jpeg" alt="SkyAlpha HD">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active-home" href="index.html">
+                            <span class="nav-link-inner">Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="summitsDropdown" role="button" data-bs-toggle="dropdown">
+                            Summits
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="summit2023.html">2023 Summit</a></li>
+                            <li><a class="dropdown-item" href="summit2022.html">2022 Summit</a></li>
+                            <li><a class="dropdown-item" href="summit2021.html">2021 Summit</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="past-summits.html">All Summits</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="live.html">Live</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="eventDropdown" role="button" data-bs-toggle="dropdown">
+                            Event
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="live.html">Live</a></li>
+                            <li><a class="dropdown-item" href="sessions.html">Sessions</a></li>
+                            <li><a class="dropdown-item" href="schedule.html">Schedule</a></li>
+                            <li><a class="dropdown-item" href="speakers.html">Speakers</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="universities.html">Universities</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="partnersDropdown" role="button" data-bs-toggle="dropdown">
+                            Partners
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="universities.html">Universities</a></li>
+                            <li><a class="dropdown-item" href="partners.html">Organizations</a></li>
+                            <li><a class="dropdown-item" href="sponsors.html">Sponsors</a></li>
+                            <li><a class="dropdown-item" href="collaborators.html">Collaborators</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="contactDropdown" role="button" data-bs-toggle="dropdown">
+                            Contact
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="contact.html">Contact Us</a></li>
+                            <li><a class="dropdown-item" href="team.html">Our Team</a></li>
+                            <li><a class="dropdown-item" href="faq.html">FAQs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">about</a>
+                    </li>
+                </ul>
+                <a href="register.html" class="btn btn-primary ms-lg-3">Register Now</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+    <!-- Hero Section - Updated with 2025 Summit Info -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <span class="hero-badge">Coming Soon - 2025</span>
+                    <h1>Welcome to the Digital Innovators Summit
+</h1>
+                    <p class="lead">A space where ideas meet innovation.
+We’re championing the ethical use of AI to fight misinformation, empower digital storytellers, and shape Africa’s tech-driven future — starting right here in Lesotho.
+
+</p><p>Explore. Connect. Lead.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="register.html" class="btn btn-light btn-lg">Register Now</a>
+                        <a href="about.html" class="btn btn-outline-light btn-lg">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Stream Section - Updated for 2025 -->
+    <section class="live-section" id="live">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="mb-3">Live Stream</h2>
+                    <p class="lead text-muted">Watch the current sessions happening right now</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mb-4 mb-lg-0">
+                    <div class="video-container">
+                        <div class="live-badge">
+                            <i class="fas fa-circle me-2"></i> LIVE NOW
+                        </div>
+                        <iframe src="https://www.youtube.com/embed/5J_WZFZ34wk" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div> 
+                <div class="col-lg-4">
+                    <div class="countdown-timer">
+                        <h4 class="mb-4">Next Session Starts In:</h4>
+                        <div class="countdown-container">
+                            <div class="countdown-item">
+                                <div class="countdown-number" id="days">00</div>
+                                <div class="countdown-label">Days</div>
+                            </div>
+                            <div class="countdown-item">
+                                <div class="countdown-number" id="hours">00</div>
+                                <div class="countdown-label">Hours</div>
+                            </div>
+                            <div class="countdown-item">
+                                <div class="countdown-number" id="minutes">00</div>
+                                <div class="countdown-label">Minutes</div>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="mb-3">Up Next:</h5>
+                            <p class="mb-1"><strong>Digital Transformation in Higher Education</strong></p>
+                            <p class="mb-3">Dr. Thabo Mokoena, National University of Lesotho</p>
+                            <a href="event.ics" download class="btn btn-outline-light w-100">Add to Calendar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Sessions - Updated with 2025 Speakers -->
+    <section class="sessions-section" id="sessions">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="mb-3">Featured Sessions</h2>
+                    <p class="lead text-muted">Preview of planned sessions for 2025</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card session-card">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="AI Session">
+                        <div class="card-body">
+                            <span class="badge bg-primary mb-2">AI</span>
+                            <h5 class="card-title">AI Talent and Higher Education</h5>
+                            <p class="university">Prof. Mosotho George, NUL</p>
+                            <p class="date-time">Day 1, 11:00 AM - 12:30 PM</p>
+                            <a href="speakers.html#george" class="btn btn-outline-primary">Speaker Profile</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card session-card">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Policy Session">
+                        <div class="card-body">
+                            <span class="badge bg-secondary mb-2">Policy</span>
+                            <h5 class="card-title">Policy Foundations for AI</h5>
+                            <p class="university">Mr Kanono Ramashamole, MICSTI</p>
+                            <p class="date-time">Day 1, 2:00 PM - 3:30 PM</p>
+                            <a href="speakers.html#ramashamole" class="btn btn-outline-primary">Speaker Profile</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card session-card">
+                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Ethics Session">
+                        <div class="card-body">
+                            <span class="badge bg-danger mb-2">Ethics</span>
+                            <h5 class="card-title">Ethical AI and Global Partnerships</h5>
+                            <p class="university">H.E. Harry MacDonald</p>
+                            <p class="date-time">Day 2, 9:00 AM - 10:30 AM</p>
+                            <a href="speakers.html#macdonald" class="btn btn-outline-primary">Speaker Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="schedule.html" class="btn btn-primary">View Full Schedule</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Participating Universities - Updated with actual partners -->
+    <section class="universities-section" id="universities">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="mb-3">Participating Institutions</h2>
+                    <p class="lead text-muted">Our academic and organizational partners</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-6 col-md-3 mb-4">
+                    <img src="https://via.placeholder.com/150x80?text=NUL" alt="National University of Lesotho" class="university-logo">
+                </div>
+                <div class="col-6 col-md-3 mb-4">
+                    <img src="https://via.placeholder.com/150x80?text=Botho" alt="Botho University" class="university-logo">
+                </div>
+                <div class="col-6 col-md-3 mb-4">
+                    <img src="https://via.placeholder.com/150x80?text=Limkokwing" alt="Limkokwing University" class="university-logo">
+                </div>
+                <div class="col-6 col-md-3 mb-4">
+                    <img src="https://via.placeholder.com/150x80?text=American+Corner" alt="American Corner" class="university-logo">
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="partners.html" class="btn btn-outline-primary">See All Partners</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Past Summits - Updated with actual achievements -->
+    <section class="past-summits-section" id="past-summits">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="mb-3">Our Achievements</h2>
+                    <p class="lead text-muted">Impact from previous summits</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card summit-card">
+                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Summit Impact">
+                        <div class="card-body">
+                            <h5 class="card-title">Broad Reach</h5>
+                            <p class="card-text">Engaged 500+ participants from leading universities including NUL, Botho University, and Limkokwing.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">30% implemented digital tools</small>
+                                <a href="past-summits.html" class="btn btn-sm btn-primary">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card summit-card">
+                        <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Advocacy">
+                        <div class="card-body">
+                            <h5 class="card-title">Advocacy Impact</h5>
+                            <p class="card-text">Participants have actively led campaigns against misinformation using AI tools from the summit.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">Improved reporting practices</small>
+                                <a href="past-summits.html" class="btn btn-sm btn-primary">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card summit-card">
+                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Collaborations">
+                        <div class="card-body">
+                            <h5 class="card-title">Established Collaborations</h5>
+                            <p class="card-text">MOUs with universities ensure continuity in digital education initiatives.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">Government & private support</small>
+                                <a href="past-summits.html" class="btn btn-sm btn-primary">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials - Updated with actual quotes -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="mb-3">What People Are Saying</h2>
+                    <p class="lead opacity-75">Hear from past attendees and participants</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card">
+                        <div class="quote">"The summit has been lauded as a cornerstone for digital literacy advancement in Lesotho, earning national awards."</div>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Participant">
+                            <div>
+                                <p class="author-name">Summit Attendee</p>
+                                <p class="author-title">NUL Faculty Member</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card">
+                        <div class="quote">"Journalists and content creators reported improved accuracy and ethical reporting practices post-training."</div>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Media Professional">
+                            <div>
+                                <p class="author-name">Media Representative</p>
+                                <p class="author-title">Lesotho Times</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card">
+                        <div class="quote">"Government and private sector partners now actively support digital transformation policies influenced by summit themes."</div>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Government Official">
+                            <div>
+                                <p class="author-name">Government Official</p>
+                                <p class="author-title">MICSTI</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section - Updated with 2025 focus -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Join the 2025 Digital Revolution?</h2>
+            <p>Register now for the Digital Innovators Summit 2025 and be part of shaping Lesotho's digital future.</p>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="register.html" class="btn btn-light btn-lg">Register Now</a>
+                <a href="contact.html" class="btn btn-outline-light btn-lg">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - Updated with proper links -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <a href="https://www.skyalphahd.com" target="_blank" rel="noopener noreferrer">
+    <img src="images/logos/skyalpha.png" alt="SkyAlpha HD" class="footer-logo">
+</a>
+                    <p class="footer-about">Aligned with Lesotho's National Digital Transformation Strategy, the Digital Innovators Summit is a movement toward creating a digitally empowered society.</p>
+                    <div class="social-links">
+    <a href="https://www.facebook.com/DigitalInnovatorsSummitLesotho" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://twitter.com/DIS_Lesotho2025" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.instagram.com/digitalinnovatorslesotho" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/company/digital-innovators-summit-lesotho" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://www.youtube.com/c/DigitalInnovatorsSummitLesotho" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+</div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Summits</h5>
+                        <ul>
+                            <li><a href="summit2023.html">2023 Summit</a></li>
+                            <li><a href="summit2022.html">2022 Summit</a></li>
+                            <li><a href="summit2021.html">2021 Summit</a></li>
+                            <li><a href="past-summits.html">All Summits</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Event</h5>
+                        <ul>
+                            <li><a href="schedule.html">Schedule</a></li>
+                            <li><a href="speakers.html">Speakers</a></li>
+                            <li><a href="sessions.html">Sessions</a></li>
+                            <li><a href="live.html">Live Stream</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Partners</h5>
+                        <ul>
+                            <li><a href="universities.html">Universities</a></li>
+                            <li><a href="partners.html">Organizations</a></li>
+                            <li><a href="sponsors.html">Sponsors</a></li>
+                            <li><a href="collaborators.html">Collaborators</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4">
+                    <div class="footer-links">
+                        <h5>Contact</h5>
+                        <ul>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="team.html">Our Team</a></li>
+                            <li><a href="register.html">Register</a></li>
+                            <li><a href="faq.html">FAQs</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+<div class="footer-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="copyright mb-3 mb-md-0">© 2025 Digital Innovators Summit. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <a href="privacy.html" class="text-white-50 me-3">Privacy Policy</a>
+                <a href="terms.html" class="text-white-50">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Countdown Timer Script - Updated for 2025 summit
+        function updateCountdown() {
+            // Set to June 10-12, 2025 as placeholder - update with actual dates
+            const endDate = new Date("2025-06-10T09:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = endDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById("days").innerHTML = days.toString().padStart(2, "0");
+            document.getElementById("hours").innerHTML = hours.toString().padStart(2, "0");
+            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, "0");
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+    <script>
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+        const navbarCollapse = document.getElementById('navbarNav');
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        
+        // If mobile menu is open and click is outside navbar
+        if (navbarCollapse.classList.contains('show') && 
+            !event.target.closest('.navbar') && 
+            !event.target.classList.contains('navbar-toggler')) {
+            
+            // Close the menu
+            const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                toggle: false
+            });
+            bsCollapse.hide();
+            
+            // Change the toggler icon back to three lines
+            navbarToggler.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    // Countdown Timer Script - Keep your existing countdown code
+    function updateCountdown() {
+        const endDate = new Date("2025-06-10T09:00:00").getTime();
+        const now = new Date().getTime();
+        const distance = endDate - now;
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        
+        document.getElementById("days").innerHTML = days.toString().padStart(2, "0");
+        document.getElementById("hours").innerHTML = hours.toString().padStart(2, "0");
+        document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, "0");
+    }
+    
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+</script>
+</body>
+</html>

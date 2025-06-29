@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Posts</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f5f8fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .post-form {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            padding: 15px;
+            font-size: 18px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .posts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        .post-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        .post-card:hover {
+            transform: translateY(-5px);
+        }
+        .post-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .post-title {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        .post-meta {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        .post-content {
+            padding: 20px;
+            line-height: 1.7;
+        }
+        .post-media {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            padding: 0 20px 20px;
+        }
+        .media-item {
+            border-radius: 8px;
+            overflow: hidden;
+            height: 150px;
+            background-color: #f1f1f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .media-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .media-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .media-icon {
+            font-size: 40px;
+            color: #7f8c8d;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        h2 {
+            margin: 25px 0 15px;
+            color: #2c3e50;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Media Post System</h1>
+        </header>
+        
+        <section class="post-form">
+            <h2>Create New Post</h2>
+            <form id="postForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="title">Post Title</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="content">Post Content</label>
+                    <textarea id="content" name="content" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Upload Images (Max 10)</label>
+                    <input type="file" name="image" multiple accept="image/*">
+                </div>
+                
+                <div class="form-group">
+                    <label>Upload Videos (Max 10)</label>
+                    <input type="file" name="video" multiple accept="video/*">
+                </div>
+                
+                <button type="submit">Create Post</button>
+            </form>
+        </section>
+        
+        <section class="posts">
+            <h2>Recent Posts</h2>
+            <div id="postsContainer" class="posts-container">
+                <!-- Posts will be loaded here -->
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.getElementById('postForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData();
+            formData.append('title', document.getElementById('title').value);
+            formData.append('content', document.getElementById('content').value);
+            
+            // Add image files
+            const imageInput = document.querySelector('input[name="image"]');
+            for (let i = 0; i < imageInput.files.length; i++) {
+                formData.append('image', imageInput.files[i]);
+            }
+            
+            // Add video files
+            const videoInput = document.querySelector('input[name="video"]');
+            for (let i = 0; i < videoInput.files.length; i++) {
+                formData.append('video', videoInput.files[i]);
+            }
+            
+            try {
+                const response = await fetch('/create-post', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (response.redirected) {
+                    window.location.href = response.url;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error creating post');
+            }
+        });
+
+        // Load posts on page load
+        window.addEventListener('DOMContentLoaded', loadPosts);
+
+        async function loadPosts() {
+            try {
+                const response = await fetch('/posts');
+                const posts = await response.json();
+                
+                const container = document.getElementById('postsContainer');
+                container.innerHTML = '';
+                
+                posts.forEach(post => {
+                    const postEl = document.createElement('div');
+                    postEl.className = 'post-card';
+                    
+                    const mediaHtml = post.media.images.map(img => `
+                        <div class="media-item">
+                            <img src="${img}" alt="Post Image">
+                        </div>
+                    `).join('') +
+                    
+                    post.media.videos.map(vid => `
+                        <div class="media-item">
+                            <video controls>
+                                <source src="${vid}" type="video/mp4">
+                                Your browser does not support videos.
+                            </video>
+                        </div>
+                    `).join('');
+                    
+                    postEl.innerHTML = `
+                        <div class="post-header">
+                            <h3 class="post-title">${post.title}</h3>
+                            <div class="post-meta">
+                                Posted: ${new Date(post.created_at).toLocaleString()}
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            ${post.content}
+                        </div>
+                        ${mediaHtml ? `
+                        <div class="post-media">
+                            ${mediaHtml}
+                        </div>
+                        ` : ''}
+                    `;
+                    
+                    container.appendChild(postEl);
+                });
+            } catch (error) {
+                console.error('Error loading posts:', error);
+            }
+        }
+    </script>
+</body>
+</html>
